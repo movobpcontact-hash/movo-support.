@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="de">
-<head>
+<head> 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movo – Gym Tracker & Planner</title>
@@ -53,13 +53,19 @@
     .btn.primary{background:linear-gradient(90deg,#7c3aed,#4f46e5); border:none}
 
     .hamburger{display:none}
-    @media (max-width:900px){
-      .nav{display:none}
-      .hamburger{display:inline-flex; border:1px solid var(--border); background:#0e162c; border-radius:10px; padding:8px 10px; color:#d7eaff}
-      .mobilemenu{position:fixed; inset:56px 12px auto 12px; background:#0d1426; border:1px solid var(--border); border-radius:16px; padding:12px; display:none; box-shadow:var(--shadow)}
-      .mobilemenu.show{display:block}
-      .mobilemenu a{display:block; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#0e162c; color:#d7eaff; margin-top:8px}
-    }
+@media (max-width:900px){
+  .nav{display:none}
+  .hamburger{display:inline-flex; border:1px solid var(--border); background:#0e162c; border-radius:10px; padding:8px 10px; color:#d7eaff}
+  .mobilemenu{
+    position:fixed; inset:56px 12px auto 12px;
+    background:#0d1426; border:1px solid var(--border);
+    border-radius:16px; padding:12px; box-shadow:var(--shadow);
+  }
+  .mobilemenu.show{display:block}
+}
+
+    .mobilemenu { display: none; }
+
 
     /* Hero */
     .hero{padding:62px 0 30px}
