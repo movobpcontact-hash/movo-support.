@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Datenschutz – Movo</title>
+  <meta name="description" content="Movo: Der smarte Gym-Tracker für iOS. Logge Übungen, nutze Vorlagen, steuere Pausen smart und verfolge deinen Fortschritt." />
+  <meta name="theme-color" content="#0b0f1a" />
+  <style>
+    :root{
+      --bg:#0a0d16; --bg-2:#0b1020;
+      --surface:#0e1424; --surface-2:#0c1222;
+      --panel:#0f1628;
+      --border:#1d2842; --inner:#1b2640;
+      --text:#eaf2ff; --muted:#9fb0c9;
+      --accent:#7c3aed; --accent2:#38bdf8; --accent3:#22d3ee;
+      --good:#86efac; --warn:#ffd166;
+      --radius:22px; --shadow:0 18px 50px rgba(0,0,0,.6);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:system-ui,-apple-system,'SF Pro Display','Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text); line-height:1.65; font-size:16px;
+      background:
+        radial-gradient(1200px 600px at 8% -10%, #7c3aed22, transparent 60%),
+        radial-gradient(1000px 480px at 92% 0%, #22d3ee22, transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+    }
+    a{color:#9ad6ff; text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1140px; margin:0 auto; padding:0 20px}
+
+    /* Navbar */
+    header{position:sticky; top:0; z-index:60; backdrop-filter:saturate(1.1) blur(10px);
+            background:linear-gradient(180deg, #0b0f1ad0 60%, transparent);
+            border-bottom:1px solid var(--border)}
+    .navwrap{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:12px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .logo{display:inline-grid; place-items:center; width:40px; height:40px; border-radius:14px;
+           background:conic-gradient(from 120deg,var(--accent),var(--accent2));
+           box-shadow:0 8px 22px #7c3aed55}
+    .logo svg{width:22px; height:22px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.45))}
+    .wordmark{font-weight:900; background:linear-gradient(90deg,#fff,#9ad6ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+    .nav{display:flex; gap:2px; align-items:center; position:relative}
+    .nav a{padding:10px 12px; border-radius:12px; color:#d7eaff; position:relative; display:inline-flex; align-items:center}
+    .nav a::after{content:''; position:absolute; left:12px; right:12px; bottom:4px; height:2px; background:linear-gradient(90deg,var(--accent2),var(--accent)); border-radius:2px; transform:scaleX(0); transform-origin:left; transition:transform .25s}
+    .nav a:hover::after, .nav a[aria-current="true"]::after{transform:scaleX(1)}
+    .nav-cta{margin-left:8px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; border-radius:999px; padding:12px 16px; border:1px solid var(--border); background:#0f172b; color:#eef6ff}
+    .btn:hover{background:#13203a}
+    .btn.primary{background:linear-gradient(90deg,#7c3aed,#4f46e5); border:none}
+
+    /* Dropdown (Desktop) */
+    .dropdown{ position:relative; }
+    .dropbtn{ padding:10px 12px; border-radius:12px; color:#d7eaff; display:inline-flex; align-items:center; gap:6px }
+    .dropdown-menu{
+      position:absolute; top:calc(100% + 8px); right:0;
+      background:#0e162c; border:1px solid var(--border); border-radius:12px; padding:8px;
+      box-shadow:var(--shadow); display:none; min-width:200px;
+    }
+    .dropdown-menu a{ display:block; padding:8px 10px; border-radius:8px; color:#d7eaff }
+    .dropdown-menu a:hover{ background:#0f172b; text-decoration:none }
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu{ display:block }
+
+    .hamburger{display:none}
+    @media (max-width:900px){
+      .nav{display:none}
+      .hamburger{display:inline-flex; border:1px solid var(--border); background:#0e162c; border-radius:10px; padding:8px 10px; color:#d7eaff}
+      .mobilemenu{
+        position:fixed; inset:56px 12px auto 12px;
+        background:#0d1426; border:1px solid var(--border);
+        border-radius:16px; padding:12px; box-shadow:var(--shadow);
+      }
+      .mobilemenu.show{display:block}
+    }
+    .mobilemenu { display: none; }
+
+    /* Mobile: Details im Menü hübsch machen */
+    .mobilemenu details{ margin-top:8px; border:1px solid var(--border); background:#0e162c; border-radius:12px; padding:6px 8px }
+    .mobilemenu summary{ cursor:pointer; padding:8px 6px; color:#d7eaff; list-style:none }
+    .mobilemenu details a{ margin:6px 0; display:block }
+
+    /* Common sections */
+    .hero{padding:62px 0 30px}
+    .hero-grid{display:grid; grid-template-columns:1.02fr .98fr; gap:24px; align-items:center}
+    @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} }
+    .badge{display:inline-flex; align-items:center; gap:.4rem; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#0d1427; color:#cfe1ff}
+    .h1{font-size:clamp(30px,5.4vw,52px); line-height:1.08; margin:10px 0}
+    .lead{color:var(--muted); max-width:64ch}
+    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .device{width:min(420px, 92vw); aspect-ratio: 430 / 932; border-radius:46px; position:relative;
+      background:linear-gradient(180deg,#0a0d18,#0a0f22); box-shadow:0 25px 60px rgba(0,0,0,.6), inset 0 0 0 1px #111a2e;
+      border:1px solid #1a2744; overflow:hidden;
+    }
+    .notch{position:absolute; left:50%; top:8px; transform:translateX(-50%); width:148px; height:32px; background:#0b0f1a; border-radius:16px}
+    .screen{position:absolute; inset:14px; border-radius:34px; background:linear-gradient(180deg,#090f1b,#04070f); overflow:hidden}
+    .status{display:flex; justify-content:space-between; align-items:center; padding:10px 16px; color:#9fb0c9; font-weight:600}
+    .status .dot{width:8px; height:8px; border-radius:50%; background:#3b82f6}
+    .titlecard{margin:8px 12px 0; padding:16px; border-radius:18px; background:linear-gradient(180deg,#151b2b,#0e1424); border:1px solid var(--inner); color:#eef3ff}
+    .big{font-size:20px; font-weight:800}
+    .pills{display:flex; gap:8px; margin-top:8px}
+    .pill{background:#0b1222; border:1px solid var(--inner); color:#cfe1ff; padding:6px 10px; border-radius:999px; font-size:12px}
+    .cards{padding:10px 12px 16px; display:grid; gap:12px}
+    .card-ui{padding:14px; border-radius:18px; background:linear-gradient(180deg,#0f1628,#0b1324); border:1px solid var(--inner); color:#dfe8ff}
+    .btn-row{display:flex; gap:10px; flex-wrap:wrap}
+    .btn-ghost{background:#121a2e; border:1px solid #24314f; color:#dfe8ff; border-radius:12px; padding:10px 12px}
+    .btn-primary{background:#5b61ff; color:white; border:none; border-radius:12px; padding:10px 12px}
+    .set{display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px; margin-top:8px}
+    .set .l1{height:12px; width:70%; border-radius:8px; background:#2a3a60}
+    .set .l2{height:10px; width:50%; border-radius:8px; background:#1c2b4e}
+    .set .badge{padding:4px 10px; border-radius:999px; background:#192a4e; border:1px solid #20345e}
+    .wheel{height:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:8px}
+    .wheel span{height:100%; border-radius:14px; background:#121a2e; border:1px solid #24314f; display:grid; place-items:center; color:#9fb0c9}
+    .cta-big{margin-top:10px; padding:12px 14px; border-radius:14px; background:linear-gradient(90deg,#6d6cff,#4f46e5); text-align:center; font-weight:700}
+
+    .ring{width:122px; aspect-ratio:1; border-radius:50%; background:conic-gradient(#60a5fa 0 40%, #0c1222 40% 60%, #7c3aed 60% 80%, #0c1222 80% 100%); border:1px solid #1f2a40; margin:6px auto; position:relative}
+    .ring:after{content:''; position:absolute; inset:16px; border-radius:50%; background:#0e1426; border:1px solid #1b2946}
+    .tabs{display:flex; gap:6px; justify-content:center; margin:10px 0}
+    .tabs button{background:#0f172b; color:#cfe1ff; border:1px solid #223456; border-radius:12px; padding:8px 10px; cursor:pointer}
+    .tabs button[aria-current="true"]{background:#13203a}
+
+    /* Sections */
+    .section{scroll-margin-top:92px; padding:48px 0; border-top:1px dashed #22324a}
+    .section h2{font-size:clamp(22px,3.5vw,34px); margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:linear-gradient(180deg,#0f182f,#0b1325); border:1px solid var(--border); border-radius:18px; padding:16px; box-shadow:var(--shadow)}
+
+    .list-check{display:grid; gap:8px; margin:12px 0}
+    .list-check li{list-style:none; position:relative; padding-left:24px}
+    .list-check li::before{content:'✓'; position:absolute; left:0; top:0; color:#86efac}
+
+    .reviews{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .review{background:#0e162c; border:1px solid var(--border); border-radius:16px; padding:14px}
+    .stars{letter-spacing:2px; color:#ffd166}
+
+    .sticky-cta{position:fixed; bottom:12px; left:12px; right:12px; display:none}
+    .sticky-cta .btn{width:100%; justify-content:center; box-shadow:0 10px 30px rgba(124,58,237,.35)}
+    @media (max-width:900px){ .sticky-cta{display:block} }
+
+    details{background:#0e162c; border:1px solid var(--border); border-radius:14px; padding:12px 14px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:600}
+
+    .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Legal page cards */
+    .legal-card{background:linear-gradient(180deg,#0f1628,#0b1324); border:1px solid var(--inner); border-radius:16px; padding:16px}
+    .backlink{display:inline-flex; align-items:center; gap:8px; margin:10px 0}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container navwrap">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 18V6h3l6 6 6-6h3v12h-3V11l-6 6-6-6v7H3z" fill="white" opacity=".96"/></svg>
+        </span>
+        <span class="wordmark">Movo</span>
+      </div>
+      <nav class="nav" aria-label="Navigation">
+        <a href="index.html#start">Start</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#routinen">Warum</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#faq">FAQ</a>
+        <div class="dropdown">
+          <a href="impressum.html" class="dropbtn">Rechtliches ▾</a>
+          <div class="dropdown-menu" role="menu">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="agb.html">AGB</a>
+          </div>
+        </div>
+        <a class="btn nav-cta" href="index.html#kontakt">Kontakt</a>
+      </nav>
+      <button class="hamburger" id="hamburger">☰ Menü</button>
+    </div>
+    <div id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
+      <a href="index.html#start">Start</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#routinen">Warum</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#faq">FAQ</a>
+      <details>
+        <summary>Rechtliches</summary>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </details>
+      <a class="btn" href="index.html#kontakt">Kontakt</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <p class="backlink"><a href="index.html">← Zurück zur Startseite</a></p>
+      <h2>Datenschutzerklärung</h2>
+      <div class="legal-card">
+
+        <article>
+          <h1>Datenschutzerklärung</h1>
+          <h2 id="m716">Präambel</h2>
+          <p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten, sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen Applikationen sowie innerhalb externer Onlinepräsenzen, wie z.&nbsp;B. unserer Social-Media-Profile (nachfolgend zusammenfassend bezeichnet als "Onlineangebot").</p>
+          <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
+          <p>Stand: 25. Oktober 2025</p>
+          <h2>Inhaltsübersicht</h2>
+          <ul class="index">
+            <li><a class="index-link" href="#m716">Präambel</a></li>
+            <li><a class="index-link" href="#m3">Verantwortlicher</a></li>
+            <li><a class="index-link" href="#mOverview">Übersicht der Verarbeitungen</a></li>
+            <li><a class="index-link" href="#m2427">Maßgebliche Rechtsgrundlagen</a></li>
+            <li><a class="index-link" href="#m25">Übermittlung von personenbezogenen Daten</a></li>
+            <li><a class="index-link" href="#m24">Internationale Datentransfers</a></li>
+            <li><a class="index-link" href="#m12">Allgemeine Informationen zur Datenspeicherung und Löschung</a></li>
+            <li><a class="index-link" href="#m10">Rechte der betroffenen Personen</a></li>
+            <li><a class="index-link" href="#m317">Geschäftliche Leistungen</a></li>
+            <li><a class="index-link" href="#m225">Bereitstellung des Onlineangebots und Webhosting</a></li>
+            <li><a class="index-link" href="#m134">Einsatz von Cookies</a></li>
+            <li><a class="index-link" href="#m367">Registrierung, Anmeldung und Nutzerkonto</a></li>
+            <li><a class="index-link" href="#m451">Single-Sign-On-Anmeldung</a></li>
+            <li><a class="index-link" href="#m182">Kontakt- und Anfrageverwaltung</a></li>
+            <li><a class="index-link" href="#m1643">Push-Nachrichten</a></li>
+            <li><a class="index-link" href="#m15">Änderung und Aktualisierung</a></li>
+            <li><a class="index-link" href="#m42">Begriffsdefinitionen</a></li>
+          </ul>
+          <h2 id="m3">Verantwortlicher</h2>
+          <p>Benedikt Purkott<br>c/o Block Services<br>Stuttgarter Str. 106<br>70736 Fellbach<br>Deutschland</p>
+          <p>E-Mail-Adresse: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
+          <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
+          <p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.</p>
+          <h3>Arten der verarbeiteten Daten</h3>
+          <ul>
+            <li>Bestandsdaten.</li><li>Zahlungsdaten.</li><li>Kontaktdaten.</li><li>Inhaltsdaten.</li><li>Vertragsdaten.</li><li>Nutzungsdaten.</li><li>Meta-, Kommunikations- und Verfahrensdaten.</li><li>Protokolldaten.</li>
+          </ul>
+          <h3>Kategorien betroffener Personen</h3>
+          <ul>
+            <li>Leistungsempfänger und Auftraggeber.</li><li>Interessenten.</li><li>Kommunikationspartner.</li><li>Nutzer.</li><li>Geschäfts- und Vertragspartner.</li>
+          </ul>
+          <h3>Zwecke der Verarbeitung</h3>
+          <ul>
+            <li>Erbringung vertraglicher Leistungen und Erfüllung vertraglicher Pflichten.</li><li>Kommunikation.</li><li>Sicherheitsmaßnahmen.</li><li>Büro- und Organisationsverfahren.</li><li>Organisations- und Verwaltungsverfahren.</li><li>Feedback.</li><li>Anmeldeverfahren.</li><li>Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit.</li><li>Informationstechnische Infrastruktur.</li><li>Geschäftsprozesse und betriebswirtschaftliche Verfahren.</li>
+          </ul>
+          <h2 id="m2427">Maßgebliche Rechtsgrundlagen</h2>
+          <p><strong>Maßgebliche Rechtsgrundlagen nach der DSGVO: </strong>Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. Bitte beachten Sie, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben gelten können.</p>
+          <ul>
+            <li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong></li>
+            <li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong></li>
+            <li><strong>Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c) DSGVO)</strong></li>
+            <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong></li>
+          </ul>
+          <p><strong>Nationale Datenschutzregelungen in Deutschland:</strong> Zusätzlich gilt insbesondere das BDSG; ferner können Landesdatenschutzgesetze Anwendung finden.</p>
+          <p><strong>Hinweis auf Geltung DSGVO und Schweizer DSG:</strong> Diese Hinweise dienen sowohl der Informationserteilung nach Schweizer DSG als auch nach DSGVO; es wird der DSGVO-Begrifflichkeit gefolgt.</p>
+          <h2 id="m25">Übermittlung von personenbezogenen Daten</h2>
+          <p>Im Rahmen unserer Verarbeitung kann es zur Übermittlung an andere Stellen/Unternehmen/Personen kommen. Wir schließen hierzu datenschutzkonforme Verträge mit Empfängern.</p>
+          <h2 id="m24">Internationale Datentransfers</h2>
+          <p>Übermittlungen in Drittländer erfolgen im Einklang mit den gesetzlichen Vorgaben. Für USA-Transfers stützen wir uns vorrangig auf das Data Privacy Framework (DPF) sowie zusätzlich auf Standardvertragsklauseln (SCCs). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">dataprivacyframework.gov</a> und die Hinweise der EU-Kommission.</p>
+          <h2 id="m12">Allgemeine Informationen zur Datenspeicherung und Löschung</h2>
+          <p>Wir löschen Daten entsprechend den gesetzlichen Vorgaben, sobald die Rechtsgrundlagen entfallen oder der Zweck erreicht ist. Gesetzliche Aufbewahrungspflichten und berechtigte Interessen können längere Speicherdauern erfordern.</p>
+          <ul>
+            <li>10 Jahre – Bücher/Aufzeichnungen etc.</li>
+            <li>8 Jahre – Buchungsbelege (z. B. Rechnungen).</li>
+            <li>6 Jahre – übrige Geschäftsunterlagen.</li>
+            <li>3 Jahre – Daten zur Geltendmachung/Abwehr von Ansprüchen.</li>
+          </ul>
+          <p>Fristen beginnen regelmäßig mit Ablauf des Kalenderjahres des fristauslösenden Ereignisses.</p>
+          <h2 id="m10">Rechte der betroffenen Personen</h2>
+          <ul>
+            <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO, inkl. Direktwerbung).</li>
+            <li><strong>Widerruf von Einwilligungen</strong>.</li>
+            <li><strong>Auskunft, Berichtigung, Löschung, Einschränkung</strong>.</li>
+            <li><strong>Datenübertragbarkeit</strong>.</li>
+            <li><strong>Beschwerde bei einer Aufsichtsbehörde</strong>.</li>
+          </ul>
+          <h2 id="m317">Geschäftliche Leistungen</h2>
+          <p>Verarbeitung von Vertrags- und Geschäftspartnerdaten zur Vertragserfüllung, Kommunikation, Organisation, Sicherheit und Rechtswahrung; Weitergabe nur soweit erforderlich bzw. gesetzlich verpflichtend.</p>
+          <h2 id="m225">Bereitstellung des Onlineangebots und Webhosting</h2>
+          <p>Verarbeitung von IP-Adressen/Nutzungsdaten zur Auslieferung und Sicherheit des Onlineangebots; Server-Logfiles bis zu 30 Tage.</p>
+          <h2 id="m134">Einsatz von Cookies</h2>
+          <p>Wir verwenden Cookies nach Maßgabe der gesetzlichen Vorgaben. Soweit erforderlich holen wir Einwilligungen ein; andernfalls stützen wir uns auf berechtigte Interessen. Einwilligungen können widerrufen werden.</p>
+          <ul>
+            <li>Temporäre (Session-)Cookies</li>
+            <li>Permanente Cookies (i. d. R. bis zu 2 Jahre)</li>
+          </ul>
+          <h2 id="m367">Registrierung, Anmeldung und Nutzerkonto</h2>
+          <p>Verarbeitung notwendiger Registrierungs-/Login-Daten; Protokollierung von IP/Zeiten zur Missbrauchsverhinderung; Löschung nach Kündigung des Kontos, vorbehaltlich gesetzlicher Pflichten.</p>
+          <h2 id="m451">Single-Sign-On-Anmeldung</h2>
+          <p>SSO über Anbieter wie Apple/Google; Art und Umfang der übermittelten Daten hängen von den Einstellungen/Einwilligungen beim SSO-Anbieter ab. Passwörter beim SSO-Anbieter sind für uns weder einsehbar noch werden sie gespeichert.</p>
+          <ul>
+            <li><strong>Apple:</strong> <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Datenschutz</a></li>
+            <li><strong>Google:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> • DPF-zertifiziert • Opt-out Ads: <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">myadcenter.google.com</a></li>
+          </ul>
+          <h2 id="m182">Kontakt- und Anfrageverwaltung</h2>
+          <p>Verarbeitung der mitgeteilten Daten (z. B. Name, Kontakt, Inhalte) zur Beantwortung/Abwicklung Ihrer Anfrage; Nutzung ausschließlich zu diesem Zweck.</p>
+          <h2 id="m1643">Push-Nachrichten</h2>
+          <p>Versand nur mit Einwilligung; Speicherung eines pseudonymen Push-Tokens bzw. Geräte-IDs zum Nachweis/Versand. (Einige Passagen in Ihrem Generator-Text sind ggf. lizenzpflichtig und erscheinen als „premiumtext“.)</p>
+          <h2 id="m15">Änderung und Aktualisierung</h2>
+          <p>Bitte prüfen Sie diese Datenschutzerklärung regelmäßig. Wir passen sie an, sobald Änderungen unserer Verarbeitungen dies erfordern.</p>
+          <h2 id="m42">Begriffsdefinitionen</h2>
+          <p>Begriffserläuterungen (u. a. Bestands-, Inhalts-, Kontakt-, Nutzungs-, Protokoll-, Vertrags-, Zahlungsdaten) gemäß DSGVO-Terminologie.</p>
+          <p class="seal"><a href="https://datenschutz-generator.de/" title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken." target="_blank" rel="noopener noreferrer nofollow">Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke</a></p>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="muted">© 2025 – Movo. Alle Rechte vorbehalten. · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></p>
+    </div>
+  </footer>
+  <script>
+    // Mobile nav toggle
+    const burger = document.getElementById('hamburger');
+    const menu = document.getElementById('mobilemenu');
+    burger?.addEventListener('click', () => menu.classList.toggle('show'));
+  </script>
+</body>
+</html>
