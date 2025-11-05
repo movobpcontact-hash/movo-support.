@@ -1,15 +1,11 @@
-<!-- =============================
-FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
-============================== -->
 <!doctype html>
 <html lang="de">
-<head>
+<head> 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movo – Gym Tracker & Planner</title>
   <meta name="description" content="Movo: Der smarte Gym-Tracker für iOS. Logge Übungen, nutze Vorlagen, steuere Pausen smart und verfolge deinen Fortschritt." />
   <meta name="theme-color" content="#0b0f1a" />
-  <link rel="icon" href="/favicon.ico">
   <style>
     :root{
       --bg:#0a0d16; --bg-2:#0b1020;
@@ -48,7 +44,7 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
     .wordmark{font-weight:900; background:linear-gradient(90deg,#fff,#9ad6ff); -webkit-background-clip:text; background-clip:text; color:transparent}
 
     .nav{display:flex; gap:2px; align-items:center; position:relative}
-    .nav a{padding:10px 12px; border-radius:12px; color:#d7eaff; position:relative}
+    .nav a{padding:10px 12px; border-radius:12px; color:#d7eaff; position:relative; display:inline-flex; align-items:center}
     .nav a::after{content:''; position:absolute; left:12px; right:12px; bottom:4px; height:2px; background:linear-gradient(90deg,var(--accent2),var(--accent)); border-radius:2px; transform:scaleX(0); transform-origin:left; transition:transform .25s}
     .nav a:hover::after, .nav a[aria-current="true"]::after{transform:scaleX(1)}
     .nav-cta{margin-left:8px}
@@ -62,7 +58,7 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
     .dropdown-menu{
       position:absolute; top:calc(100% + 8px); right:0;
       background:#0e162c; border:1px solid var(--border); border-radius:12px; padding:8px;
-      box-shadow:var(--shadow); display:none; min-width:200px; z-index:70;
+      box-shadow:var(--shadow); display:none; min-width:200px;
     }
     .dropdown-menu a{ display:block; padding:8px 10px; border-radius:8px; color:#d7eaff }
     .dropdown-menu a:hover{ background:#0f172b; text-decoration:none }
@@ -70,24 +66,22 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
     .dropdown:focus-within .dropdown-menu{ display:block }
 
     .hamburger{display:none}
-    .mobilemenu { display: none; }
-
-    /* Mobile styles */
     @media (max-width:900px){
       .nav{display:none}
       .hamburger{display:inline-flex; border:1px solid var(--border); background:#0e162c; border-radius:10px; padding:8px 10px; color:#d7eaff}
       .mobilemenu{
         position:fixed; inset:56px 12px auto 12px;
         background:#0d1426; border:1px solid var(--border);
-        border-radius:16px; padding:12px; box-shadow:var(--shadow); display:none;
+        border-radius:16px; padding:12px; box-shadow:var(--shadow);
       }
       .mobilemenu.show{display:block}
-
-      /* Mobile: Details im Menü hübsch machen */
-      .mobilemenu details{ margin-top:8px; border:1px solid var(--border); background:#0e162c; border-radius:12px; padding:6px 8px }
-      .mobilemenu summary{ cursor:pointer; padding:8px 6px; color:#d7eaff; list-style:none }
-      .mobilemenu details a{ margin:6px 0; display:block }
     }
+    .mobilemenu { display: none; }
+
+    /* Mobile: Details im Menü hübsch machen */
+    .mobilemenu details{ margin-top:8px; border:1px solid var(--border); background:#0e162c; border-radius:12px; padding:6px 8px }
+    .mobilemenu summary{ cursor:pointer; padding:8px 6px; color:#d7eaff; list-style:none }
+    .mobilemenu details a{ margin:6px 0; display:block }
 
     /* Hero */
     .hero{padding:62px 0 30px}
@@ -98,7 +92,7 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
     .lead{color:var(--muted); max-width:64ch}
     .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
 
-    /* Device with multiple "screens" */
+    /* Device */
     .device{width:min(420px, 92vw); aspect-ratio: 430 / 932; border-radius:46px; position:relative;
       background:linear-gradient(180deg,#0a0d18,#0a0f22); box-shadow:0 25px 60px rgba(0,0,0,.6), inset 0 0 0 1px #111a2e;
       border:1px solid #1a2744; overflow:hidden;
@@ -111,18 +105,15 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
     .big{font-size:20px; font-weight:800}
     .pills{display:flex; gap:8px; margin-top:8px}
     .pill{background:#0b1222; border:1px solid var(--inner); color:#cfe1ff; padding:6px 10px; border-radius:999px; font-size:12px}
-
     .cards{padding:10px 12px 16px; display:grid; gap:12px}
     .card-ui{padding:14px; border-radius:18px; background:linear-gradient(180deg,#0f1628,#0b1324); border:1px solid var(--inner); color:#dfe8ff}
     .btn-row{display:flex; gap:10px; flex-wrap:wrap}
     .btn-ghost{background:#121a2e; border:1px solid #24314f; color:#dfe8ff; border-radius:12px; padding:10px 12px}
     .btn-primary{background:#5b61ff; color:white; border:none; border-radius:12px; padding:10px 12px}
-
     .set{display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px; margin-top:8px}
     .set .l1{height:12px; width:70%; border-radius:8px; background:#2a3a60}
     .set .l2{height:10px; width:50%; border-radius:8px; background:#1c2b4e}
     .set .badge{padding:4px 10px; border-radius:999px; background:#192a4e; border:1px solid #20345e}
-
     .wheel{height:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:8px}
     .wheel span{height:100%; border-radius:14px; background:#121a2e; border:1px solid #24314f; display:grid; place-items:center; color:#9fb0c9}
     .cta-big{margin-top:10px; padding:12px 14px; border-radius:14px; background:linear-gradient(90deg,#6d6cff,#4f46e5); text-align:center; font-weight:700}
@@ -159,11 +150,18 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
     .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease}
     .reveal.show{opacity:1; transform:none}
 
-    footer{border-top:1px solid var(--border); margin-top:12px}
-    footer .container{padding:20px}
+    /* Legal “pages” */
+    .page{ display:none; }
+    .page.active{ display:block; }
+    .legal-card{background:linear-gradient(180deg,#0f1628,#0b1324); border:1px solid var(--inner); border-radius:16px; padding:16px}
+    .backlink{display:inline-flex; align-items:center; gap:8px; margin:10px 0}
+    .page h1, .page h2, .page h3{scroll-margin-top:96px}
+    .crumb{color:#9fb0c9; font-size:14px; margin-bottom:8px}
+    .footer-links a{color:#9fb0c9}
   </style>
 </head>
 <body>
+  <!-- ███ NAVBAR ███ -->
   <header>
     <div class="container navwrap">
       <div class="brand">
@@ -172,621 +170,628 @@ FILE: index.html (Startseite, ohne AGB/Datenschutz/Impressum Sektionen)
         </span>
         <span class="wordmark">Movo</span>
       </div>
+
       <nav class="nav" aria-label="Navigation">
         <a href="#start">Start</a>
         <a href="#features">Features</a>
         <a href="#routinen">Warum</a>
         <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
+
+        <!-- Dropdown: Rechtliches -->
         <div class="dropdown">
-          <a href="/impressum.html" class="dropbtn">Rechtliches ▾</a>
+          <a href="#impressum" class="dropbtn">Rechtliches ▾</a>
           <div class="dropdown-menu" role="menu">
-            <a href="/impressum.html">Impressum</a>
-            <a href="/datenschutz.html">Datenschutz</a>
-            <a href="/agb.html">AGB</a>
+            <a href="#impressum">Impressum</a>
+            <a href="#datenschutz">Datenschutz</a>
+            <a href="#agb">AGB</a>
           </div>
         </div>
+
         <a class="btn nav-cta" href="#kontakt">Kontakt</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobilemenu">☰ Menü</button>
+
+      <button class="hamburger" id="hamburger">☰ Menü</button>
     </div>
-    <div id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation" hidden>
+
+    <!-- Mobile Menu -->
+    <div id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
       <a href="#start">Start</a>
       <a href="#features">Features</a>
       <a href="#routinen">Warum</a>
       <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
+
       <details>
         <summary>Rechtliches</summary>
-        <a href="/impressum.html">Impressum</a>
-        <a href="/datenschutz.html">Datenschutz</a>
-        <a href="/agb.html">AGB</a>
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+        <a href="#agb">AGB</a>
       </details>
+
       <a class="btn" href="#kontakt">Kontakt</a>
     </div>
   </header>
 
-  <main id="start" class="hero">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <span class="badge">iOS • Datenschutz‑freundlich</span>
-        <h1 class="h1">Movo – Gym Tracker & Planner<br><small style="font-weight:500">Train smarter. Move better.</small></h1>
-        <p class="lead">Movo macht dein Kraft- und Fitness‑Training einfach: Übungen loggen, Vorlagen nutzen, Pausen intelligent steuern und deinen Fortschritt sehen – ohne Schnickschnack.</p>
-        <div class="hero-cta">
-          <a class="btn primary" href="#kontakt">Movo kontaktieren</a>
-          <a class="btn" href="#features">So funktioniert's</a>
+  <!-- ███ HOME (wird ein-/ausgeblendet) ███ -->
+  <div id="home">
+    <main id="start" class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="badge">iOS • Datenschutz-freundlich</span>
+          <h1 class="h1">Movo – Gym Tracker & Planner<br><small style="font-weight:500">Train smarter. Move better.</small></h1>
+          <p class="lead">Movo macht dein Kraft- und Fitness-Training einfach: Übungen loggen, Vorlagen nutzen, Pausen intelligent steuern und deinen Fortschritt sehen – ohne Schnickschnack.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#kontakt">Movo kontaktieren</a>
+            <a class="btn" href="#features">So funktioniert's</a>
+          </div>
         </div>
-      </div>
 
-      <div style="position:relative" class="reveal">
-        <figure class="device" role="img" aria-label="Interaktive App-Illustration">
-          <div class="notch"></div>
-          <div class="screen">
-            <div class="status"><span>9:41</span><span class="dot"></span></div>
-            <div id="screen-logging" class="dv-screen" style="display:block">
-              <div class="titlecard">
-                <div class="big">Push Workout</div>
-                <div class="pills"><span class="pill">24 Oct</span><span class="pill">0m 55s</span></div>
-                <div class="btn-row" style="margin-top:10px"><button class="btn-primary">Save</button><button class="btn-ghost">Complete all</button></div>
-              </div>
-              <div class="cards">
-                <div class="card-ui">
-                  <div class="set"><div><div class="l1"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">0 kg</span></div>
-                  <div class="set"><div><div class="l1" style="width:60%"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">Add</span></div>
-                </div>
-                <div class="card-ui">
-                  <div class="set"><div><div class="l1" style="width:70%"></div><div class="l2" style="margin-top:6px; width:40%"></div></div><span class="badge">0 reps</span></div>
-                </div>
-              </div>
-            </div>
+        <div style="position:relative" class="reveal">
+          <figure class="device" role="img" aria-label="Interaktive App-Illustration">
+            <div class="notch"></div>
+            <div class="screen">
+              <div class="status"><span>9:41</span><span class="dot"></span></div>
 
-            <div id="screen-timer" class="dv-screen" style="display:none">
-              <div class="titlecard">
-                <div class="big">Smart Rest Timer</div>
-                <div class="pills"><span class="pill">Pause</span><span class="pill">1m 00s</span></div>
-              </div>
-              <div class="cards">
-                <div class="card-ui">
-                  <div class="wheel"><span>30s</span><span>45s</span><span>60s</span></div>
-                  <div class="cta-big">Start</div>
+              <!-- Screen: Logging -->
+              <div id="screen-logging" class="dv-screen" style="display:block">
+                <div class="titlecard">
+                  <div class="big">Push Workout</div>
+                  <div class="pills"><span class="pill">24 Oct</span><span class="pill">0m 55s</span></div>
+                  <div class="btn-row" style="margin-top:10px">
+                    <button class="btn-primary">Save</button><button class="btn-ghost">Complete all</button>
+                  </div>
                 </div>
-                <div class="card-ui">
-                  <div class="wheel"><span>1m</span><span>1m 30s</span><span>2m</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div id="screen-steps" class="dv-screen" style="display:none">
-              <div class="titlecard">
-                <div class="big">Keep Moving</div>
-                <div class="pills"><span class="pill">Today</span><span class="pill">Goal 8,000</span></div>
-              </div>
-              <div class="cards">
-                <div class="card-ui" style="text-align:center">
-                  <div class="ring"></div>
-                  <div style="font-weight:800">2,622 / 8,000</div>
-                  <div class="pills" style="justify-content:center"><span class="pill">7 days</span><span class="pill">14 days</span><span class="pill">30 days</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div id="screen-routines" class="dv-screen" style="display:none">
-              <div class="titlecard">
-                <div class="big">Follow Structured Routines</div>
-                <div class="pills"><span class="pill">Week 1</span><span class="pill">~20 min</span><span class="pill">Full Body</span></div>
-              </div>
-              <div class="cards">
-                <div class="card-ui">
-                  <div class="set"><div><div class="l1" style="width:80%"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">35s×3</span></div>
-                  <div class="set"><div><div class="l1" style="width:60%"></div><div class="l2" style="margin-top:6px;width:40%"></div></div><span class="badge">35s×3</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div id="screen-analytics" class="dv-screen" style="display:none">
-              <div class="titlecard">
-                <div class="big">Focus on Growth</div>
-                <div class="pills"><span class="pill">Workouts 5</span><span class="pill">Time 49m</span></div>
-              </div>
-              <div class="cards">
-                <div class="card-ui">
-                  <svg viewBox="0 0 400 160" width="100%" height="160">
-                    <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/><stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/></linearGradient></defs>
-                    <polyline fill="none" stroke="#38bdf8" stroke-width="3" points="0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50"/>
-                    <polygon fill="url(#grad)" opacity=".35" points="0,160 0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50 400,160"/>
-                  </svg>
-                </div>
-                <div class="card-ui">
-                  <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; height:110px">
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:35%"></span>
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:60%"></span>
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:75%"></span>
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:45%"></span>
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:80%"></span>
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:55%"></span>
-                    <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:68%"></span>
+                <div class="cards">
+                  <div class="card-ui">
+                    <div class="set"><div><div class="l1"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">0 kg</span></div>
+                    <div class="set"><div><div class="l1" style="width:60%"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">Add</span></div>
+                  </div>
+                  <div class="card-ui">
+                    <div class="set"><div><div class="l1" style="width:70%"></div><div class="l2" style="margin-top:6px; width:40%"></div></div><span class="badge">0 reps</span></div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div id="screen-history" class="dv-screen" style="display:none">
-              <div class="titlecard">
-                <div class="big">Your Training History</div>
-                <div class="pills"><span class="pill">October 2025</span></div>
+              <!-- Screen: Timer -->
+              <div id="screen-timer" class="dv-screen" style="display:none">
+                <div class="titlecard">
+                  <div class="big">Smart Rest Timer</div>
+                  <div class="pills"><span class="pill">Pause</span><span class="pill">1m 00s</span></div>
+                </div>
+                <div class="cards">
+                  <div class="card-ui">
+                    <div class="wheel"><span>30s</span><span>45s</span><span>60s</span></div>
+                    <div class="cta-big">Start</div>
+                  </div>
+                  <div class="card-ui">
+                    <div class="wheel"><span>1m</span><span>1m 30s</span><span>2m</span></div>
+                  </div>
+                </div>
               </div>
-              <div class="cards">
-                <div class="card-ui"><div class="set"><div><div class="l1" style="width:40%"></div><div class="l2" style="margin-top:6px; width:60%"></div></div><span class="badge">Leg</span></div></div>
-                <div class="card-ui"><div class="set"><div><div class="l1" style="width:46%"></div><div class="l2" style="margin-top:6px; width:40%"></div></div><span class="badge">Push</span></div></div>
-                <div class="card-ui"><div class="set"><div><div class="l1" style="width:50%"></div><div class="l2" style="margin-top:6px; width:30%"></div></div><span class="badge">Pull</span></div></div>
+
+              <!-- Screen: Steps -->
+              <div id="screen-steps" class="dv-screen" style="display:none">
+                <div class="titlecard">
+                  <div class="big">Keep Moving</div>
+                  <div class="pills"><span class="pill">Today</span><span class="pill">Goal 8,000</span></div>
+                </div>
+                <div class="cards">
+                  <div class="card-ui" style="text-align:center">
+                    <div class="ring"></div>
+                    <div style="font-weight:800">2,622 / 8,000</div>
+                    <div class="pills" style="justify-content:center"><span class="pill">7 days</span><span class="pill">14 days</span><span class="pill">30 days</span></div>
+                  </div>
+                </div>
               </div>
+
+              <!-- Screen: Routines -->
+              <div id="screen-routines" class="dv-screen" style="display:none">
+                <div class="titlecard">
+                  <div class="big">Follow Structured Routines</div>
+                  <div class="pills"><span class="pill">Week 1</span><span class="pill">~20 min</span><span class="pill">Full Body</span></div>
+                </div>
+                <div class="cards">
+                  <div class="card-ui">
+                    <div class="set"><div><div class="l1" style="width:80%"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">35s×3</span></div>
+                    <div class="set"><div><div class="l1" style="width:60%"></div><div class="l2" style="margin-top:6px;width:40%"></div></div><span class="badge">35s×3</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Screen: Analytics -->
+              <div id="screen-analytics" class="dv-screen" style="display:none">
+                <div class="titlecard">
+                  <div class="big">Focus on Growth</div>
+                  <div class="pills"><span class="pill">Workouts 5</span><span class="pill">Time 49m</span></div>
+                </div>
+                <div class="cards">
+                  <div class="card-ui">
+                    <svg viewBox="0 0 400 160" width="100%" height="160">
+                      <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/><stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/></linearGradient></defs>
+                      <polyline fill="none" stroke="#38bdf8" stroke-width="3" points="0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50"/>
+                      <polygon fill="url(#grad)" opacity=".35" points="0,160 0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50 400,160"/>
+                    </svg>
+                  </div>
+                  <div class="card-ui">
+                    <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; height:110px">
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:35%"></span>
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:60%"></span>
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:75%"></span>
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:45%"></span>
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:80%"></span>
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:55%"></span>
+                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:68%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Screen: History -->
+              <div id="screen-history" class="dv-screen" style="display:none">
+                <div class="titlecard">
+                  <div class="big">Your Training History</div>
+                  <div class="pills"><span class="pill">October 2025</span></div>
+                </div>
+                <div class="cards">
+                  <div class="card-ui"><div class="set"><div><div class="l1" style="width:40%"></div><div class="l2" style="margin-top:6px; width:60%"></div></div><span class="badge">Leg</span></div></div>
+                  <div class="card-ui"><div class="set"><div><div class="l1" style="width:46%"></div><div class="l2" style="margin-top:6px; width:40%"></div></div><span class="badge">Push</span></div></div>
+                  <div class="card-ui"><div class="set"><div><div class="l1" style="width:50%"></div><div class="l2" style="margin-top:6px; width:30%"></div></div><span class="badge">Pull</span></div></div>
+                </div>
+              </div>
+            </div>
+          </figure>
+
+          <!-- Tabs -->
+          <div class="tabs">
+            <button data-go="logging" aria-current="true">Logging</button>
+            <button data-go="timer">Timer</button>
+            <button data-go="steps">Steps</button>
+            <button data-go="routines">Routines</button>
+            <button data-go="analytics">Analytics</button>
+            <button data-go="history">History</button>
+          </div>
+        </div>
+      </div>
+      <div class="sticky-cta"><a class="btn primary" href="#kontakt">Hol dir Movo für iOS</a></div>
+    </main>
+
+    <section id="highlights" class="section">
+      <div class="container reveal">
+        <h2>Highlights</h2>
+        <ul class="list-check">
+          <li>Schnelles Logging – Gewicht & Wiederholungen in Sekunden erfassen.</li>
+          <li>Vorlagen – Eigene Workouts speichern und sofort starten.</li>
+          <li>Smarter Pausen-Timer – Bleib fokussiert zwischen Sätzen (inkl. Live-Aktivität am Sperrbildschirm).</li>
+          <li>Schritt-Tracker & Widgets – Ziele setzen, Verlauf sehen, direkt am Homescreen.</li>
+          <li>Trainingshistorie – Jede Session im Blick, inkl. Übungen und Sätze.</li>
+          <li>Statistiken – Workouts, Zeit, Volumen und Trends.</li>
+          <li>Challenges – Wöchentliche Ziele für mehr Konstanz.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="reveal">Features</h2>
+        <div class="grid">
+          <div class="card reveal">
+            <h3>Logging & Vorlagen</h3>
+            <p>Starte Workouts in Sekunden, passe Gewichte & Wdh. im Flow an.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Smart Rest Timer</h3>
+            <p>Timer bleibt im Flow – inkl. Live-Aktivität am Sperrbildschirm.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Schritte & Widgets</h3>
+            <p>Ziele setzen, Verlauf sehen – direkt am Homescreen.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Trainingstagebuch</h3>
+            <p>Jede Einheit nachvollziehen – was hat wann gut funktioniert?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="routinen" class="section">
+      <div class="container reveal">
+        <h2>Warum Movo</h2>
+        <p class="muted">Klare, schnelle Bedienung – alles dort, wo du es brauchst. Dunkles, kontrastreiches Design – perfekt im Gym. Flexibel für Push/Pull/Leg, Full-Body, Maschinen oder freie Übungen.</p>
+      </div>
+    </section>
+
+    <section id="analysen" class="section">
+      <div class="container">
+        <h2 class="reveal">Analysen</h2>
+        <div class="grid">
+          <div class="card reveal">
+            <h3>Wachstum & Trends</h3>
+            <svg viewBox="0 0 400 160" width="100%" height="160"><polyline fill="none" stroke="#38bdf8" stroke-width="3" points="0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50"/></svg>
+          </div>
+          <div class="card reveal">
+            <h3>Wochenvolumen</h3>
+            <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; height:120px">
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:35%"></span>
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:60%"></span>
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:75%"></span>
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:45%"></span>
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:80%"></span>
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:55%"></span>
+              <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:68%"></span>
             </div>
           </div>
-        </figure>
-
-        <div class="tabs">
-          <button data-go="logging" aria-current="true">Logging</button>
-          <button data-go="timer">Timer</button>
-          <button data-go="steps">Steps</button>
-          <button data-go="routines">Routines</button>
-          <button data-go="analytics">Analytics</button>
-          <button data-go="history">History</button>
         </div>
       </div>
-    </div>
-    <div class="sticky-cta"><a class="btn primary" href="#kontakt">Hol dir Movo für iOS</a></div>
-  </main>
+    </section>
 
-  <section id="highlights" class="section">
-    <div class="container reveal">
-      <h2>Highlights</h2>
-      <ul class="list-check">
-        <li>Schnelles Logging – Gewicht & Wiederholungen in Sekunden erfassen.</li>
-        <li>Vorlagen – Eigene Workouts speichern und sofort starten.</li>
-        <li>Smarter Pausen‑Timer – Bleib fokussiert zwischen Sätzen (inkl. Live‑Aktivität am Sperrbildschirm).</li>
-        <li>Schritt‑Tracker & Widgets – Ziele setzen, Verlauf sehen, direkt am Homescreen.</li>
-        <li>Trainingshistorie – Jede Session im Blick, inkl. Übungen und Sätze.</li>
-        <li>Statistiken – Workouts, Zeit, Volumen und Trends.</li>
-        <li>Challenges – Wöchentliche Ziele für mehr Konstanz.</li>
-      </ul>
-    </div>
-  </section>
+    <section id="reviews" class="section">
+      <div class="container">
+        <h2 class="reveal">Was Nutzer sagen</h2>
+        <div class="reviews">
+          <div class="review reveal"><div class="stars">★★★★★</div><p>„Endlich ein Tracker, der nicht nervt. Workout starten, Gewicht rein, fertig.“</p><p class="muted">— Johanna K.</p></div>
+          <div class="review reveal"><div class="stars">★★★★★</div><p>„Die Vorlagen sparen so viel Zeit. Und der Pausen-Timer ist genau richtig.“</p><p class="muted">— Marco L.</p></div>
+          <div class="review reveal"><div class="stars">★★★★★</div><p>„Sieht super aus, läuft flüssig, und die Statistiken motivieren mich dranzubleiben.“</p><p class="muted">— Aylin R.</p></div>
+        </div>
+      </div>
+    </section>
 
-  <section id="features" class="section">
+    <section id="faq" class="section">
+      <div class="container reveal">
+        <h2>FAQ</h2>
+        <details><summary>Unterstützt Movo Apple Health?</summary><p>Ja, optional für Schritte &amp; Widgets – jederzeit widerrufbar in der Health-App.</p></details>
+        <details><summary>Brauche ich ein Abo?</summary><p>Es gibt eine kostenlose Nutzung. <em>Movo Pro</em> schaltet zusätzliche Funktionen frei.</p></details>
+        <details><summary>Welche iOS Version?</summary><p>iOS 16 oder neuer empfohlen.</p></details>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section">
+      <div class="container reveal">
+        <h2>Kontakt</h2>
+        <div class="card">
+          <p>Fragen oder Feedback? Schreib uns:</p>
+          <p>E-Mail: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+  </div><!-- /#home -->
+
+  <!-- ███ PAGES (AGB / DS / IMP) – versteckt bis auf Hash-Route ███ -->
+
+  <!-- Full legal sections (from your original page) -->
+  <section id="agb" class="section">
     <div class="container">
-      <h2 class="reveal">Features</h2>
-      <div class="grid">
-        <div class="card reveal">
-          <h3>Logging & Vorlagen</h3>
-          <p>Starte Workouts in Sekunden, passe Gewichte & Wdh. im Flow an.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Smart Rest Timer</h3>
-          <p>Timer bleibt im Flow – inkl. Live‑Aktivität am Sperrbildschirm.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Schritte & Widgets</h3>
-          <p>Ziele setzen, Verlauf sehen – direkt am Homescreen.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Trainingstagebuch</h3>
-          <p>Jede Einheit nachvollziehen – was hat wann gut funktioniert?</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="routinen" class="section">
-    <div class="container reveal">
-      <h2>Warum Movo</h2>
-      <p class="muted">Klare, schnelle Bedienung – alles dort, wo du es brauchst. Dunkles, kontrastreiches Design – perfekt im Gym. Flexibel für Push/Pull/Leg, Full‑Body, Maschinen oder freie Übungen.</p>
-    </div>
-  </section>
-
-  <section id="analysen" class="section">
-    <div class="container">
-      <h2 class="reveal">Analysen</h2>
-      <div class="grid">
-        <div class="card reveal">
-          <h3>Wachstum & Trends</h3>
-          <svg viewBox="0 0 400 160" width="100%" height="160"><polyline fill="none" stroke="#38bdf8" stroke-width="3" points="0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50"/></svg>
-        </div>
-        <div class="card reveal">
-          <h3>Wochenvolumen</h3>
-          <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; height:120px">
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:35%"></span>
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:60%"></span>
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:75%"></span>
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:45%"></span>
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:80%"></span>
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:55%"></span>
-            <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:68%"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews" class="section">
-    <div class="container">
-      <h2 class="reveal">Was Nutzer sagen</h2>
-      <div class="reviews">
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Endlich ein Tracker, der nicht nervt. Workout starten, Gewicht rein, fertig.“</p><p class="muted">— Johanna K.</p></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Die Vorlagen sparen so viel Zeit. Und der Pausen‑Timer ist genau richtig.“</p><p class="muted">— Marco L.</p></div>
-        <div class="review reveal"><div class="stars">★★★★★</div><p>„Sieht super aus, läuft flüssig, und die Statistiken motivieren mich dranzubleiben.“</p><p class="muted">— Aylin R.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="section">
-    <div class="container reveal">
-      <h2>FAQ</h2>
-      <details><summary>Unterstützt Movo Apple Health?</summary><p>Ja, optional für Schritte &amp; Widgets – jederzeit widerrufbar in der Health‑App.</p></details>
-      <details><summary>Brauche ich ein Abo?</summary><p>Es gibt eine kostenlose Nutzung. <em>Movo Pro</em> schaltet zusätzliche Funktionen frei.</p></details>
-      <details><summary>Welche iOS Version?</summary><p>iOS 16 oder neuer empfohlen.</p></details>
-    </div>
-  </section>
-
-  <section id="kontakt" class="section">
-    <div class="container reveal">
-      <h2>Kontakt</h2>
+      <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
       <div class="card">
-        <p>Fragen oder Feedback? Schreib uns:</p>
-        <p>E‑Mail: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
+        <article>
+          <h3>Allgemeine Geschäftsbedingungen (AGB) – movo</h3>
+          <p><strong>Stand:</strong> 25.10.2025</p>
+          <ol>
+            <li><strong>Anbieter, Geltungsbereich</strong><br>Diese AGB regeln die weltweite Nutzung der App „movo“ und der zugehörigen Dienste zwischen dem Anbieter („wir“) und dir als Nutzer:in („du“). Abweichende Bedingungen gelten nicht, es sei denn, wir stimmen ihnen ausdrücklich zu.</li>
+            <li><strong>Leistungen, Lizenz, technische Voraussetzungen</strong>
+              <ul>
+                <li><strong>2.1</strong> Die App bietet u. a. Trainingspläne, Challenges, Auswertungen, Schritte-/Aktivitätsdaten, Benachrichtigungen, Community- und Gamification-Funktionen. Funktionen können sich ändern oder erweitert werden.</li>
+                <li><strong>2.2</strong> Wir gewähren dir eine persönliche, widerrufliche, nicht exklusive und nicht übertragbare Lizenz zur Nutzung der App gemäß diesen AGB.</li>
+                <li><strong>2.3</strong> Für die Nutzung sind ein kompatibles Endgerät und Internetzugang erforderlich; daraus entstehende Kosten trägst du selbst. Es können Drittanbieter-Konten (z. B. Apple, Google) nötig sein.</li>
+              </ul>
+            </li>
+            <li><strong>Registrierung, Alter, Konto</strong>
+              <ul>
+                <li><strong>3.1</strong> Für bestimmte Funktionen ist ein Konto erforderlich. Anmeldung via E-Mail/Passwort sowie „Mit Apple/Google anmelden“ ist möglich. Du machst wahrheitsgemäße Angaben und hältst sie aktuell.</li>
+                <li><strong>3.2</strong> Du bist mindestens 16 Jahre alt. Jüngere Personen dürfen die App nur mit Einwilligung der Erziehungsberechtigten nutzen.</li>
+                <li><strong>3.3</strong> Zugangsdaten sind geheim zu halten. Du informierst uns unverzüglich über eine unbefugte Nutzung. Wir dürfen Konten bei begründetem Verdacht vorübergehend sperren.</li>
+              </ul>
+            </li>
+            <li><strong>Gesundheitshinweise (keine Medizinprodukte-/Arzt-Leistungen)</strong><br>Die Nutzung erfolgt auf eigenes Risiko. Konsultiere vor Trainingsbeginn eine Ärztin/einen Arzt, insbesondere bei Vorerkrankungen. Die App bietet keine medizinische Beratung, Diagnose oder Therapie und ist kein Ersatz für ärztliche Behandlung. In Notfällen wähle die örtliche Notrufnummer.</li>
+            <li><strong>Entgelte, In-App-Käufe und Abonnements (inkl. „Lifetime“, Testphase, Beta)</strong>
+              <ul>
+                <li><strong>5.1</strong> <em>Beta-Zugang:</em> Während einer Beta-Phase können einzelne oder alle Pro-Funktionen kostenfrei freigeschaltet sein. Der Beta-Zugang kann jederzeit beendet, geändert oder auf entgeltliche Nutzung umgestellt werden; hieraus entsteht kein Anspruch auf zukünftige unentgeltliche Nutzung. Wir bemühen uns, bestehende Daten zu erhalten; ein Anspruch hierauf besteht nicht.</li>
+                <li><strong>5.2</strong> <em>Abonnements:</em> Wir bieten u. a. Monats- und Jahresabos an. Abos verlängern sich automatisch, sofern du nicht mindestens 24 Stunden vor Ablauf der jeweiligen Laufzeit im Apple App Store bzw. Google Play kündigst. Abrechnung und Verwaltung (Kündigung, Pausierung, Erstattungen) erfolgen ausschließlich über deinen Store-Account. Nach Kündigung läuft das Abo bis zum Ende des bereits bezahlten Zeitraums weiter; eine anteilige Erstattung erfolgt grundsätzlich nicht, soweit zwingendes Recht oder Store-Regeln nichts anderes vorsehen.</li>
+                <li><strong>5.3</strong> <em>Kostenlose Probezeit (falls angeboten):</em> Eine Probezeit (z. B. 7 Tage) geht – wenn sie nicht rechtzeitig gekündigt wird – in ein kostenpflichtiges Abo über. Nicht genutzte Anteile einer Probezeit verfallen beim Abschluss eines Abos. Pro Person/Account/Haushalt können Probezeiten begrenzt sein.</li>
+                <li><strong>5.4</strong> <em>Einmalige In-App-Käufe / „Lifetime“:</em> Einmalzahlungen (z. B. „Lifetime“) schalten bestimmte Funktionen dauerhaft für die Lebensdauer des Dienstes frei, nicht für die Lebensdauer der nutzenden Person. Wir bemühen uns um den fortgesetzten Betrieb, können ihn jedoch nicht garantieren (siehe § 11). Gesetzliche Gewährleistungs- und Verbraucherschutzrechte bleiben unberührt.</li>
+                <li><strong>5.5</strong> <em>Preise &amp; Steuern:</em> Aktuelle Preise werden in der App/im Store angezeigt und können je nach Region, Währung, Steuern, Promotions und Store variieren. Preis-/Leistungsänderungen gelten – soweit zulässig – ab der nächsten Aboperiode; wir informieren dich vorab, sofern erforderlich.</li>
+                <li><strong>5.6</strong> <em>Erstattungen/Fehlkäufe:</em> Erstattungen richten sich nach den Bedingungen des jeweiligen App-Stores; wende dich hierfür bitte an Apple bzw. Google. Sofern wir ausnahmsweise selbst Vertragspartner sind, gilt § 6.</li>
+              </ul>
+            </li>
+            <li><strong>Widerrufsrecht für Verbraucher:innen in der EU</strong>
+              <ul>
+                <li><strong>6.1</strong> Bei Käufen über Apple App Store/Google Play erfolgt der Vertragsschluss mit dem jeweiligen Store; Widerruf/Erstattung werden nach den Store-Regeln abgewickelt. Bitte nutze die Store-Funktionen für Widerruf/Rückerstattung.</li>
+                <li><strong>6.2</strong> Sofern wir ausnahmsweise selbst Vertragspartner eines digitalen Inhalts/Services sind, stimmst du zu, dass wir vor Ablauf der Widerrufsfrist mit der Ausführung beginnen, und du dein Widerrufsrecht mit vollständiger Vertragserfüllung verlierst (§ 356 Abs. 5 BGB). Im Übrigen gilt die gesetzliche Widerrufsbelehrung.</li>
+              </ul>
+            </li>
+            <li><strong>Nutzerpflichten, verbotene Inhalte und Verhaltensregeln</strong>
+              <ul>
+                <li><strong>7.1</strong> Verboten sind rechtswidrige, beleidigende, diskriminierende, pornografische, extremistische, irreführende oder sonst unzulässige Inhalte, das Umgehen technischer Schutzmaßnahmen, Reverse Engineering, Scraping sowie missbräuchliche Nutzung von Schnittstellen.</li>
+                <li><strong>7.2</strong> <em>Community:</em> Respektvoller Umgang ist Pflicht. Wir können Inhalte moderieren, sperren oder entfernen, wenn ein Verstoß vorliegt oder begründet zu befürchten ist.</li>
+              </ul>
+            </li>
+            <li><strong>Nutzerinhalte (UGC) und Rechte</strong>
+              <ul>
+                <li><strong>8.1</strong> Du bleibst Inhaber:in deiner Inhalte. Durch das Bereitstellen von Inhalten räumst du uns eine weltweite, nicht exklusive, unentgeltliche, übertragbare, unterlizenzierbare Lizenz ein, diese Inhalte zum Betrieb, zur Bereitstellung und Verbesserung der App (einschließlich Speicherung, Vervielfältigung, technischer Verarbeitung, Anzeige und Verbreitung innerhalb der App) zu nutzen. Eine werbliche Nutzung außerhalb der App erfolgt nur mit deiner gesonderten Einwilligung.</li>
+                <li><strong>8.2</strong> Du sicherst zu, über erforderliche Rechte zu verfügen und dass deine Inhalte keine Rechte Dritter verletzen.</li>
+              </ul>
+            </li>
+            <li><strong>Drittanbieter, Links, Open-Source</strong>
+              <ul>
+                <li><strong>9.1</strong> Die App kann auf Dienste Dritter verweisen (Websites, Inhalte, Geräte-Integrationen). Für deren Inhalte/Datenschutzpraktiken sind ausschließlich die jeweiligen Dritten verantwortlich.</li>
+                <li><strong>9.2</strong> Wir nutzen ggf. Open-Source-Software; Hinweise/Lizenzen stellen wir in der App bereit.</li>
+              </ul>
+            </li>
+            <li><strong>Health-Integrationen (Apple HealthKit/Google Fit u. ä.)</strong>
+              <ul>
+                <li><strong>10.1</strong> Eine Verbindung erfolgt nur mit deiner ausdrücklichen Einwilligung; du kannst sie jederzeit widerrufen.</li>
+                <li><strong>10.2</strong> Aus Health-Integrationen stammende Daten verwenden wir ausschließlich zur Bereitstellung der App-Funktionen (z. B. Schritte, Trainingsauswertung). Wir verkaufen diese Daten nicht und verwenden sie nicht für Werbung oder ähnliche Zwecke. Eine Weitergabe an Dritte erfolgt nur, soweit zur Leistungserbringung erforderlich und in unserer Datenschutzerklärung beschrieben.</li>
+                <li><strong>10.3</strong> Du kannst das Schreiben/Lesen in den Systemeinstellungen steuern.</li>
+              </ul>
+            </li>
+            <li><strong>Verfügbarkeit, Updates und Änderungen</strong>
+              <ul>
+                <li><strong>11.1</strong> Es besteht kein Anspruch auf ununterbrochene Verfügbarkeit. Wartung, Sicherheit und Weiterentwicklung können zu Unterbrechungen führen.</li>
+                <li><strong>11.2</strong> Wir stellen während eines Abos erforderliche Sicherheits- und Funktions-Updates bereit und informieren dich, wenn deren Installation erforderlich ist. Unterbleibt sie, kann dies die Funktionsfähigkeit beeinträchtigen.</li>
+                <li><strong>11.3</strong> Wir dürfen Funktionen in zumutbarem Umfang ändern. Wesentliche Änderungen der AGB teilen wir rechtzeitig (z. B. 30 Tage) mit. Widersprichst du nicht oder nutzt du die App weiter, gelten die Änderungen als akzeptiert; wir weisen in der Mitteilung darauf hin.</li>
+              </ul>
+            </li>
+            <li><strong>Gewährleistung und Haftung</strong>
+              <ul>
+                <li><strong>12.1</strong> Es gilt die gesetzliche Haftung: unbegrenzt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper oder Gesundheit. Ebenfalls unberührt bleiben Ansprüche nach dem Produkthaftungsgesetz.</li>
+                <li><strong>12.2</strong> Bei leichter Fahrlässigkeit haften wir nur für die Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) und beschränkt auf den vertragstypisch vorhersehbaren Schaden.</li>
+                <li><strong>12.3</strong> Bei unentgeltlicher Nutzung haften wir nur bei Vorsatz/grober Fahrlässigkeit.</li>
+                <li><strong>12.4</strong> Zwingende Verbraucherschutzrechte bleiben unberührt.</li>
+              </ul>
+            </li>
+            <li><strong>Laufzeit, Kündigung, Sperrung</strong>
+              <ul>
+                <li><strong>13.1</strong> Das Nutzungsverhältnis läuft auf unbestimmte Zeit und kann jederzeit durch Löschen des Kontos beendet werden.</li>
+                <li><strong>13.2</strong> Abonnements kündigst du im jeweiligen App-Store; dort gelten die Kündigungsfristen und Verlängerungen.</li>
+                <li><strong>13.3</strong> Wir können die Bereitstellung aus wichtigem Grund aussetzen oder kündigen (z. B. wiederholte Verstöße, Missbrauch, Zahlungsverzug), unter angemessener Berücksichtigung deiner Interessen.</li>
+              </ul>
+            </li>
+            <li><strong>Datenschutz</strong><br>Es gilt unsere <a href="#datenschutz">Datenschutzerklärung</a>. Sie erläutert, welche Daten wir verarbeiten, zu welchen Zwecken und welche Rechte du (Art. 12–22 DSGVO) hast.</li>
+            <li><strong>Geistiges Eigentum und Feedback</strong>
+              <ul>
+                <li><strong>15.1</strong> Die App, ihre Inhalte (außer UGC), Marken und Kennzeichen sind durch Urheber-, Marken- und sonstige Schutzrechte zugunsten des Anbieters bzw. seiner Lizenzgeber geschützt.</li>
+                <li><strong>15.2</strong> Übermitteltes Feedback dürfen wir unentgeltlich, zeitlich und räumlich unbeschränkt zur Verbesserung der App nutzen.</li>
+              </ul>
+            </li>
+            <li><strong>Online-Streitbeilegung, Verbraucherstreitbeilegung</strong><br>Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</li>
+            <li><strong>Anwendbares Recht, Gerichtsstand, Vertragssprache</strong><br>Es gilt das Recht der Bundesrepublik Deutschland, wobei für Verbraucher:innen mit gewöhnlichem Aufenthalt im EWR zwingende Bestimmungen ihres Aufenthaltsstaates unberührt bleiben. Gerichtsstand ist – soweit zulässig – der Sitz des Anbieters. Vertragssprache ist Deutsch; etwaige Übersetzungen (z. B. Englisch) dienen der Information. Bei Abweichungen hat die deutsche Fassung Vorrang.</li>
+            <li><strong>Salvatorische Klausel</strong><br>Sollten einzelne Bestimmungen unwirksam sein, bleibt der Vertrag im Übrigen wirksam.</li>
+          </ol>
+        </article>
       </div>
     </div>
   </section>
 
-  <footer>
+
+
+<section id="datenschutz" class="section">
     <div class="container">
-      <p class="muted">© 2025 – Movo. Alle Rechte vorbehalten. ·
-        <a href="/impressum.html">Impressum</a> ·
-        <a href="/datenschutz.html">Datenschutz</a> ·
-        <a href="/agb.html">AGB</a>
+      <h2>Datenschutzerklärung</h2>
+      <div class="card">
+        <article>
+          <h1>Datenschutzerklärung</h1>
+          <h2 id="m716">Präambel</h2>
+          <p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten, sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen Applikationen sowie innerhalb externer Onlinepräsenzen, wie z.&nbsp;B. unserer Social-Media-Profile (nachfolgend zusammenfassend bezeichnet als "Onlineangebot").</p>
+          <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
+          <p>Stand: 25. Oktober 2025</p>
+          <h2>Inhaltsübersicht</h2>
+          <ul class="index">
+            <li><a class="index-link" href="#m716">Präambel</a></li>
+            <li><a class="index-link" href="#m3">Verantwortlicher</a></li>
+            <li><a class="index-link" href="#mOverview">Übersicht der Verarbeitungen</a></li>
+            <li><a class="index-link" href="#m2427">Maßgebliche Rechtsgrundlagen</a></li>
+            <li><a class="index-link" href="#m25">Übermittlung von personenbezogenen Daten</a></li>
+            <li><a class="index-link" href="#m24">Internationale Datentransfers</a></li>
+            <li><a class="index-link" href="#m12">Allgemeine Informationen zur Datenspeicherung und Löschung</a></li>
+            <li><a class="index-link" href="#m10">Rechte der betroffenen Personen</a></li>
+            <li><a class="index-link" href="#m317">Geschäftliche Leistungen</a></li>
+            <li><a class="index-link" href="#m225">Bereitstellung des Onlineangebots und Webhosting</a></li>
+            <li><a class="index-link" href="#m134">Einsatz von Cookies</a></li>
+            <li><a class="index-link" href="#m367">Registrierung, Anmeldung und Nutzerkonto</a></li>
+            <li><a class="index-link" href="#m451">Single-Sign-On-Anmeldung</a></li>
+            <li><a class="index-link" href="#m182">Kontakt- und Anfrageverwaltung</a></li>
+            <li><a class="index-link" href="#m1643">Push-Nachrichten</a></li>
+            <li><a class="index-link" href="#m15">Änderung und Aktualisierung</a></li>
+            <li><a class="index-link" href="#m42">Begriffsdefinitionen</a></li>
+          </ul>
+          <h2 id="m3">Verantwortlicher</h2>
+          <p>Benedikt Purkott<br>c/o Block Services<br>Stuttgarter Str. 106<br>70736 Fellbach<br>Deutschland</p>
+          <p>E-Mail-Adresse: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
+          <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
+          <p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.</p>
+          <h3>Arten der verarbeiteten Daten</h3>
+          <ul>
+            <li>Bestandsdaten.</li><li>Zahlungsdaten.</li><li>Kontaktdaten.</li><li>Inhaltsdaten.</li><li>Vertragsdaten.</li><li>Nutzungsdaten.</li><li>Meta-, Kommunikations- und Verfahrensdaten.</li><li>Protokolldaten.</li>
+          </ul>
+          <h3>Kategorien betroffener Personen</h3>
+          <ul>
+            <li>Leistungsempfänger und Auftraggeber.</li><li>Interessenten.</li><li>Kommunikationspartner.</li><li>Nutzer.</li><li>Geschäfts- und Vertragspartner.</li>
+          </ul>
+          <h3>Zwecke der Verarbeitung</h3>
+          <ul>
+            <li>Erbringung vertraglicher Leistungen und Erfüllung vertraglicher Pflichten.</li><li>Kommunikation.</li><li>Sicherheitsmaßnahmen.</li><li>Büro- und Organisationsverfahren.</li><li>Organisations- und Verwaltungsverfahren.</li><li>Feedback.</li><li>Anmeldeverfahren.</li><li>Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit.</li><li>Informationstechnische Infrastruktur.</li><li>Geschäftsprozesse und betriebswirtschaftliche Verfahren.</li>
+          </ul>
+          <h2 id="m2427">Maßgebliche Rechtsgrundlagen</h2>
+          <p><strong>Maßgebliche Rechtsgrundlagen nach der DSGVO: </strong>Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. Bitte beachten Sie, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben gelten können.</p>
+          <ul>
+            <li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong></li>
+            <li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong></li>
+            <li><strong>Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c) DSGVO)</strong></li>
+            <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong></li>
+          </ul>
+          <p><strong>Nationale Datenschutzregelungen in Deutschland:</strong> Zusätzlich gilt insbesondere das BDSG; ferner können Landesdatenschutzgesetze Anwendung finden.</p>
+          <p><strong>Hinweis auf Geltung DSGVO und Schweizer DSG:</strong> Diese Hinweise dienen sowohl der Informationserteilung nach Schweizer DSG als auch nach DSGVO; es wird der DSGVO-Begrifflichkeit gefolgt.</p>
+          <h2 id="m25">Übermittlung von personenbezogenen Daten</h2>
+          <p>Im Rahmen unserer Verarbeitung kann es zur Übermittlung an andere Stellen/Unternehmen/Personen kommen. Wir schließen hierzu datenschutzkonforme Verträge mit Empfängern.</p>
+          <h2 id="m24">Internationale Datentransfers</h2>
+          <p>Übermittlungen in Drittländer erfolgen im Einklang mit den gesetzlichen Vorgaben. Für USA-Transfers stützen wir uns vorrangig auf das Data Privacy Framework (DPF) sowie zusätzlich auf Standardvertragsklauseln (SCCs). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">dataprivacyframework.gov</a> und die Hinweise der EU-Kommission.</p>
+          <h2 id="m12">Allgemeine Informationen zur Datenspeicherung und Löschung</h2>
+          <p>Wir löschen Daten entsprechend den gesetzlichen Vorgaben, sobald die Rechtsgrundlagen entfallen oder der Zweck erreicht ist. Gesetzliche Aufbewahrungspflichten und berechtigte Interessen können längere Speicherdauern erfordern.</p>
+          <ul>
+            <li>10 Jahre – Bücher/Aufzeichnungen etc.</li>
+            <li>8 Jahre – Buchungsbelege (z. B. Rechnungen).</li>
+            <li>6 Jahre – übrige Geschäftsunterlagen.</li>
+            <li>3 Jahre – Daten zur Geltendmachung/Abwehr von Ansprüchen.</li>
+          </ul>
+          <p>Fristen beginnen regelmäßig mit Ablauf des Kalenderjahres des fristauslösenden Ereignisses.</p>
+          <h2 id="m10">Rechte der betroffenen Personen</h2>
+          <ul>
+            <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO, inkl. Direktwerbung).</li>
+            <li><strong>Widerruf von Einwilligungen</strong>.</li>
+            <li><strong>Auskunft, Berichtigung, Löschung, Einschränkung</strong>.</li>
+            <li><strong>Datenübertragbarkeit</strong>.</li>
+            <li><strong>Beschwerde bei einer Aufsichtsbehörde</strong>.</li>
+          </ul>
+          <h2 id="m317">Geschäftliche Leistungen</h2>
+          <p>Verarbeitung von Vertrags- und Geschäftspartnerdaten zur Vertragserfüllung, Kommunikation, Organisation, Sicherheit und Rechtswahrung; Weitergabe nur soweit erforderlich bzw. gesetzlich verpflichtend.</p>
+          <h2 id="m225">Bereitstellung des Onlineangebots und Webhosting</h2>
+          <p>Verarbeitung von IP-Adressen/Nutzungsdaten zur Auslieferung und Sicherheit des Onlineangebots; Server-Logfiles bis zu 30 Tage.</p>
+          <h2 id="m134">Einsatz von Cookies</h2>
+          <p>Wir verwenden Cookies nach Maßgabe der gesetzlichen Vorgaben. Soweit erforderlich holen wir Einwilligungen ein; andernfalls stützen wir uns auf berechtigte Interessen. Einwilligungen können widerrufen werden.</p>
+          <ul>
+            <li>Temporäre (Session-)Cookies</li>
+            <li>Permanente Cookies (i. d. R. bis zu 2 Jahre)</li>
+          </ul>
+          <h2 id="m367">Registrierung, Anmeldung und Nutzerkonto</h2>
+          <p>Verarbeitung notwendiger Registrierungs-/Login-Daten; Protokollierung von IP/Zeiten zur Missbrauchsverhinderung; Löschung nach Kündigung des Kontos, vorbehaltlich gesetzlicher Pflichten.</p>
+          <h2 id="m451">Single-Sign-On-Anmeldung</h2>
+          <p>SSO über Anbieter wie Apple/Google; Art und Umfang der übermittelten Daten hängen von den Einstellungen/Einwilligungen beim SSO-Anbieter ab. Passwörter beim SSO-Anbieter sind für uns weder einsehbar noch werden sie gespeichert.</p>
+          <ul>
+            <li><strong>Apple:</strong> <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Datenschutz</a></li>
+            <li><strong>Google:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> • DPF-zertifiziert • Opt-out Ads: <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">myadcenter.google.com</a></li>
+          </ul>
+          <h2 id="m182">Kontakt- und Anfrageverwaltung</h2>
+          <p>Verarbeitung der mitgeteilten Daten (z. B. Name, Kontakt, Inhalte) zur Beantwortung/Abwicklung Ihrer Anfrage; Nutzung ausschließlich zu diesem Zweck.</p>
+          <h2 id="m1643">Push-Nachrichten</h2>
+          <p>Versand nur mit Einwilligung; Speicherung eines pseudonymen Push-Tokens bzw. Geräte-IDs zum Nachweis/Versand. (Einige Passagen in Ihrem Generator-Text sind ggf. lizenzpflichtig und erscheinen als „premiumtext“.)</p>
+          <h2 id="m15">Änderung und Aktualisierung</h2>
+          <p>Bitte prüfen Sie diese Datenschutzerklärung regelmäßig. Wir passen sie an, sobald Änderungen unserer Verarbeitungen dies erfordern.</p>
+          <h2 id="m42">Begriffsdefinitionen</h2>
+          <p>Begriffserläuterungen (u. a. Bestands-, Inhalts-, Kontakt-, Nutzungs-, Protokoll-, Vertrags-, Zahlungsdaten) gemäß DSGVO-Terminologie.</p>
+          <p class="seal"><a href="https://datenschutz-generator.de/" title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken." target="_blank" rel="noopener noreferrer nofollow">Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+   <section id="impressum" class="section">
+    <div class="container">
+      <h2>Impressum</h2>
+      <div class="card">
+        <article>
+          <h3>Impressum (Anbieterkennzeichnung)</h3>
+          <p><span class="label">Anbieter / Verantwortlicher gemäß § 5 TMG und § 18 MStV</span></p>
+          <address>
+            <strong>Benedikt Purkott</strong><br>
+            c/o Block Services<br>
+            Stuttgarter Str. 106<br>
+            70736 Fellbach<br>
+            Deutschland
+          </address>
+          <h3>Kontakt</h3>
+          <p>E-Mail: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
+          <p>Für telefonische Anfragen nutzen Sie bitte das Kontaktformular in der App
+             oder schreiben Sie uns eine E-Mail an <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a>.</p>
+          <h3>Hinweis zur Erreichbarkeit</h3>
+          <p>Dieses Impressum ist in der App jederzeit über <em>Einstellungen → „Impressum &amp; AGB“</em> abrufbar.</p>
+          <h3>Haftung für Inhalte</h3>
+          <p>Die Inhalte dieser App wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+          <h3>Haftung für Links</h3>
+          <p>Diese App kann Links zu externen Webseiten Dritter enthalten, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+          <h3>Hinweis zu KI-Inhalten</h3>
+          <p>Einige Texte, Beschreibungen und Hinweise in dieser App wurden mit Unterstützung künstlicher Intelligenz (z. B. ChatGPT) erstellt oder überarbeitet. Alle Inhalte wurden vor Veröffentlichung manuell geprüft und redaktionell angepasst.</p>
+          <p class="muted">Stand: Oktober 2025</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ███ FOOTER ███ -->
+  <footer class="section" style="border-top:1px dashed #22324a">
+    <div class="container">
+      <p class="muted">© 2025 – Movo. Alle Rechte vorbehalten. <span class="footer-links"> ·
+        <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a> · <a href="#agb">AGB</a></span>
       </p>
     </div>
   </footer>
 
+  <!-- ███ SCRIPTS ███ -->
   <script>
-    // Mobile nav toggle (mit hidden/aria)
+    // Mobile nav toggle
     const burger = document.getElementById('hamburger');
     const menu = document.getElementById('mobilemenu');
-    burger?.addEventListener('click', () => {
-      const open = menu.hasAttribute('hidden');
-      menu.classList.toggle('show', open);
-      menu.toggleAttribute('hidden', !open);
-      burger.setAttribute('aria-expanded', String(open));
-    });
+    burger?.addEventListener('click', () => menu.classList.toggle('show'));
 
-    // Active nav + reveal – nur Hash-Links berücksichtigen
-    const navLinks = Array.from(document.querySelectorAll('header .nav a[href^="#"]'));
-    const linkById = new Map(navLinks.map(a => [a.getAttribute('href').slice(1), a]));
-    const io = new IntersectionObserver(entries => { entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => a.removeAttribute('aria-current'));
-        const l = linkById.get(e.target.id); if (l) l.setAttribute('aria-current','true');
-        e.target.classList.add('show');
-      }});
-    }, {rootMargin:'-35% 0px -55% 0px', threshold:.01});
-    document.querySelectorAll('#start .reveal, .section .reveal').forEach(el => io.observe(el));
-    document.querySelectorAll('section[id]').forEach(sec => io.observe(sec));
-
-    // Device tabs
+    // Tabs inside device
     const buttons = document.querySelectorAll('.tabs button');
-    const show = key => {
+    const showDevice = key => {
       document.querySelectorAll('.dv-screen').forEach(s => s.style.display='none');
       const el = document.getElementById('screen-'+key);
       if (el) el.style.display='block';
       buttons.forEach(b => b.removeAttribute('aria-current'));
       document.querySelector(`.tabs button[data-go="${key}"]`)?.setAttribute('aria-current','true');
     };
-    buttons.forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
+    buttons.forEach(b => b.addEventListener('click', () => showDevice(b.dataset.go)));
+
+    // Reveal on scroll (home only)
+    const reveals = () => {
+      const navLinks = Array.from(document.querySelectorAll('header .nav a'));
+      const linkById = new Map(navLinks.map(a => [a.getAttribute('href')?.replace('#',''), a]));
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navLinks.forEach(a => a.removeAttribute('aria-current'));
+            const l = linkById.get(e.target.id); if (l) l.setAttribute('aria-current','true');
+            e.target.classList.add('show');
+          }
+        });
+      }, {rootMargin:'-35% 0px -55% 0px', threshold:.01});
+      document.querySelectorAll('#home .reveal, #home section[id]').forEach(el => io.observe(el));
+    };
+
+    // Simple hash router for "pages"
+    const PAGES = {
+      'agb':      {el: document.getElementById('page-agb'),         title: 'AGB – Movo'},
+      'datenschutz': {el: document.getElementById('page-datenschutz'), title: 'Datenschutz – Movo'},
+      'impressum':   {el: document.getElementById('page-impressum'),   title: 'Impressum – Movo'}
+    };
+    const home = document.getElementById('home');
+
+    function showHome(){
+      document.title = 'Movo – Gym Tracker & Planner';
+      Object.values(PAGES).forEach(p => p.el.classList.remove('active'));
+      home.style.display = '';
+      // Reset nav highlights to Start
+      document.querySelectorAll('header .nav a').forEach(a => a.removeAttribute('aria-current'));
+      reveals(); // rebind IO for visible elements
+      window.scrollTo({top:0, behavior:'instant'});
+    }
+
+    function showPage(key){
+      const page = PAGES[key];
+      if(!page){ showHome(); return; }
+      home.style.display = 'none';
+      Object.values(PAGES).forEach(p => p.el.classList.remove('active'));
+      page.el.classList.add('active');
+      document.title = page.title;
+      document.querySelectorAll('header .nav a').forEach(a => a.removeAttribute('aria-current'));
+      window.scrollTo({top:0, behavior:'instant'});
+    }
+
+    function router(){
+      const h = (location.hash || '').replace('#','').toLowerCase();
+      if (PAGES[h]) showPage(h); else showHome();
+    }
+    window.addEventListener('hashchange', router);
+    router(); // initial
+
+    // Close mobile menu after click
+    document.querySelectorAll('#mobilemenu a').forEach(a => {
+      a.addEventListener('click', () => menu.classList.remove('show'));
+    });
   </script>
-</body>
-</html>
-
-
-<!-- =============================
-FILE: impressum.html (Einzelseite)
-============================== -->
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Impressum – Movo</title>
-  <meta name="theme-color" content="#0b0f1a" />
-  <link rel="icon" href="/favicon.ico">
-  <style>
-    :root{ --bg:#0a0d16; --border:#1d2842; --text:#eaf2ff; --muted:#9fb0c9 }
-    body{margin:0; font-family:system-ui,-apple-system,Inter,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text)}
-    .container{max-width:900px;margin:0 auto;padding:24px}
-    a{color:#9ad6ff}
-    header, footer{border-bottom:1px solid var(--border); padding:12px 0}
-    footer{border-bottom:none;border-top:1px solid var(--border)}
-    .card{background:#0e162c; border:1px solid var(--border); border-radius:14px; padding:16px}
-    .muted{color:var(--muted)}
-  </style>
-</head>
-<body>
-  <header><div class="container"><a href="/">← Zurück zur Startseite</a></div></header>
-  <main class="container">
-    <h1>Impressum</h1>
-    <div class="card">
-      <p><strong>Verantwortlich nach § 5 TMG / § 18 MStV</strong></p>
-      <address>
-        Benedikt Purkott<br>c/o Block Services<br>Stuttgarter Str. 106<br>70736 Fellbach<br>Deutschland
-      </address>
-      <p>E‑Mail: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
-      <h3>Haftung für Inhalte</h3>
-      <p>Die Inhalte dieser App wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
-      <h3>Haftung für Links</h3>
-      <p>Diese App kann Links zu externen Webseiten Dritter enthalten, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
-      <p class="muted">Stand: Oktober 2025</p>
-    </div>
-  </main>
-  <footer><div class="container">© 2025 – Movo · <a href="/datenschutz.html">Datenschutz</a> · <a href="/agb.html">AGB</a></div></footer>
-</body>
-</html>
-
-
-<!-- =============================
-FILE: datenschutz.html (Einzelseite – Inhalt aus deiner Vorlage)
-============================== -->
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Datenschutzerklärung – Movo</title>
-  <meta name="theme-color" content="#0b0f1a" />
-  <link rel="icon" href="/favicon.ico">
-  <style>
-    :root{ --bg:#0a0d16; --border:#1d2842; --text:#eaf2ff; --muted:#9fb0c9 }
-    body{margin:0; font-family:system-ui,-apple-system,Inter,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text)}
-    .container{max-width:900px;margin:0 auto;padding:24px}
-    a{color:#9ad6ff}
-    header, footer{border-bottom:1px solid var(--border); padding:12px 0}
-    footer{border-bottom:none;border-top:1px solid var(--border)}
-    .card{background:#0e162c; border:1px solid var(--border); border-radius:14px; padding:16px}
-    .muted{color:var(--muted)}
-  </style>
-</head>
-<body>
-  <header><div class="container"><a href="/">← Zurück zur Startseite</a></div></header>
-  <main class="container">
-    <h1>Datenschutzerklärung</h1>
-    <div class="card">
-      <article>
-        <h2 id="m716">Präambel</h2>
-        <p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten, sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen Applikationen sowie innerhalb externer Onlinepräsenzen, wie z.&nbsp;B. unserer Social-Media-Profile (nachfolgend zusammenfassend bezeichnet als "Onlineangebot").</p>
-        <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
-        <p>Stand: 25. Oktober 2025</p>
-        <h2>Inhaltsübersicht</h2>
-        <ul class="index">
-          <li><a class="index-link" href="#m716">Präambel</a></li>
-          <li><a class="index-link" href="#m3">Verantwortlicher</a></li>
-          <li><a class="index-link" href="#mOverview">Übersicht der Verarbeitungen</a></li>
-          <li><a class="index-link" href="#m2427">Maßgebliche Rechtsgrundlagen</a></li>
-          <li><a class="index-link" href="#m25">Übermittlung von personenbezogenen Daten</a></li>
-          <li><a class="index-link" href="#m24">Internationale Datentransfers</a></li>
-          <li><a class="index-link" href="#m12">Allgemeine Informationen zur Datenspeicherung und Löschung</a></li>
-          <li><a class="index-link" href="#m10">Rechte der betroffenen Personen</a></li>
-          <li><a class="index-link" href="#m317">Geschäftliche Leistungen</a></li>
-          <li><a class="index-link" href="#m225">Bereitstellung des Onlineangebots und Webhosting</a></li>
-          <li><a class="index-link" href="#m134">Einsatz von Cookies</a></li>
-          <li><a class="index-link" href="#m367">Registrierung, Anmeldung und Nutzerkonto</a></li>
-          <li><a class="index-link" href="#m451">Single-Sign-On-Anmeldung</a></li>
-          <li><a class="index-link" href="#m182">Kontakt- und Anfrageverwaltung</a></li>
-          <li><a class="index-link" href="#m1643">Push-Nachrichten</a></li>
-          <li><a class="index-link" href="#m15">Änderung und Aktualisierung</a></li>
-          <li><a class="index-link" href="#m42">Begriffsdefinitionen</a></li>
-        </ul>
-        <h2 id="m3">Verantwortlicher</h2>
-        <p>Benedikt Purkott<br>c/o Block Services<br>Stuttgarter Str. 106<br>70736 Fellbach<br>Deutschland</p>
-        <p>E-Mail-Adresse: <a href="mailto:movobp.contact@gmail.com">movobp.contact@gmail.com</a></p>
-        <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
-        <p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.</p>
-        <h3>Arten der verarbeiteten Daten</h3>
-        <ul>
-          <li>Bestandsdaten.</li><li>Zahlungsdaten.</li><li>Kontaktdaten.</li><li>Inhaltsdaten.</li><li>Vertragsdaten.</li><li>Nutzungsdaten.</li><li>Meta-, Kommunikations- und Verfahrensdaten.</li><li>Protokolldaten.</li>
-        </ul>
-        <h3>Kategorien betroffener Personen</h3>
-        <ul>
-          <li>Leistungsempfänger und Auftraggeber.</li><li>Interessenten.</li><li>Kommunikationspartner.</li><li>Nutzer.</li><li>Geschäfts- und Vertragspartner.</li>
-        </ul>
-        <h3>Zwecke der Verarbeitung</h3>
-        <ul>
-          <li>Erbringung vertraglicher Leistungen und Erfüllung vertraglicher Pflichten.</li><li>Kommunikation.</li><li>Sicherheitsmaßnahmen.</li><li>Büro- und Organisationsverfahren.</li><li>Organisations- und Verwaltungsverfahren.</li><li>Feedback.</li><li>Anmeldeverfahren.</li><li>Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit.</li><li>Informationstechnische Infrastruktur.</li><li>Geschäftsprozesse und betriebswirtschaftliche Verfahren.</li>
-        </ul>
-        <h2 id="m2427">Maßgebliche Rechtsgrundlagen</h2>
-        <p><strong>Maßgebliche Rechtsgrundlagen nach der DSGVO: </strong>Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. Bitte beachten Sie, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben gelten können.</p>
-        <ul>
-          <li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong></li>
-          <li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong></li>
-          <li><strong>Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c) DSGVO)</strong></li>
-          <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong></li>
-        </ul>
-        <p><strong>Nationale Datenschutzregelungen in Deutschland:</strong> Zusätzlich gilt insbesondere das BDSG; ferner können Landesdatenschutzgesetze Anwendung finden.</p>
-        <p><strong>Hinweis auf Geltung DSGVO und Schweizer DSG:</strong> Diese Hinweise dienen sowohl der Informationserteilung nach Schweizer DSG als auch nach DSGVO; es wird der DSGVO-Begrifflichkeit gefolgt.</p>
-        <h2 id="m25">Übermittlung von personenbezogenen Daten</h2>
-        <p>Im Rahmen unserer Verarbeitung kann es zur Übermittlung an andere Stellen/Unternehmen/Personen kommen. Wir schließen hierzu datenschutzkonforme Verträge mit Empfängern.</p>
-        <h2 id="m24">Internationale Datentransfers</h2>
-        <p>Übermittlungen in Drittländer erfolgen im Einklang mit den gesetzlichen Vorgaben. Für USA-Transfers stützen wir uns vorrangig auf das Data Privacy Framework (DPF) sowie zusätzlich auf Standardvertragsklauseln (SCCs). Weitere Informationen: <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">dataprivacyframework.gov</a> und die Hinweise der EU-Kommission.</p>
-        <h2 id="m12">Allgemeine Informationen zur Datenspeicherung und Löschung</h2>
-        <p>Wir löschen Daten entsprechend den gesetzlichen Vorgaben, sobald die Rechtsgrundlagen entfallen oder der Zweck erreicht ist. Gesetzliche Aufbewahrungspflichten und berechtigte Interessen können längere Speicherdauern erfordern.</p>
-        <ul>
-          <li>10 Jahre – Bücher/Aufzeichnungen etc.</li>
-          <li>8 Jahre – Buchungsbelege (z. B. Rechnungen).</li>
-          <li>6 Jahre – übrige Geschäftsunterlagen.</li>
-          <li>3 Jahre – Daten zur Geltendmachung/Abwehr von Ansprüchen.</li>
-        </ul>
-        <p>Fristen beginnen regelmäßig mit Ablauf des Kalenderjahres des fristauslösenden Ereignisses.</p>
-        <h2 id="m10">Rechte der betroffenen Personen</h2>
-        <ul>
-          <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO, inkl. Direktwerbung).</li>
-          <li><strong>Widerruf von Einwilligungen</strong>.</li>
-          <li><strong>Auskunft, Berichtigung, Löschung, Einschränkung</strong>.</li>
-          <li><strong>Datenübertragbarkeit</strong>.</li>
-          <li><strong>Beschwerde bei einer Aufsichtsbehörde</strong>.</li>
-        </ul>
-        <h2 id="m317">Geschäftliche Leistungen</h2>
-        <p>Verarbeitung von Vertrags- und Geschäftspartnerdaten zur Vertragserfüllung, Kommunikation, Organisation, Sicherheit und Rechtswahrung; Weitergabe nur soweit erforderlich bzw. gesetzlich verpflichtend.</p>
-        <h2 id="m225">Bereitstellung des Onlineangebots und Webhosting</h2>
-        <p>Verarbeitung von IP-Adressen/Nutzungsdaten zur Auslieferung und Sicherheit des Onlineangebots; Server-Logfiles bis zu 30 Tage.</p>
-        <h2 id="m134">Einsatz von Cookies</h2>
-        <p>Wir verwenden Cookies nach Maßgabe der gesetzlichen Vorgaben. Soweit erforderlich holen wir Einwilligungen ein; andernfalls stützen wir uns auf berechtigte Interessen. Einwilligungen können widerrufen werden.</p>
-        <ul>
-          <li>Temporäre (Session-)Cookies</li>
-          <li>Permanente Cookies (i. d. R. bis zu 2 Jahre)</li>
-        </ul>
-        <h2 id="m367">Registrierung, Anmeldung und Nutzerkonto</h2>
-        <p>Verarbeitung notwendiger Registrierungs-/Login-Daten; Protokollierung von IP/Zeiten zur Missbrauchsverhinderung; Löschung nach Kündigung des Kontos, vorbehaltlich gesetzlicher Pflichten.</p>
-        <h2 id="m451">Single-Sign-On-Anmeldung</h2>
-        <p>SSO über Anbieter wie Apple/Google; Art und Umfang der übermittelten Daten hängen von den Einstellungen/Einwilligungen beim SSO-Anbieter ab. Passwörter beim SSO-Anbieter sind für uns weder einsehbar noch werden sie gespeichert.</p>
-        <ul>
-          <li><strong>Apple:</strong> <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Datenschutz</a></li>
-          <li><strong>Google:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> • DPF-zertifiziert • Opt-out Ads: <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">myadcenter.google.com</a></li>
-        </ul>
-        <h2 id="m182">Kontakt- und Anfrageverwaltung</h2>
-        <p>Verarbeitung der mitgeteilten Daten (z. B. Name, Kontakt, Inhalte) zur Beantwortung/Abwicklung Ihrer Anfrage; Nutzung ausschließlich zu diesem Zweck.</p>
-        <h2 id="m1643">Push-Nachrichten</h2>
-        <p>Versand nur mit Einwilligung; Speicherung eines pseudonymen Push-Tokens bzw. Geräte-IDs zum Nachweis/Versand. (Einige Passagen in Ihrem Generator-Text sind ggf. lizenzpflichtig und erscheinen als „premiumtext“.)</p>
-        <h2 id="m15">Änderung und Aktualisierung</h2>
-        <p>Bitte prüfen Sie diese Datenschutzerklärung regelmäßig. Wir passen sie an, sobald Änderungen unserer Verarbeitungen dies erfordern.</p>
-        <h2 id="m42">Begriffsdefinitionen</h2>
-        <p>Begriffserläuterungen (u. a. Bestands-, Inhalts-, Kontakt-, Nutzungs-, Protokoll-, Vertrags-, Zahlungsdaten) gemäß DSGVO-Terminologie.</p>
-        <p class="seal"><a href="https://datenschutz-generator.de/" title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken." target="_blank" rel="noopener noreferrer nofollow">Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke</a></p>
-      </article>
-    </div>
-  </main>
-  <footer><div class="container">© 2025 – Movo · <a href="/impressum.html">Impressum</a> · <a href="/agb.html">AGB</a></div></footer>
-</body>
-</html>
-
-
-<!-- =============================
-FILE: agb.html (Einzelseite – Inhalt aus deiner Vorlage)
-============================== -->
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AGB – Movo</title>
-  <meta name="theme-color" content="#0b0f1a" />
-  <link rel="icon" href="/favicon.ico">
-  <style>
-    :root{ --bg:#0a0d16; --border:#1d2842; --text:#eaf2ff; --muted:#9fb0c9 }
-    body{margin:0; font-family:system-ui,-apple-system,Inter,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text)}
-    .container{max-width:900px;margin:0 auto;padding:24px}
-    a{color:#9ad6ff}
-    header, footer{border-bottom:1px solid var(--border); padding:12px 0}
-    footer{border-bottom:none;border-top:1px solid var(--border)}
-    .card{background:#0e162c; border:1px solid var(--border); border-radius:14px; padding:16px}
-    .muted{color:var(--muted)}
-    ol{padding-left:20px}
-  </style>
-</head>
-<body>
-  <header><div class="container"><a href="/">← Zurück zur Startseite</a></div></header>
-  <main class="container">
-    <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
-    <div class="card">
-      <article>
-        <p><strong>Stand:</strong> 25.10.2025</p>
-        <ol>
-          <li><strong>Anbieter, Geltungsbereich</strong><br>Diese AGB regeln die weltweite Nutzung der App „movo“ und der zugehörigen Dienste zwischen dem Anbieter („wir“) und dir als Nutzer:in („du“). Abweichende Bedingungen gelten nicht, es sei denn, wir stimmen ihnen ausdrücklich zu.</li>
-          <li><strong>Leistungen, Lizenz, technische Voraussetzungen</strong>
-            <ul>
-              <li><strong>2.1</strong> Die App bietet u. a. Trainingspläne, Challenges, Auswertungen, Schritte-/Aktivitätsdaten, Benachrichtigungen, Community- und Gamification-Funktionen. Funktionen können sich ändern oder erweitert werden.</li>
-              <li><strong>2.2</strong> Wir gewähren dir eine persönliche, widerrufliche, nicht exklusive und nicht übertragbare Lizenz zur Nutzung der App gemäß diesen AGB.</li>
-              <li><strong>2.3</strong> Für die Nutzung sind ein kompatibles Endgerät und Internetzugang erforderlich; daraus entstehende Kosten trägst du selbst. Es können Drittanbieter-Konten (z. B. Apple, Google) nötig sein.</li>
-            </ul>
-          </li>
-          <li><strong>Registrierung, Alter, Konto</strong>
-            <ul>
-              <li><strong>3.1</strong> Für bestimmte Funktionen ist ein Konto erforderlich. Anmeldung via E-Mail/Passwort sowie „Mit Apple/Google anmelden“ ist möglich. Du machst wahrheitsgemäße Angaben und hältst sie aktuell.</li>
-              <li><strong>3.2</strong> Du bist mindestens 16 Jahre alt. Jüngere Personen dürfen die App nur mit Einwilligung der Erziehungsberechtigten nutzen.</li>
-              <li><strong>3.3</strong> Zugangsdaten sind geheim zu halten. Du informierst uns unverzüglich über eine unbefugte Nutzung. Wir dürfen Konten bei begründetem Verdacht vorübergehend sperren.</li>
-            </ul>
-          </li>
-          <li><strong>Gesundheitshinweise (keine Medizinprodukte-/Arzt-Leistungen)</strong><br>Die Nutzung erfolgt auf eigenes Risiko. Konsultiere vor Trainingsbeginn eine Ärztin/einen Arzt, insbesondere bei Vorerkrankungen. Die App bietet keine medizinische Beratung, Diagnose oder Therapie und ist kein Ersatz für ärztliche Behandlung. In Notfällen wähle die örtliche Notrufnummer.</li>
-          <li><strong>Entgelte, In-App-Käufe und Abonnements (inkl. „Lifetime“, Testphase, Beta)</strong>
-            <ul>
-              <li><strong>5.1</strong> <em>Beta-Zugang:</em> Während einer Beta-Phase können einzelne oder alle Pro-Funktionen kostenfrei freigeschaltet sein. Der Beta-Zugang kann jederzeit beendet, geändert oder auf entgeltliche Nutzung umgestellt werden; hieraus entsteht kein Anspruch auf zukünftige unentgeltliche Nutzung. Wir bemühen uns, bestehende Daten zu erhalten; ein Anspruch hierauf besteht nicht.</li>
-              <li><strong>5.2</strong> <em>Abonnements:</em> Wir bieten u. a. Monats- und Jahresabos an. Abos verlängern sich automatisch, sofern du nicht mindestens 24 Stunden vor Ablauf der jeweiligen Laufzeit im Apple App Store bzw. Google Play kündigst. Abrechnung und Verwaltung (Kündigung, Pausierung, Erstattungen) erfolgen ausschließlich über deinen Store-Account. Nach Kündigung läuft das Abo bis zum Ende des bereits bezahlten Zeitraums weiter; eine anteilige Erstattung erfolgt grundsätzlich nicht, soweit zwingendes Recht oder Store-Regeln nichts anderes vorsehen.</li>
-              <li><strong>5.3</strong> <em>Kostenlose Probezeit (falls angeboten):</em> Eine Probezeit (z. B. 7 Tage) geht – wenn sie nicht rechtzeitig gekündigt wird – in ein kostenpflichtiges Abo über. Nicht genutzte Anteile einer Probezeit verfallen beim Abschluss eines Abos. Pro Person/Account/Haushalt können Probezeiten begrenzt sein.</li>
-              <li><strong>5.4</strong> <em>Einmalige In-App-Käufe / „Lifetime“:</em> Einmalzahlungen (z. B. „Lifetime“) schalten bestimmte Funktionen dauerhaft für die Lebensdauer des Dienstes frei, nicht für die Lebensdauer der nutzenden Person. Wir bemühen uns um den fortgesetzten Betrieb, können ihn jedoch nicht garantieren (siehe § 11). Gesetzliche Gewährleistungs- und Verbraucherschutzrechte bleiben unberührt.</li>
-              <li><strong>5.5</strong> <em>Preise &amp; Steuern:</em> Aktuelle Preise werden in der App/im Store angezeigt und können je nach Region, Währung, Steuern, Promotions und Store variieren. Preis-/Leistungsänderungen gelten – soweit zulässig – ab der nächsten Aboperiode; wir informieren dich vorab, sofern erforderlich.</li>
-              <li><strong>5.6</strong> <em>Erstattungen/Fehlkäufe:</em> Erstattungen richten sich nach den Bedingungen des jeweiligen App-Stores; wende dich hierfür bitte an Apple bzw. Google. Sofern wir ausnahmsweise selbst Vertragspartner sind, gilt § 6.</li>
-            </ul>
-          </li>
-          <li><strong>Widerrufsrecht für Verbraucher:innen in der EU</strong>
-            <ul>
-              <li><strong>6.1</strong> Bei Käufen über Apple App Store/Google Play erfolgt der Vertragsschluss mit dem jeweiligen Store; Widerruf/Erstattung werden nach den Store-Regeln abgewickelt. Bitte nutze die Store-Funktionen für Widerruf/Rückerstattung.</li>
-              <li><strong>6.2</strong> Sofern wir ausnahmsweise selbst Vertragspartner eines digitalen Inhalts/Services sind, stimmst du zu, dass wir vor Ablauf der Widerrufsfrist mit der Ausführung beginnen, und du dein Widerrufsrecht mit vollständiger Vertragserfüllung verlierst (§ 356 Abs. 5 BGB). Im Übrigen gilt die gesetzliche Widerrufsbelehrung.</li>
-            </ul>
-          </li>
-          <li><strong>Nutzerpflichten, verbotene Inhalte und Verhaltensregeln</strong>
-            <ul>
-              <li><strong>7.1</strong> Verboten sind rechtswidrige, beleidigende, diskriminierende, pornografische, extremistische, irreführende oder sonst unzulässige Inhalte, das Umgehen technischer Schutzmaßnahmen, Reverse Engineering, Scraping sowie missbräuchliche Nutzung von Schnittstellen.</li>
-              <li><strong>7.2</strong> <em>Community:</em> Respektvoller Umgang ist Pflicht. Wir können Inhalte moderieren, sperren oder entfernen, wenn ein Verstoß vorliegt oder begründet zu befürchten ist.</li>
-            </ul>
-          </li>
-          <li><strong>Nutzerinhalte (UGC) und Rechte</strong>
-            <ul>
-              <li><strong>8.1</strong> Du bleibst Inhaber:in deiner Inhalte. Durch das Bereitstellen von Inhalten räumst du uns eine weltweite, nicht exklusive, unentgeltliche, übertragbare, unterlizenzierbare Lizenz ein, diese Inhalte zum Betrieb, zur Bereitstellung und Verbesserung der App (einschließlich Speicherung, Vervielfältigung, technischer Verarbeitung, Anzeige und Verbreitung innerhalb der App) zu nutzen. Eine werbliche Nutzung außerhalb der App erfolgt nur mit deiner gesonderten Einwilligung.</li>
-              <li><strong>8.2</strong> Du sicherst zu, über erforderliche Rechte zu verfügen und dass deine Inhalte keine Rechte Dritter verletzen.</li>
-            </ul>
-          </li>
-          <li><strong>Drittanbieter, Links, Open-Source</strong>
-            <ul>
-              <li><strong>9.1</strong> Die App kann auf Dienste Dritter verweisen (Websites, Inhalte, Geräte-Integrationen). Für deren Inhalte/Datenschutzpraktiken sind ausschließlich die jeweiligen Dritten verantwortlich.</li>
-              <li><strong>9.2</strong> Wir nutzen ggf. Open-Source-Software; Hinweise/Lizenzen stellen wir in der App bereit.</li>
-            </ul>
-          </li>
-          <li><strong>Health-Integrationen (Apple HealthKit/Google Fit u. ä.)</strong>
-            <ul>
-              <li><strong>10.1</strong> Eine Verbindung erfolgt nur mit deiner ausdrücklichen Einwilligung; du kannst sie jederzeit widerrufen.</li>
-              <li><strong>10.2</strong> Aus Health-Integrationen stammende Daten verwenden wir ausschließlich zur Bereitstellung der App-Funktionen (z. B. Schritte, Trainingsauswertung). Wir verkaufen diese Daten nicht und verwenden sie nicht für Werbung oder ähnliche Zwecke. Eine Weitergabe an Dritte erfolgt nur, soweit zur Leistungserbringung erforderlich und in unserer Datenschutzerklärung beschrieben.</li>
-              <li><strong>10.3</strong> Du kannst das Schreiben/Lesen in den Systemeinstellungen steuern.</li>
-            </ul>
-          </li>
-          <li><strong>Verfügbarkeit, Updates und Änderungen</strong>
-            <ul>
-              <li><strong>11.1</strong> Es besteht kein Anspruch auf ununterbrochene Verfügbarkeit. Wartung, Sicherheit und Weiterentwicklung können zu Unterbrechungen führen.</li>
-              <li><strong>11.2</strong> Wir stellen während eines Abos erforderliche Sicherheits- und Funktions-Updates bereit und informieren dich, wenn deren Installation erforderlich ist. Unterbleibt sie, kann dies die Funktionsfähigkeit beeinträchtigen.</li>
-              <li><strong>11.3</strong> Wir dürfen Funktionen in zumutbarem Umfang ändern. Wesentliche Änderungen der AGB teilen wir rechtzeitig (z. B. 30 Tage) mit. Widersprichst du nicht oder nutzt du die App weiter, gelten die Änderungen als akzeptiert; wir weisen in der Mitteilung darauf hin.</li>
-            </ul>
-          </li>
-          <li><strong>Gewährleistung und Haftung</strong>
-            <ul>
-              <li><strong>12.1</strong> Es gilt die gesetzliche Haftung: unbegrenzt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper oder Gesundheit. Ebenfalls unberührt bleiben Ansprüche nach dem Produkthaftungsgesetz.</li>
-              <li><strong>12.2</strong> Bei leichter Fahrlässigkeit haften wir nur für die Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) und beschränkt auf den vertragstypisch vorhersehbaren Schaden.</li>
-              <li><strong>12.3</strong> Bei unentgeltlicher Nutzung haften wir nur bei Vorsatz/grober Fahrlässigkeit.</li>
-              <li><strong>12.4</strong> Zwingende Verbraucherschutzrechte bleiben unberührt.</li>
-            </ul>
-          </li>
-          <li><strong>Laufzeit, Kündigung, Sperrung</strong>
-            <ul>
-              <li><strong>13.1</strong> Das Nutzungsverhältnis läuft auf unbestimmte Zeit und kann jederzeit durch Löschen des Kontos beendet werden.</li>
-              <li><strong>13.2</strong> Abonnements kündigst du im jeweiligen App-Store; dort gelten die Kündigungsfristen und Verlängerungen.</li>
-              <li><strong>13.3</strong> Wir können die Bereitstellung aus wichtigem Grund aussetzen oder kündigen (z. B. wiederholte Verstöße, Missbrauch, Zahlungsverzug), unter angemessener Berücksichtigung deiner Interessen.</li>
-            </ul>
-          </li>
-          <li><strong>Datenschutz</strong><br>Es gilt unsere <a href="/datenschutz.html">Datenschutzerklärung</a>. Sie erläutert, welche Daten wir verarbeiten, zu welchen Zwecken und welche Rechte du (Art. 12–22 DSGVO) hast.</li>
-          <li><strong>Geistiges Eigentum und Feedback</strong>
-            <ul>
-              <li><strong>15.1</strong> Die App, ihre Inhalte (außer UGC), Marken und Kennzeichen sind durch Urheber-, Marken- und sonstige Schutzrechte zugunsten des Anbieters bzw. seiner Lizenzgeber geschützt.</li>
-              <li><strong>15.2</strong> Übermitteltes Feedback dürfen wir unentgeltlich, zeitlich und räumlich unbeschränkt zur Verbesserung der App nutzen.</li>
-            </ul>
-          </li>
-          <li><strong>Online-Streitbeilegung, Verbraucherstreitbeilegung</strong><br>Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</li>
-          <li><strong>Anwendbares Recht, Gerichtsstand, Vertragssprache</strong><br>Es gilt das Recht der Bundesrepublik Deutschland, wobei für Verbraucher:innen mit gewöhnlichem Aufenthalt im EWR zwingende Bestimmungen ihres Aufenthaltsstaates unberührt bleiben. Gerichtsstand ist – soweit zulässig – der Sitz des Anbieters. Vertragssprache ist Deutsch; etwaige Übersetzungen (z. B. Englisch) dienen der Information. Bei Abweichungen hat die deutsche Fassung Vorrang.</li>
-          <li><strong>Salvatorische Klausel</strong><br>Sollten einzelne Bestimmungen unwirksam sein, bleibt der Vertrag im Übrigen wirksam.</li>
-        </ol>
-      </article>
-    </div>
-  </main>
-  <footer><div class="container">© 2025 – Movo · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
 </body>
 </html>
