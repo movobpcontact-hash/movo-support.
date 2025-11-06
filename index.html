@@ -172,6 +172,203 @@
   background:#000000;
   color:#f9fafb;
 }
+/* --- Timer Screen (Pause Bottom Sheet) --- */
+
+.timer-shell{
+  position:absolute;
+  inset:0;
+  padding:18px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-family:system-ui,-apple-system,'SF Pro Display','SF Pro Text',sans-serif;
+  background:#e5e7eb;
+  color:#111827;
+}
+
+/* Uhrzeit oben */
+.timer-time{
+  font-size:14px;
+  font-weight:600;
+}
+
+/* Training-Header oben */
+.timer-training-wrap{
+  margin-top:10px;
+  padding:14px 14px 10px;
+  border-radius:24px;
+  background:#d4d4dd;
+  box-shadow:0 6px 16px rgba(15,23,42,.15);
+}
+.timer-training-title{
+  font-size:22px;
+  font-weight:800;
+}
+.timer-training-meta{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:12px;
+  color:#4b5563;
+}
+.timer-training-pill{
+  padding:5px 10px;
+  border-radius:999px;
+  background:#e5e7f5;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.timer-training-pill .icon{
+  width:16px;
+  height:16px;
+  border-radius:999px;
+  background:#2563eb;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  color:#ffffff;
+}
+
+/* kleine runde Buttons links (Back / Close) */
+.timer-side-buttons{
+  position:absolute;
+  left:18px;
+  top:54px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.timer-circle-btn{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 6px 18px rgba(15,23,42,.24);
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  color:#6b7280;
+}
+.timer-circle-btn.secondary{
+  color:#2563eb;
+}
+
+/* Bottom Sheet */
+.timer-sheet{
+  margin-top:auto;
+  padding:14px 14px 16px;
+  border-radius:40px 40px 26px 26px;
+  background:rgba(255,255,255,.98);
+  backdrop-filter:blur(18px);
+  box-shadow:0 -16px 50px rgba(15,23,42,.4);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.timer-handle{
+  width:64px;
+  height:5px;
+  border-radius:999px;
+  background:#e5e7eb;
+  margin:2px auto 8px;
+}
+.timer-sheet-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.timer-sheet-title{
+  font-size:22px;
+  font-weight:800;
+}
+.timer-sheet-sub{
+  font-size:12px;
+  color:#6b7280;
+}
+.timer-close{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  background:#111827;
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  color:#ffffff;
+}
+
+/* Quick-Select Chips */
+.timer-quick-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:4px;
+}
+.timer-quick-pill{
+  padding:7px 14px;
+  border-radius:999px;
+  background:#f3f4ff;
+  font-size:14px;
+  font-weight:700;
+  color:#2563eb;
+}
+.timer-quick-pill.active{
+  background:#2563eb;
+  color:#ffffff;
+}
+
+/* Pseudo-Wheel */
+.timer-picker{
+  margin-top:2px;
+  padding:14px 12px;
+  border-radius:24px;
+  background:#f3f4ff;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  align-items:center;
+}
+.timer-picker-col{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+}
+.timer-picker-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:#9ca3af;
+}
+.timer-picker-value{
+  font-size:22px;
+  font-weight:600;
+  color:#111827;
+}
+.timer-picker-muted .timer-picker-value{
+  color:#d1d5db;
+}
+
+/* Start-Button */
+.timer-start-btn{
+  margin-top:6px;
+  padding:13px 16px;
+  border-radius:28px;
+  background:#2563eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:17px;
+  font-weight:700;
+  color:#ffffff;
+}
+.timer-start-btn::before{
+  content:'▶';
+  font-size:14px;
+}
 
 /* Statuszeit oben links (klein) */
 .app-status-time{
@@ -553,23 +750,72 @@
   </div>
 </div>
 
+<div id="screen-timer" class="dv-screen" style="display:none">
+  <div class="timer-shell">
+    <div class="timer-time">15:28</div>
 
-              <!-- Screen: Timer -->
-              <div id="screen-timer" class="dv-screen" style="display:none">
-                <div class="titlecard">
-                  <div class="big">Smart Rest Timer</div>
-                  <div class="pills"><span class="pill">Pause</span><span class="pill">1m 00s</span></div>
-                </div>
-                <div class="cards">
-                  <div class="card-ui">
-                    <div class="wheel"><span>30s</span><span>45s</span><span>60s</span></div>
-                    <div class="cta-big">Start</div>
-                  </div>
-                  <div class="card-ui">
-                    <div class="wheel"><span>1m</span><span>1m 30s</span><span>2m</span></div>
-                  </div>
-                </div>
-              </div>
+    <div class="timer-training-wrap">
+      <div class="timer-training-title">Training</div>
+      <div class="timer-training-meta">
+        <span class="timer-training-pill">
+          <span class="icon">📅</span>
+          <span>6. Nov 2025</span>
+        </span>
+        <span class="timer-training-pill">
+          <span class="icon">⏱</span>
+          <span>0m 13s</span>
+        </span>
+        <span class="timer-training-pill">
+          <span class="icon">⏸</span>
+          <span>Pausiert</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="timer-side-buttons">
+      <div class="timer-circle-btn">‹</div>
+      <div class="timer-circle-btn secondary">✕</div>
+    </div>
+
+    <div class="timer-sheet">
+      <div class="timer-handle"></div>
+
+      <div class="timer-sheet-header">
+        <div>
+          <div class="timer-sheet-title">Pause</div>
+          <div class="timer-sheet-sub">Wähle deine Pausenlänge.</div>
+        </div>
+        <div class="timer-close">✕</div>
+      </div>
+
+      <div class="timer-quick-row">
+        <div class="timer-quick-pill active">30s</div>
+        <div class="timer-quick-pill">45s</div>
+        <div class="timer-quick-pill">1m</div>
+        <div class="timer-quick-pill">1m 30s</div>
+        <div class="timer-quick-pill">2m</div>
+      </div>
+
+      <div class="timer-picker">
+        <div class="timer-picker-col">
+          <div class="timer-picker-label">Minuten</div>
+          <div class="timer-picker-value">1</div>
+        </div>
+        <div class="timer-picker-col">
+          <div class="timer-picker-label">Sekunden</div>
+          <div class="timer-picker-value">0</div>
+        </div>
+        <div class="timer-picker-col timer-picker-muted">
+          <div class="timer-picker-label">Vorschlag</div>
+          <div class="timer-picker-value">2m</div>
+        </div>
+      </div>
+
+      <div class="timer-start-btn">Start</div>
+    </div>
+  </div>
+</div>
+
 
               <!-- Screen: Steps -->
               <div id="screen-steps" class="dv-screen" style="display:none">
