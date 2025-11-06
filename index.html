@@ -159,223 +159,240 @@
 
 
     /* --- App-like UI im Device (Screen Logging) --- */
+/* --- App-like UI im Device (Screen Logging / Dark) --- */
 
 .app-shell{
   position:absolute;
   inset:0;
-  padding:16px 14px 10px;
+  padding:18px 14px 12px;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:12px;
   font-family:system-ui,-apple-system,'SF Pro Display','SF Pro Text',sans-serif;
-  color:#020817;
-  background:radial-gradient(120% 120% at 0 0, #ffffff, #eef2ff 40%, #e5e7ff 70%, #dde1ff 100%);
+  background:#000000;
+  color:#f9fafb;
 }
 
-/* Top: Zeit + Movo + Steps */
-.app-top{
+/* Statuszeit oben links (klein) */
+.app-status-time{
+  font-size:13px;
+  font-weight:600;
+  color:#f9fafb;
+  opacity:.9;
+}
+
+/* Avatar, Titel, Steps rechts */
+.app-header{
   display:flex;
-  align-items:flex-start;
+  align-items:flex-end;
   justify-content:space-between;
   gap:10px;
 }
-.app-time{
-  font-weight:600;
-  font-size:14px;
-  color:#111827;
+
+.app-header-left{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
-.app-logo-text{
-  font-weight:800;
-  font-size:26px;
-  letter-spacing:0.01em;
-  margin-top:4px;
-}
-.app-steps-pill{
-  padding:6px 10px;
+
+.app-avatar{
+  width:32px;
+  height:32px;
   border-radius:999px;
-  background:#eef2ff;
+  background:#111827;
+  box-shadow:0 8px 18px rgba(0,0,0,.7);
+}
+
+.app-logo-text{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:.01em;
+}
+
+.app-steps-pill{
+  padding:8px 14px;
+  border-radius:999px;
+  background:#020817;
   display:inline-flex;
   align-items:center;
   gap:6px;
-  font-size:12px;
-  color:#2563eb;
-  box-shadow:0 6px 18px rgba(15,23,42,.15);
+  font-size:13px;
+  color:#4f46e5;
+  box-shadow:0 14px 34px rgba(0,0,0,.7);
 }
 .app-steps-pill span.icon{
-  width:14px;
-  height:14px;
+  width:16px;
+  height:16px;
   border-radius:999px;
   border:2px solid #4f46e5;
   box-sizing:border-box;
 }
 
-/* große Gradient-Karte */
+/* Hauptkarte "Dein Training" */
 .app-main-card{
-  margin-top:4px;
-  padding:14px 14px 10px;
-  border-radius:26px;
-  background:linear-gradient(135deg,#c4b5fd,#bfdbfe);
-  box-shadow:0 16px 40px rgba(15,23,42,.25);
+  margin-top:6px;
+  padding:16px 16px 12px;
+  border-radius:32px;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  box-shadow:0 22px 50px rgba(0,0,0,.75);
   display:flex;
   flex-direction:column;
-  gap:3px;
-  color:#0f172a;
+  gap:4px;
+  color:#f9fafb;
 }
 .app-main-label{
-  font-size:12px;
-  opacity:.9;
+  font-size:13px;
+  font-weight:700;
   display:flex;
   align-items:center;
-  gap:6px;
-}
-.app-main-title{
-  font-size:18px;
-  font-weight:800;
+  gap:8px;
 }
 .app-main-sub{
   font-size:13px;
   opacity:.9;
 }
 .app-main-btn{
-  margin-top:8px;
-  padding:8px 10px;
-  border-radius:18px;
-  background:rgba(255,255,255,.22);
-  backdrop-filter:blur(8px);
+  margin-top:10px;
+  padding:9px 12px;
+  border-radius:20px;
+  background:rgba(255,255,255,.18);
   display:inline-flex;
   align-items:center;
-  gap:6px;
-  font-size:13px;
+  gap:8px;
+  font-size:14px;
   font-weight:600;
 }
 .app-main-btn::before{
   content:'+';
-  width:16px;
-  height:16px;
+  width:18px;
+  height:18px;
   border-radius:999px;
-  background:#fff;
+  background:#ffffff;
   display:grid;
   place-items:center;
-  font-size:13px;
+  font-size:14px;
   color:#4f46e5;
 }
 
-/* Sektionstitel + Link */
+/* Section Headline + Link */
 .app-section-head{
   display:flex;
   align-items:center;
   gap:6px;
-  margin-top:10px;
+  margin-top:12px;
 }
 .app-section-title{
-  font-size:13px;
+  font-size:15px;
   font-weight:700;
-  color:#111827;
+  color:#f9fafb;
 }
 .app-link-small{
   margin-left:auto;
-  font-size:11px;
-  color:#2563eb;
+  font-size:12px;
+  color:#3b82f6;
 }
 
-/* Pills für Vorlagen */
+/* Vorlagen-Pills */
 .app-templates-row{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
-  margin-top:6px;
+  gap:8px;
+  margin-top:8px;
 }
 .app-pill{
-  padding:6px 10px;
+  padding:7px 14px;
   border-radius:999px;
-  background:#e5e7ff;
-  font-size:11px;
+  background:#020817;
+  font-size:13px;
   font-weight:600;
-  color:#111827;
+  color:#e5e7eb;
 }
 .app-pill.active{
-  background:#2563eb;
+  background:#111827;
   color:#ffffff;
 }
 
-/* Letzte Trainings */
+/* Trainingsliste */
 .app-list{
-  margin-top:8px;
+  margin-top:10px;
   display:flex;
   flex-direction:column;
-  gap:6px;
+  gap:8px;
 }
 .app-item{
-  padding:8px 10px;
-  border-radius:18px;
-  background:#f9fafb;
+  padding:10px 12px;
+  border-radius:22px;
+  background:#020817;
   display:grid;
   grid-template-columns:auto 1fr auto;
-  gap:8px;
+  gap:10px;
   align-items:center;
-  box-shadow:0 8px 20px rgba(15,23,42,.08);
+  box-shadow:0 14px 34px rgba(0,0,0,.9);
 }
 .app-item-icon{
-  width:24px;
-  height:24px;
+  width:32px;
+  height:32px;
   border-radius:999px;
-  border:3px solid #4f46e5;
+  border:4px solid #4f46e5;
   display:grid;
   place-items:center;
-  font-size:13px;
+  font-size:16px;
   color:#4f46e5;
 }
 .app-item-title{
-  font-size:13px;
+  font-size:15px;
   font-weight:700;
-  color:#111827;
+  color:#f9fafb;
 }
 .app-item-meta{
-  font-size:10px;
-  color:#6b7280;
+  font-size:12px;
+  color:#9ca3af;
 }
 .app-item-link{
-  font-size:10px;
-  color:#2563eb;
+  font-size:12px;
+  color:#3b82f6;
   margin-top:2px;
 }
 .app-item-arrow{
-  font-size:14px;
-  color:#9ca3af;
+  font-size:18px;
+  color:#6b7280;
 }
 
-/* Bottom Navigation */
+/* Bottom Nav */
 .app-bottom-nav{
   margin-top:auto;
-  padding:6px 8px 4px;
-  border-radius:22px;
-  background:#ffffff;
+  padding:7px 8px 6px;
+  border-radius:26px;
+  background:#020817;
   display:grid;
   grid-template-columns:repeat(5,1fr);
   gap:4px;
-  box-shadow:0 10px 26px rgba(15,23,42,.24);
+  box-shadow:0 18px 42px rgba(0,0,0,.95);
 }
 .app-nav-item{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:2px;
-  font-size:8px;
+  gap:3px;
+  font-size:10px;
   color:#6b7280;
 }
 .app-nav-dot{
-  width:16px;
-  height:16px;
+  width:20px;
+  height:20px;
   border-radius:999px;
-  background:#e5e7eb;
+  background:#111827;
 }
 .app-nav-item.active .app-nav-dot{
-  background:#2563eb;
+  background:#4f46e5;
 }
 .app-nav-item.active{
-  color:#111827;
+  color:#ffffff;
   font-weight:600;
 }
+
+/* Falls noch das alte .status im Markup steht: hier ausblenden im Logging-Screen */
+#screen-logging > .status{ display:none; }
 
   </style>
 </head>
@@ -453,32 +470,30 @@
               <div class="status"><span>9:41</span><span class="dot"></span></div>
 
               <!-- Screen: Logging -->
-           <div id="screen-logging" class="dv-screen" style="display:block">
+         <div id="screen-logging" class="dv-screen" style="display:block">
   <div class="app-shell">
-    <!-- Top: Zeit + Logo + Steps -->
-    <div class="app-top">
-      <div>
-        <div class="app-time">14:38</div>
+    <div class="app-status-time">14:59</div>
+
+    <div class="app-header">
+      <div class="app-header-left">
+        <div class="app-avatar"></div>
         <div class="app-logo-text">Movo</div>
       </div>
       <div class="app-steps-pill">
         <span class="icon"></span>
-        <span>3.792</span>
+        <span>3.827</span>
       </div>
     </div>
 
-    <!-- Große Trainingskarte -->
     <div class="app-main-card">
       <div class="app-main-label">
         <span>🏋️‍♂️ Dein Training</span>
-        <span style="font-size:10px; opacity:.8;">Heute</span>
+        <span>Heute</span>
       </div>
-      <div class="app-main-title">Training starten</div>
-      <div class="app-main-sub">Starte dein heutiges Workout in wenigen Sekunden.</div>
+      <div class="app-main-sub">Starte dein heutiges Workout mit einem Tap.</div>
       <div class="app-main-btn">Training starten</div>
     </div>
 
-    <!-- Trainingsvorlagen -->
     <div class="app-section-head">
       <div class="app-section-title">Trainingsvorlagen</div>
       <div class="app-link-small">Alle ansehen</div>
@@ -491,14 +506,13 @@
       <div class="app-pill">Ganzkörper</div>
     </div>
 
-    <!-- Letzte Trainings -->
-    <div class="app-section-title" style="margin-top:10px;">Letzte Trainings</div>
+    <div class="app-section-title" style="margin-top:12px;">Letzte Trainings</div>
     <div class="app-list">
       <div class="app-item">
         <div class="app-item-icon">🏋️</div>
         <div>
           <div class="app-item-title">Pull</div>
-          <div class="app-item-meta">22. Okt 2025 • 3 Übungen • 8 Sätze</div>
+          <div class="app-item-meta">22. Oct 2025 • 3 Übungen • 8 Sätze</div>
           <div class="app-item-link">Details ansehen</div>
         </div>
         <div class="app-item-arrow">›</div>
@@ -507,14 +521,13 @@
         <div class="app-item-icon">🏋️</div>
         <div>
           <div class="app-item-title">Push</div>
-          <div class="app-item-meta">26. Okt 2025 • 4 Übungen • 14 Sätze</div>
+          <div class="app-item-meta">26. Oct 2025 • 4 Übungen • 14 Sätze</div>
           <div class="app-item-link">Details ansehen</div>
         </div>
         <div class="app-item-arrow">›</div>
       </div>
     </div>
 
-    <!-- Bottom Navigation -->
     <div class="app-bottom-nav">
       <div class="app-nav-item active">
         <div class="app-nav-dot"></div>
