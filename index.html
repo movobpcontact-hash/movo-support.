@@ -175,288 +175,236 @@
   --steps-font: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 }
 
-/* iPhone-Card im Mittelteil */
-.steps-phone {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 18px 16px 22px;
-  box-sizing: border-box;
-  border-radius: 32px;
-  background: radial-gradient(circle at top, #111827 0, var(--steps-bg) 40%);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
-  font-family: var(--steps-font);
-  color: var(--steps-text);
-  position: relative;
+/* --- Steps Screen (nur im Device) --- */
+
+#screen-steps .steps-shell{
+  position:absolute;
+  inset:0;
+  padding:18px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:#020817;
+  color:#f9fafb;
+  font-family:system-ui,-apple-system,'SF Pro Display','SF Pro Text',sans-serif;
 }
 
-/* Top Nav */
-.steps-phone .steps-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+/* Header */
+#screen-steps .steps-header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:11px;
+  color:#9ca3af;
 }
-
-.steps-phone .nav-title {
-  font-weight: 600;
-  font-size: 18px;
+#screen-steps .steps-fertig{
+  padding:5px 10px;
+  border-radius:999px;
+  background:#020817;
+  border:1px solid #111827;
+  color:#60a5fa;
 }
-
-.steps-phone .nav-btn {
-  border: none;
-  background: transparent;
-  color: var(--steps-muted);
-  font-size: 13px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  cursor: default;
+#screen-steps .steps-title{
+  font-weight:600;
+  font-size:16px;
+  color:#f9fafb;
 }
-
-.steps-phone .nav-primary {
-  background: #111827;
-  color: #60a5fa;
+#screen-steps .steps-dots{
+  display:flex;
+  gap:3px;
 }
-
-.steps-phone .nav-icon {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  padding: 8px 10px;
-  background: #111827;
-  border-radius: 999px;
-}
-
-.steps-phone .nav-icon .dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
-  background: #9ca3af;
+#screen-steps .steps-dots span{
+  width:3px;
+  height:3px;
+  border-radius:999px;
+  background:#9ca3af;
 }
 
 /* Hauptkarte */
-.steps-phone .steps-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 18px 20px;
-  background: linear-gradient(135deg, var(--steps-accent), var(--steps-accent2));
-  border-radius: var(--steps-radius-xl);
-  box-shadow: var(--steps-shadow-soft);
-  margin-bottom: 16px;
+#screen-steps .steps-main-card{
+  margin-top:2px;
+  padding:14px 14px 10px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#4f46e5,#9333ea);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.85);
 }
-
-.steps-phone .steps-circle {
-  width: 82px;
-  height: 82px;
-  border-radius: 999px;
-  border: 6px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#screen-steps .steps-ring{
+  width:68px;
+  height:68px;
+  border-radius:999px;
+  border:6px solid rgba(255,255,255,.16);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-
-.steps-phone .steps-circle-inner {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  border: 3px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+#screen-steps .steps-ring-inner{
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
 }
-
-.steps-phone .steps-info {
-  flex: 1;
+#screen-steps .steps-main-text .label{
+  font-size:12px;
+  opacity:.9;
 }
-
-.steps-phone .steps-label {
-  font-size: 16px;
-  font-weight: 500;
+#screen-steps .steps-main-text .value{
+  margin-top:2px;
+  font-size:19px;
+  font-weight:700;
 }
-
-.steps-phone .steps-value {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 4px 0 8px;
+#screen-steps .steps-main-text .bar{
+  margin-top:6px;
+  width:100%;
+  height:5px;
+  border-radius:999px;
+  background:rgba(255,255,255,.24);
+  overflow:hidden;
 }
-
-.steps-phone .steps-progress {
-  width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-  overflow: hidden;
-}
-
-.steps-phone .steps-progress-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: rgba(255, 255, 255, 0.95);
+#screen-steps .steps-main-text .bar .fill{
+  height:100%;
+  background:#ffffff;
 }
 
 /* Tabs */
-.steps-phone .steps-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 14px;
+#screen-steps .steps-tabs{
+  display:flex;
+  gap:6px;
+  margin-top:4px;
+}
+#screen-steps .steps-tabs .tab{
+  flex:1;
+  padding:6px 0;
+  text-align:center;
+  border-radius:999px;
+  background:#020817;
+  border:1px solid #111827;
+  font-size:9px;
+  color:#9ca3af;
+}
+#screen-steps .steps-tabs .tab.active{
+  background:#111827;
+  color:#f9fafb;
 }
 
-.steps-phone .tab {
-  flex: 1;
-  padding: 8px 0;
-  border-radius: 999px;
-  border: none;
-  background: #27272a;
-  color: var(--steps-muted);
-  font-size: 12px;
+/* Kennzahlen */
+#screen-steps .steps-stat-row{
+  margin-top:4px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+}
+#screen-steps .steps-stat-row .stat{
+  padding:5px 3px;
+  border-radius:14px;
+  background:#020817;
+  border:1px solid #111827;
+  text-align:center;
+}
+#screen-steps .steps-stat-row .label{
+  font-size:7px;
+  color:#9ca3af;
+}
+#screen-steps .steps-stat-row .value{
+  font-size:11px;
+  font-weight:600;
 }
 
-.steps-phone .tab.active {
-  background: #4b5563;
-  color: #ffffff;
-}
-
-/* Stats */
-.steps-phone .steps-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.steps-phone .stat-card {
-  background: #111827;
-  border-radius: 18px;
-  padding: 7px 4px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
-
-.steps-phone .stat-label {
-  font-size: 9px;
-  color: var(--steps-muted);
-}
-
-.steps-phone .stat-value {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* Generic Card */
-.steps-phone .card {
-  background: var(--steps-card-bg-soft);
-  border-radius: var(--steps-radius-xl);
-  padding: 12px 12px 10px;
-  box-shadow: var(--steps-shadow-soft);
-  margin-bottom: 12px;
+/* Karten allgemein */
+#screen-steps .steps-card{
+  margin-top:6px;
+  padding:8px 8px 6px;
+  border-radius:18px;
+  background:#020817;
+  border:1px solid #111827;
+  box-shadow:0 14px 32px rgba(0,0,0,.9);
 }
 
 /* Verlauf */
-.steps-phone .card-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
+#screen-steps .history-head{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  font-size:10px;
 }
-
-.steps-phone .bars-icon span {
-  display: inline-block;
-  width: 3px;
-  height: 8px;
-  margin-right: 2px;
-  border-radius: 999px;
-  background: #ffffff;
+#screen-steps .icon-bars span{
+  display:block;
+  width:2px;
+  height:6px;
+  margin-right:2px;
+  border-radius:999px;
+  background:#f9fafb;
 }
-
-.steps-phone .card-title {
-  font-weight: 600;
-  font-size: 14px;
+#screen-steps .history-chart{
+  margin-top:4px;
+  height:64px;
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
 }
-
-.steps-phone .chart {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 4px;
-  height: 120px;
-  padding: 8px;
-  border-radius: 18px;
-  background: #050608;
+#screen-steps .history-chart .bar{
+  flex:1;
+  max-width:9px;
+  border-radius:6px 6px 3px 3px;
+  background:#3b82f6;
 }
-
-.steps-phone .chart .bar {
-  flex: 1;
-  max-width: 14px;
-  border-radius: 8px 8px 4px 4px;
-  background: #3b82f6;
-}
-
-.steps-phone .chart-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4px;
-  font-size: 8px;
-  color: var(--steps-muted);
+#screen-steps .history-labels{
+  margin-top:3px;
+  display:flex;
+  justify-content:space-between;
+  font-size:6px;
+  color:#6b7280;
 }
 
 /* Ziel */
-.steps-phone .steps-goal .goal-top {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 4px;
+#screen-steps .goal-top{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:10px;
+}
+#screen-steps .goal-top .dot{
+  width:9px;
+  height:9px;
+  border-radius:999px;
+  border:2px solid #f9fafb;
+}
+#screen-steps .goal-bottom{
+  margin-top:4px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+#screen-steps .goal-bottom .label{
+  font-size:8px;
+  color:#9ca3af;
+}
+#screen-steps .goal-bottom .actions{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
+#screen-steps .goal-bottom .btn{
+  width:20px;
+  height:20px;
+  border-radius:999px;
+  background:#111827;
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  color:#f9fafb;
+}
+#screen-steps .goal-bottom .value{
+  font-size:11px;
+  font-weight:600;
 }
 
-.steps-phone .goal-title {
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.steps-phone .goal-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.steps-phone .goal-label {
-  font-size: 10px;
-  color: var(--steps-muted);
-}
-
-.steps-phone .goal-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.steps-phone .goal-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 999px;
-  border: none;
-  background: #111827;
-  color: #ffffff;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.steps-phone .goal-value {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-
-/* Optional: leicht anderes Layout ab Tablet */
-@media (min-width: 600px) {
-  .steps-screen {
-    margin-top: 24px;
-    border-radius: 32px;
-  }
-}
 
 
     
@@ -1116,106 +1064,104 @@
 </div>
 
 
-          <div class="steps-screen">
-  <!-- Top Bar -->
-  <header class="steps-nav">
-    <button class="nav-btn nav-primary">Fertig</button>
-    <div class="nav-title">Schritte</div>
-    <button class="nav-btn nav-icon">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </button>
-  </header>
-
-  <!-- Schritte Card -->
-  <section class="steps-card">
-    <div class="steps-circle">
-      <div class="steps-circle-inner">
-        🚶
-      </div>
-    </div>
-    <div class="steps-info">
-      <div class="steps-label">Schritte</div>
-      <div class="steps-value">290 / 10.000</div>
-      <div class="steps-progress">
-        <div class="steps-progress-fill" style="width: 2.9%"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Zeitraum Tabs -->
-  <div class="steps-tabs">
-    <button class="tab active">7 Tage</button>
-    <button class="tab">14 Tage</button>
-    <button class="tab">30 Tage</button>
-  </div>
-
-  <!-- Kennzahlen -->
-  <div class="steps-stats">
-    <div class="stat-card">
-      <div class="stat-label">Heute</div>
-      <div class="stat-value">290</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Ø/Tag</div>
-      <div class="stat-value">6.545</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Best</div>
-      <div class="stat-value">9.752</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Ziel-Tage</div>
-      <div class="stat-value">0</div>
-    </div>
-  </div>
-
-  <!-- Verlauf -->
-  <section class="card steps-history">
-    <div class="card-header">
-      <div class="bars-icon">
+       <div id="screen-steps" class="dv-screen" style="display:none">
+  <div class="steps-shell">
+    <!-- Header -->
+    <div class="steps-header-row">
+      <span class="steps-fertig">Fertig</span>
+      <span class="steps-title">Schritte</span>
+      <div class="steps-dots">
         <span></span><span></span><span></span>
       </div>
-      <span class="card-title">Verlauf</span>
     </div>
-    <div class="chart">
-      <!-- Platzhalter-Bars (kannst du easy mit echten Daten ersetzen) -->
-      <div class="bar" style="height: 80%"></div>
-      <div class="bar" style="height: 65%"></div>
-      <div class="bar" style="height: 75%"></div>
-      <div class="bar" style="height: 45%"></div>
-      <div class="bar" style="height: 95%"></div>
-      <div class="bar" style="height: 60%"></div>
-      <div class="bar" style="height: 5%"></div>
-    </div>
-    <div class="chart-labels">
-      <span>2. Nov.</span>
-      <span>3. Nov.</span>
-      <span>4. Nov.</span>
-      <span>5. Nov.</span>
-      <span>6. Nov.</span>
-      <span>7. Nov.</span>
-      <span>8. Nov.</span>
-    </div>
-  </section>
 
-  <!-- Ziel -->
-  <section class="card steps-goal">
-    <div class="goal-top">
-      <div class="goal-icon">◎</div>
-      <div class="goal-title">Ziel</div>
-    </div>
-    <div class="goal-bottom">
-      <div class="goal-label">Tagesziel</div>
-      <div class="goal-actions">
-        <button class="goal-btn">−</button>
-        <button class="goal-btn">+</button>
-        <span class="goal-value">10.000</span>
+    <!-- Hauptkarte -->
+    <div class="steps-main-card">
+      <div class="steps-ring">
+        <div class="steps-ring-inner">🚶</div>
+      </div>
+      <div class="steps-main-text">
+        <div class="label">Schritte</div>
+        <div class="value">290 / 10.000</div>
+        <div class="bar">
+          <div class="fill" style="width:2.9%"></div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- Tabs -->
+    <div class="steps-tabs">
+      <div class="tab active">7 Tage</div>
+      <div class="tab">14 Tage</div>
+      <div class="tab">30 Tage</div>
+    </div>
+
+    <!-- Kennzahlen -->
+    <div class="steps-stat-row">
+      <div class="stat">
+        <div class="label">Heute</div>
+        <div class="value">290</div>
+      </div>
+      <div class="stat">
+        <div class="label">Ø/Tag</div>
+        <div class="value">6.545</div>
+      </div>
+      <div class="stat">
+        <div class="label">Best</div>
+        <div class="value">9.752</div>
+      </div>
+      <div class="stat">
+        <div class="label">Ziel-Tage</div>
+        <div class="value">0</div>
+      </div>
+    </div>
+
+    <!-- Verlauf -->
+    <div class="steps-card history">
+      <div class="history-head">
+        <div class="icon-bars">
+          <span></span><span></span><span></span>
+        </div>
+        <span>Verlauf</span>
+      </div>
+      <div class="history-chart">
+        <div class="bar" style="height:80%"></div>
+        <div class="bar" style="height:65%"></div>
+        <div class="bar" style="height:75%"></div>
+        <div class="bar" style="height:45%"></div>
+        <div class="bar" style="height:95%"></div>
+        <div class="bar" style="height:60%"></div>
+        <div class="bar" style="height:5%"></div>
+      </div>
+      <div class="history-labels">
+        <span>2. Nov.</span>
+        <span>3. Nov.</span>
+        <span>4. Nov.</span>
+        <span>5. Nov.</span>
+        <span>6. Nov.</span>
+        <span>7. Nov.</span>
+        <span>8. Nov.</span>
+      </div>
+    </div>
+
+    <!-- Ziel -->
+    <div class="steps-card goal">
+      <div class="goal-top">
+        <span class="dot"></span>
+        <span>Ziel</span>
+      </div>
+      <div class="goal-bottom">
+        <div class="label">Tagesziel</div>
+        <div class="actions">
+          <span class="btn">−</span>
+          <span class="btn">+</span>
+          <span class="value">10.000</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
               <!-- Screen: Routines -->
               <div id="screen-routines" class="dv-screen" style="display:none">
