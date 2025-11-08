@@ -161,68 +161,64 @@
     /* --- App-like UI im Device (Screen Logging) --- */
 /* --- App-like UI im Device (Screen Logging / Dark) --- */
 :root {
-  --bg: #050608;
-  --card-bg: #151515;
-  --card-bg-soft: #1c1c1e;
-  --accent: #4f46e5;
-  --accent2: #9333ea;
-  --text: #ffffff;
-  --muted: #9ca3af;
-  --radius-xl: 26px;
-  --radius-lg: 20px;
-  --transition-fast: 0.2s ease;
-  --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.7);
-  --font: -apple-system, system-ui, -system-ui, BlinkMacSystemFont, sans-serif;
+  --steps-bg: #050608;
+  --steps-card-bg: #151515;
+  --steps-card-bg-soft: #1c1c1e;
+  --steps-accent: #4f46e5;
+  --steps-accent2: #9333ea;
+  --steps-text: #ffffff;
+  --steps-muted: #9ca3af;
+  --steps-radius-xl: 26px;
+  --steps-radius-lg: 20px;
+  --steps-transition-fast: 0.2s ease;
+  --steps-shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.7);
+  --steps-font: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  font-family: var(--font);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-}
-
-/* Wrapper im "Phone"-Format */
-.steps-screen {
+/* iPhone-Card im Mittelteil */
+.steps-phone {
   width: 100%;
-  max-width: 430px;
-  min-height: 100vh;
-  padding: 16px 16px 24px;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 18px 16px 22px;
   box-sizing: border-box;
-  background: radial-gradient(circle at top, #111827 0, var(--bg) 40%);
+  border-radius: 32px;
+  background: radial-gradient(circle at top, #111827 0, var(--steps-bg) 40%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  font-family: var(--steps-font);
+  color: var(--steps-text);
+  position: relative;
 }
 
 /* Top Nav */
-.steps-nav {
+.steps-phone .steps-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.nav-title {
+.steps-phone .nav-title {
   font-weight: 600;
   font-size: 18px;
 }
 
-.nav-btn {
+.steps-phone .nav-btn {
   border: none;
   background: transparent;
-  color: var(--muted);
-  font-size: 14px;
+  color: var(--steps-muted);
+  font-size: 13px;
   padding: 6px 14px;
   border-radius: 999px;
+  cursor: default;
 }
 
-.nav-primary {
+.steps-phone .nav-primary {
   background: #111827;
   color: #60a5fa;
 }
 
-.nav-icon {
+.steps-phone .nav-icon {
   display: flex;
   align-items: center;
   gap: 3px;
@@ -231,26 +227,26 @@ body {
   border-radius: 999px;
 }
 
-.nav-icon .dot {
+.steps-phone .nav-icon .dot {
   width: 4px;
   height: 4px;
   border-radius: 999px;
   background: #9ca3af;
 }
 
-/* Steps Main Card */
-.steps-card {
+/* Hauptkarte */
+.steps-phone .steps-card {
   display: flex;
   align-items: center;
   gap: 18px;
   padding: 18px 20px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 18px;
+  background: linear-gradient(135deg, var(--steps-accent), var(--steps-accent2));
+  border-radius: var(--steps-radius-xl);
+  box-shadow: var(--steps-shadow-soft);
+  margin-bottom: 16px;
 }
 
-.steps-circle {
+.steps-phone .steps-circle {
   width: 82px;
   height: 82px;
   border-radius: 999px;
@@ -258,10 +254,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.9;
 }
 
-.steps-circle-inner {
+.steps-phone .steps-circle-inner {
   width: 56px;
   height: 56px;
   border-radius: 999px;
@@ -270,107 +265,103 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  color: #ffffff;
 }
 
-.steps-info {
+.steps-phone .steps-info {
   flex: 1;
 }
 
-.steps-label {
+.steps-phone .steps-label {
   font-size: 16px;
   font-weight: 500;
 }
 
-.steps-value {
+.steps-phone .steps-value {
   font-size: 22px;
   font-weight: 700;
   margin: 4px 0 8px;
 }
 
-.steps-progress {
+.steps-phone .steps-progress {
   width: 100%;
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   overflow: hidden;
 }
 
-.steps-progress-fill {
+.steps-phone .steps-progress-fill {
   height: 100%;
   border-radius: inherit;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* Tabs */
-.steps-tabs {
+.steps-phone .steps-tabs {
   display: flex;
-  align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.tab {
+.steps-phone .tab {
   flex: 1;
-  padding: 9px 0;
+  padding: 8px 0;
   border-radius: 999px;
   border: none;
   background: #27272a;
-  color: var(--muted);
-  font-size: 13px;
-  transition: var(--transition-fast);
+  color: var(--steps-muted);
+  font-size: 12px;
 }
 
-.tab.active {
+.steps-phone .tab.active {
   background: #4b5563;
   color: #ffffff;
 }
 
-/* Stats Cards */
-.steps-stats {
+/* Stats */
+.steps-phone .steps-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.stat-card {
+.steps-phone .stat-card {
   background: #111827;
   border-radius: 18px;
-  padding: 8px 6px;
+  padding: 7px 4px;
   text-align: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-.stat-label {
-  font-size: 10px;
-  color: var(--muted);
-  margin-bottom: 2px;
+.steps-phone .stat-label {
+  font-size: 9px;
+  color: var(--steps-muted);
 }
 
-.stat-value {
-  font-size: 15px;
+.steps-phone .stat-value {
+  font-size: 14px;
   font-weight: 600;
 }
 
 /* Generic Card */
-.card {
-  background: var(--card-bg-soft);
-  border-radius: var(--radius-xl);
-  padding: 14px 14px 12px;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 16px;
+.steps-phone .card {
+  background: var(--steps-card-bg-soft);
+  border-radius: var(--steps-radius-xl);
+  padding: 12px 12px 10px;
+  box-shadow: var(--steps-shadow-soft);
+  margin-bottom: 12px;
 }
 
 /* Verlauf */
-.card-header {
+.steps-phone .card-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
-.bars-icon span {
+.steps-phone .bars-icon span {
   display: inline-block;
   width: 3px;
   height: 8px;
@@ -379,90 +370,85 @@ body {
   background: #ffffff;
 }
 
-.card-title {
+.steps-phone .card-title {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-.chart {
+.steps-phone .chart {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 4px;
-  height: 140px;
-  padding: 10px;
+  height: 120px;
+  padding: 8px;
   border-radius: 18px;
   background: #050608;
 }
 
-.chart .bar {
+.steps-phone .chart .bar {
   flex: 1;
-  max-width: 16px;
+  max-width: 14px;
   border-radius: 8px 8px 4px 4px;
   background: #3b82f6;
 }
 
-.chart-labels {
+.steps-phone .chart-labels {
   display: flex;
   justify-content: space-between;
-  margin-top: 6px;
-  font-size: 9px;
-  color: var(--muted);
+  margin-top: 4px;
+  font-size: 8px;
+  color: var(--steps-muted);
 }
 
 /* Ziel */
-.steps-goal .goal-top {
+.steps-phone .steps-goal .goal-top {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 6px;
+  margin-bottom: 4px;
 }
 
-.goal-icon {
-  font-size: 16px;
-}
-
-.goal-title {
+.steps-phone .goal-title {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-.goal-bottom {
+.steps-phone .goal-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4px;
 }
 
-.goal-label {
-  font-size: 11px;
-  color: var(--muted);
+.steps-phone .goal-label {
+  font-size: 10px;
+  color: var(--steps-muted);
 }
 
-.goal-actions {
+.steps-phone .goal-actions {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-.goal-btn {
-  width: 34px;
-  height: 34px;
+.steps-phone .goal-btn {
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
   border: none;
   background: #111827;
   color: #ffffff;
   font-size: 18px;
-  line-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.goal-value {
-  font-size: 15px;
+.steps-phone .goal-value {
+  font-size: 14px;
   font-weight: 600;
 }
+
 
 /* Optional: leicht anderes Layout ab Tablet */
 @media (min-width: 600px) {
