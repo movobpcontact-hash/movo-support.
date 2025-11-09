@@ -218,6 +218,50 @@
 /* --- Steps Screen (Health-Look, nur im Device) --- */
 
 
+    .hero-cta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+/* App Store Badge – nur Apple */
+.appstore-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 14px 30px rgba(0,0,0,.65);
+  border:1px solid rgba(148,163,253,.28);
+}
+.appstore-badge:hover{
+  transform:translateY(-1px);
+}
+.apple-logo{
+  font-size:22px;
+}
+.appstore-label .small{
+  font-size:10px;
+  opacity:.85;
+}
+.appstore-label .big{
+  font-size:16px;
+  font-weight:600;
+  line-height:1.1;
+}
+
+/* Hero zweispaltig lassen (wie vorher) */
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  gap:24px;
+  align-items:center;
+}
+
     /* App Store Badge (nur iOS) */
 .store-badge.appstore{
   display:inline-flex;
@@ -1672,19 +1716,15 @@
           <span class="badge">iOS • Datenschutz-freundlich</span>
           <h1 class="h1">Movo – Gym Tracker & Planner<br><small style="font-weight:500">Train smarter. Move better.</small></h1>
           <p class="lead">Movo macht dein Kraft- und Fitness-Training einfach: Übungen loggen, Vorlagen nutzen, Pausen intelligent steuern und deinen Fortschritt sehen – ohne Schnickschnack.</p>
-      <div class="hero-cta">
+    <div class="hero-cta">
   <a
+    class="appstore-badge"
     href="https://apps.apple.com/us/app/movo-gym-tracker-planner/id6754493657"
-    class="store-badge appstore"
     target="_blank"
     rel="noopener"
   >
-    <span class="icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor" d="M16.7 2.2c0 1-0.4 1.9-1.1 2.6-0.8 0.8-1.7 1.2-2.7 1.1-0.1-1 0.4-2 1.1-2.7 0.4-0.4 0.9-0.7 1.4-0.9 0.4-0.2 0.9-0.3 1.3-0.3 0 0.1 0 0.1 0 0.2zM20.1 17.3c-0.4 0.9-0.6 1.3-1.1 2.1-0.7 1.1-1.7 2.6-3.1 2.6-1.2 0-2-0.8-3.2-0.8-1.3 0-2.1 0.8-3.3 0.8-1.3 0-2.3-1.3-3.1-2.4-1.1-1.6-1.7-3.2-1.7-5 0-1.5 0.3-2.8 1.2-3.9 0.8-1.1 2-1.8 3.3-1.8 1.3 0 2.1 0.9 3.2 0.9 1 0 1.7-0.9 3.2-0.9 1.1 0 2.2 0.6 3 1.6-1.2 0.7-1.9 1.9-1.9 3.3 0 1.4 0.7 2.7 1.9 3.4z"/>
-      </svg>
-    </span>
-    <span class="label">
+    <span class="apple-logo"></span>
+    <span class="appstore-label">
       <span class="small">Download on the</span>
       <span class="big">App Store</span>
     </span>
@@ -1693,6 +1733,7 @@
   <a class="btn" href="#features">So funktioniert's</a>
   <a class="btn" href="#kontakt">Kontakt</a>
 </div>
+
 
 
         <div style="position:relative" class="reveal">
@@ -2224,6 +2265,8 @@
           </div>
         </div>
       </div>
+
+        
 <div class="sticky-cta">
   <a
     class="btn primary"
@@ -2234,6 +2277,7 @@
     Hol dir Movo für iOS
   </a>
 </div>
+
     </main>
 
     <section id="highlights" class="section">
