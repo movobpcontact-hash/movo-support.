@@ -36,62 +36,64 @@
       background:linear-gradient(180deg, #0b0f1ad0 60%, transparent);
       border-bottom:1px solid var(--border)}
     .navwrap{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:12px}
-  .brand{
+    
+.brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  justify-content:flex-start;
+  padding-left:0;
 }
 
-/* Neon Icon */
+/* Neon-Block wie im Referenzbild */
 .logo{
   position:relative;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:56px;
-  height:56px;
-  border-radius:18px;
-  background:radial-gradient(circle at 50% 30%, #38bdf8, #0b0f1a 80%);
-  box-shadow:
-    0 0 22px rgba(56,189,248,.9),
-    0 0 60px rgba(56,189,248,.55),
-    0 18px 40px rgba(0,0,0,.9);
+  width:78px;
+  height:78px;
+  border-radius:24px;
   overflow:visible;
+  background:rgba(0,0,0,0.4);
+  box-shadow:
+    0 0 40px rgba(56,189,248,1),
+    0 0 90px rgba(56,189,248,0.9),
+    0 18px 40px rgba(0,0,0,0.95);
 }
 
+/* weicher äußerer Glow */
 .logo::before{
   content:"";
   position:absolute;
-  inset:-18px;
-  border-radius:inherit;
-  background:radial-gradient(circle, rgba(56,189,248,.22), transparent 75%);
-  filter:blur(10px);
+  inset:-26px;
+  border-radius:40px;
+  background:radial-gradient(circle, rgba(56,189,248,0.55), transparent 75%);
+  filter:blur(14px);
   opacity:1;
   pointer-events:none;
 }
 
-.logo-icon{
-  width:34px;
-  height:34px;
-  fill:#38bdf8;
+/* Inhalt (Hantel + Text) */
+.logo-svg{
+  width:70%;
+  height:70%;
+  fill:#29b8ff;
   filter:
-    drop-shadow(0 0 14px rgba(56,189,248,1))
-    drop-shadow(0 0 26px rgba(56,189,248,.9));
+    drop-shadow(0 0 12px rgba(56,189,248,1))
+    drop-shadow(0 0 28px rgba(56,189,248,0.95));
 }
 
-/* Leuchtender Schriftzug */
-.wordmark{
-  font-size:24px;
+/* Movo-Schrift im Block */
+.logo-svg-text{
+  fill:#29b8ff;
   font-weight:800;
-  letter-spacing:.03em;
-  background:linear-gradient(180deg,#e5f8ff,#38bdf8);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  text-shadow:
-    0 0 14px rgba(56,189,248,.9),
-    0 0 32px rgba(0,0,0,.9);
+  font-size:40px;
+  letter-spacing:2px;
+  filter:
+    drop-shadow(0 0 10px rgba(56,189,248,1))
+    drop-shadow(0 0 22px rgba(56,189,248,0.9));
 }
+
 
     .nav{display:flex; gap:2px; align-items:center; position:relative}
     .nav a{padding:10px 12px; border-radius:12px; color:#d7eaff; position:relative; display:inline-flex; align-items:center}
@@ -1387,23 +1389,24 @@
   <!-- NAVBAR -->
   <header>
     <div class="container navwrap">
-   <div class="brand">
-  <span class="logo" aria-hidden="true">
-    <svg viewBox="0 0 64 64" class="logo-icon">
-      <!-- Linkes Gewicht -->
-      <rect x="4" y="22" width="10" height="20" rx="4" />
-      <!-- Linke Scheibe -->
-      <rect x="14" y="24" width="6" height="16" rx="3" />
-      <!-- Rechte Scheibe -->
-      <rect x="44" y="24" width="6" height="16" rx="3" />
-      <!-- Rechtes Gewicht -->
-      <rect x="50" y="22" width="10" height="20" rx="4" />
-      <!-- Stange -->
-      <rect x="20" y="26" width="24" height="12" rx="6" />
+<div class="brand">
+  <span class="logo" aria-label="Movo">
+    <svg viewBox="0 0 200 200" class="logo-svg">
+      <!-- Hantel -->
+      <rect x="26" y="66" width="26" height="68" rx="10" />
+      <rect x="56" y="74" width="14" height="52" rx="7" />
+      <rect x="130" y="74" width="14" height="52" rx="7" />
+      <rect x="150" y="66" width="26" height="68" rx="10" />
+      <rect x="78" y="82" width="44" height="36" rx="18" />
+
+      <!-- Movo Schriftzug im Icon -->
+      <text x="50%" y="155" text-anchor="middle" class="logo-svg-text">
+        Movo
+      </text>
     </svg>
   </span>
-  <span class="wordmark">Movo</span>
 </div>
+
 
 
       <nav class="nav" aria-label="Navigation">
