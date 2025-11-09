@@ -440,6 +440,129 @@
   font-weight: 600;
 }
 
+    /* --- History Screen (Trainingsverlauf) --- */
+
+#screen-history .history-shell{
+  position:absolute;
+  inset:0;
+  padding:18px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-family:system-ui,-apple-system,'SF Pro Text',sans-serif;
+  background:#020202;
+  color:#f9fafb;
+}
+
+/* Header */
+#screen-history .history-time{
+  font-size:16px;
+  font-weight:600;
+}
+#screen-history .history-title{
+  margin-top:6px;
+  text-align:center;
+  font-size:20px;
+  font-weight:700;
+}
+
+/* Monatsüberschrift */
+#screen-history .history-month-title{
+  margin-top:14px;
+  font-size:17px;
+  font-weight:800;
+}
+
+/* Cards-Liste */
+#screen-history .history-list{
+  margin-top:8px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Einzelne Card */
+#screen-history .history-card{
+  padding:14px 14px 12px;
+  border-radius:30px;
+  background:radial-gradient(circle at top left,#111827,#020202);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:12px;
+  align-items:center;
+  box-shadow:0 18px 40px rgba(0,0,0,.9);
+}
+
+/* Icon links */
+#screen-history .history-icon-wrap{
+  width:52px;
+  height:52px;
+  border-radius:999px;
+  border:2px solid #4f46e5;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+}
+
+/* Textblock */
+#screen-history .history-name{
+  font-size:18px;
+  font-weight:700;
+  line-height:1.2;
+}
+#screen-history .history-date{
+  margin-top:2px;
+  font-size:12px;
+  color:#9ca3af;
+}
+#screen-history .history-volume{
+  margin-top:2px;
+  font-size:12px;
+  color:#6b7280;
+}
+
+/* Delete rechts */
+#screen-history .history-delete{
+  font-size:22px;
+  color:#f97373;
+}
+
+/* Bottom Nav (Verlauf aktiv) */
+#screen-history .history-bottom-nav{
+  margin-top:auto;
+  padding:6px 8px;
+  border-radius:26px;
+  background:#ffffff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:6px;
+  box-shadow:0 -4px 30px rgba(0,0,0,.7);
+}
+#screen-history .history-bottom-nav .item{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  font-size:8px;
+  color:#9ca3af;
+}
+#screen-history .history-bottom-nav .item .dot{
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  background:#e5e7eb;
+}
+#screen-history .history-bottom-nav .item.active{
+  color:#2563eb;
+  font-weight:600;
+}
+#screen-history .history-bottom-nav .item.active .dot{
+  background:#2563eb;
+}
+
+
 
 
     
@@ -1698,18 +1821,101 @@
 
 
               <!-- Screen: History -->
-              <div id="screen-history" class="dv-screen" style="display:none">
-                <div class="titlecard">
-                  <div class="big">Your Training History</div>
-                  <div class="pills"><span class="pill">October 2025</span></div>
-                </div>
-                <div class="cards">
-                  <div class="card-ui"><div class="set"><div><div class="l1" style="width:40%"></div><div class="l2" style="margin-top:6px; width:60%"></div></div><span class="badge">Leg</span></div></div>
-                  <div class="card-ui"><div class="set"><div><div class="l1" style="width:46%"></div><div class="l2" style="margin-top:6px; width:40%"></div></div><span class="badge">Push</span></div></div>
-                  <div class="card-ui"><div class="set"><div><div class="l1" style="width:50%"></div><div class="l2" style="margin-top:6px; width:30%"></div></div><span class="badge">Pull</span></div></div>
-                </div>
-              </div>
-            </div>
+           <!-- Screen: History -->
+<div id="screen-history" class="dv-screen" style="display:none">
+  <div class="history-shell">
+    <!-- Header -->
+    <div class="history-time">09:40</div>
+    <div class="history-title">Trainingsverlauf</div>
+
+    <!-- November -->
+    <div class="history-month">
+      <div class="history-month-title">November 2025</div>
+      <div class="history-list">
+        <div class="history-card">
+          <div class="history-icon-wrap">🎯</div>
+          <div>
+            <div class="history-name">Pull</div>
+            <div class="history-date">4. November 2025</div>
+            <div class="history-volume">Volumen: 5.034 kg</div>
+          </div>
+          <div class="history-delete">🗑️</div>
+        </div>
+
+        <div class="history-card">
+          <div class="history-icon-wrap">💪</div>
+          <div>
+            <div class="history-name">Training</div>
+            <div class="history-date">4. November 2025</div>
+            <div class="history-volume">Volumen: 1.344 kg</div>
+          </div>
+          <div class="history-delete">🗑️</div>
+        </div>
+
+        <div class="history-card">
+          <div class="history-icon-wrap">🥊</div>
+          <div>
+            <div class="history-name">Push</div>
+            <div class="history-date">2. November 2025</div>
+            <div class="history-volume">Volumen: 1.344 kg</div>
+          </div>
+          <div class="history-delete">🗑️</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- October -->
+    <div class="history-month">
+      <div class="history-month-title">October 2025</div>
+      <div class="history-list">
+        <div class="history-card">
+          <div class="history-icon-wrap">😶‍🌫️</div>
+          <div>
+            <div class="history-name">Oberkörper</div>
+            <div class="history-date">28. October 2025</div>
+            <div class="history-volume">Volumen: 3.437 kg</div>
+          </div>
+          <div class="history-delete">🗑️</div>
+        </div>
+
+        <div class="history-card">
+          <div class="history-icon-wrap">🍚</div>
+          <div>
+            <div class="history-name">Push</div>
+            <div class="history-date">26. October 2025</div>
+            <div class="history-volume">Volumen: 2.900 kg</div>
+          </div>
+          <div class="history-delete">🗑️</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="history-bottom-nav">
+      <div class="item">
+        <span class="dot"></span>
+        <span>Training</span>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <span>Übungen</span>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <span>Challenges</span>
+      </div>
+      <div class="item active">
+        <span class="dot"></span>
+        <span>Verlauf</span>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <span>Statistik</span>
+      </div>
+    </div>
+  </div>
+</div>
+
           </figure>
 
           <!-- Tabs -->
