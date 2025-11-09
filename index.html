@@ -1753,7 +1753,13 @@
               <span>9:41</span><span class="dot"></span>
             </div>
 
-            <!-- Screen: Logging -->
+                <div class="notch"></div>
+          <div class="screen">
+            <div class="status">
+              <span>9:41</span><span class="dot"></span>
+            </div>
+
+            <!-- Screen: Logging (Start-Screen) -->
             <div id="screen-logging" class="dv-screen" style="display:block">
               <div class="app-shell">
                 <div class="app-status-time">14:59</div>
@@ -1787,7 +1793,7 @@
                 <div class="app-templates-row">
                   <div class="app-pill active">Push</div>
                   <div class="app-pill">Pull</div>
-                  <div class="app-pill">Leg</div>
+                  <div class="app-pill">Legs</div>
                   <div class="app-pill">Oberkörper</div>
                   <div class="app-pill">Ganzkörper</div>
                 </div>
@@ -1801,7 +1807,7 @@
                     <div>
                       <div class="app-item-title">Pull</div>
                       <div class="app-item-meta">
-                        22. Oct 2025 • 3 Übungen • 8 Sätze
+                        22. Okt • 3 Übungen • 8 Sätze
                       </div>
                       <div class="app-item-link">Details ansehen</div>
                     </div>
@@ -1812,7 +1818,7 @@
                     <div>
                       <div class="app-item-title">Push</div>
                       <div class="app-item-meta">
-                        26. Oct 2025 • 4 Übungen • 14 Sätze
+                        26. Okt • 4 Übungen • 14 Sätze
                       </div>
                       <div class="app-item-link">Details ansehen</div>
                     </div>
@@ -1847,30 +1853,361 @@
 
             <!-- Screen: Timer -->
             <div id="screen-timer" class="dv-screen" style="display:none">
-              <!-- ... dein Timer-Screen unverändert ... -->
+              <div class="timer-shell">
+                <div class="timer-time">14:23</div>
+
+                <div class="timer-training-wrap">
+                  <div class="timer-training-title">Push – Brust & Trizeps</div>
+                  <div class="timer-training-meta">
+                    <div class="timer-training-pill">
+                      <span class="icon">🏋️</span>
+                      <span>4 Übungen</span>
+                    </div>
+                    <div class="timer-training-pill">
+                      <span class="icon">⏱</span>
+                      <span>Arbeitsset aktiv</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timer-side-buttons">
+                  <div class="timer-circle-btn">‹</div>
+                  <div class="timer-circle-btn secondary">⏸</div>
+                </div>
+
+                <div class="timer-sheet">
+                  <div class="timer-handle"></div>
+                  <div class="timer-sheet-header">
+                    <div>
+                      <div class="timer-sheet-title">Pausen-Timer</div>
+                      <div class="timer-sheet-sub">
+                        Nächster Satz in
+                      </div>
+                    </div>
+                    <div class="timer-close">×</div>
+                  </div>
+
+                  <div class="timer-quick-row">
+                    <div class="timer-quick-pill active">60 s</div>
+                    <div class="timer-quick-pill">90 s</div>
+                    <div class="timer-quick-pill">120 s</div>
+                    <div class="timer-quick-pill">Benutzerdef.</div>
+                  </div>
+
+                  <div class="timer-picker">
+                    <div class="timer-picker-col">
+                      <div class="timer-picker-label">Min</div>
+                      <div class="timer-picker-value">00</div>
+                    </div>
+                    <div class="timer-picker-col">
+                      <div class="timer-picker-label">Sek</div>
+                      <div class="timer-picker-value">43</div>
+                    </div>
+                    <div class="timer-picker-col timer-picker-muted">
+                      <div class="timer-picker-label">Hund.</div>
+                      <div class="timer-picker-value">00</div>
+                    </div>
+                  </div>
+
+                  <div class="timer-start-btn">
+                    Nächste Pause starten
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Screen: Steps -->
             <div id="screen-steps" class="dv-screen" style="display:none">
-              <!-- ... dein Steps-Screen unverändert ... -->
+              <div class="steps-shell">
+                <div class="steps-header-row">
+                  <div class="steps-fertig">Fertig</div>
+                  <div class="steps-title">Schritte & Aktivität</div>
+                  <div class="steps-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+
+                <div class="steps-main-card">
+                  <div class="steps-ring">
+                    <div class="steps-ring-inner">
+                      7k
+                    </div>
+                  </div>
+                  <div class="steps-main-text">
+                    <div class="label">Heutige Schritte</div>
+                    <div class="value">7.042 / 10.000</div>
+                    <div class="bar">
+                      <div class="fill" style="width:70%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="steps-tabs">
+                  <div class="tab active">Tag</div>
+                  <div class="tab">Woche</div>
+                  <div class="tab">Monat</div>
+                  <div class="tab">Jahr</div>
+                </div>
+
+                <div class="steps-stat-row">
+                  <div class="stat">
+                    <div class="label">Distanz</div>
+                    <div class="value">5,2 km</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label">Aktiv</div>
+                    <div class="value">46 min</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label">Kalorien</div>
+                    <div class="value">320</div>
+                  </div>
+                  <div class="stat">
+                    <div class="label">Ziel-Tage</div>
+                    <div class="value">4/7</div>
+                  </div>
+                </div>
+
+                <div class="steps-card">
+                  <div class="history-head">
+                    <div class="icon-bars">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <div>Verlauf (letzte 7 Tage)</div>
+                  </div>
+                  <div class="history-chart">
+                    <div class="bar" style="height:35%"></div>
+                    <div class="bar" style="height:60%"></div>
+                    <div class="bar" style="height:80%"></div>
+                    <div class="bar" style="height:50%"></div>
+                    <div class="bar" style="height:90%"></div>
+                    <div class="bar" style="height:40%"></div>
+                    <div class="bar" style="height:70%"></div>
+                  </div>
+                  <div class="history-labels">
+                    <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+                  </div>
+                </div>
+
+                <div class="steps-card">
+                  <div class="goal-top">
+                    <div class="dot"></div>
+                    <div>Schrittziel anpassen</div>
+                  </div>
+                  <div class="goal-bottom">
+                    <div class="label">Aktuell: 10.000 Schritte</div>
+                    <div class="actions">
+                      <div class="btn">-</div>
+                      <div class="btn">+</div>
+                    </div>
+                    <div class="value">10k</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Screen: Routines -->
             <div id="screen-routines" class="dv-screen" style="display:none">
-              <!-- ... dein Routines-Screen unverändert ... -->
+              <div class="routine-shell">
+                <div class="routine-header">
+                  <div class="routine-header-text">
+                    Deine nächste Trainingswoche, klar geplant.
+                  </div>
+                  <div class="routine-header-icon">📅</div>
+                </div>
+
+                <div class="routine-main-card">
+                  <div class="routine-week-label">Week 1 · Push/Pull/Legs</div>
+                  <div class="routine-meta-row">
+                    <div class="routine-meta">
+                      <strong>3</strong>Tage
+                    </div>
+                    <div class="routine-meta">
+                      <strong>12</strong>Übungen
+                    </div>
+                    <div class="routine-meta">
+                      <strong>36</strong>Sätze
+                    </div>
+                  </div>
+
+                  <div class="routine-divider"></div>
+
+                  <div class="routine-section-title">Tag 1 – Push</div>
+                  <div class="routine-exercise">
+                    <div class="routine-exercise-icon">🏋️</div>
+                    <div class="routine-exercise-labels">
+                      <div class="routine-exercise-name">Bankdrücken</div>
+                      <div class="routine-exercise-sub">Schwer · Fokus Brust</div>
+                    </div>
+                    <div class="routine-set-pill">4 × 6–8</div>
+                    <div class="routine-info">i</div>
+                  </div>
+
+                  <div class="routine-exercise">
+                    <div class="routine-exercise-icon">🏋️</div>
+                    <div class="routine-exercise-labels">
+                      <div class="routine-exercise-name">Schulterdrücken</div>
+                      <div class="routine-exercise-sub">Langhantel oder Kurzhantel</div>
+                    </div>
+                    <div class="routine-set-pill">3 × 8–10</div>
+                    <div class="routine-info">i</div>
+                  </div>
+
+                  <div class="routine-section-title">Tag 2 – Pull</div>
+                  <div class="routine-exercise">
+                    <div class="routine-exercise-icon">🏋️</div>
+                    <div class="routine-exercise-labels">
+                      <div class="routine-exercise-name">Kreuzheben</div>
+                      <div class="routine-exercise-sub">Optional, schwer</div>
+                    </div>
+                    <div class="routine-set-pill">3 × 5</div>
+                    <div class="routine-info">i</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Screen: Analytics -->
             <div id="screen-analytics" class="dv-screen" style="display:none">
-              <!-- ... dein Analytics-Screen unverändert ... -->
+              <div class="stats-shell">
+                <div class="stats-status-row">
+                  <div class="stats-time">09:12</div>
+                  <div class="stats-title">Deine Statistik</div>
+                  <div class="stats-avatar"></div>
+                </div>
+
+                <div class="stats-segmented">
+                  <div class="seg active">Woche</div>
+                  <div class="seg">Monat</div>
+                  <div class="seg">3M</div>
+                  <div class="seg">Jahr</div>
+                </div>
+
+                <div class="stats-row-2cards">
+                  <div class="stats-card small">
+                    <div class="stats-icon-circle">🏋️</div>
+                    <div class="stats-label">Workouts</div>
+                    <div class="stats-value">4</div>
+                  </div>
+                  <div class="stats-card small">
+                    <div class="stats-icon-circle">⏱</div>
+                    <div class="stats-label">Trainingszeit</div>
+                    <div class="stats-value">3h 24m</div>
+                  </div>
+                </div>
+
+                <div class="stats-card full">
+                  <div class="stats-label">Bewegtes Gesamtgewicht</div>
+                  <div class="stats-big-value">42.350 kg</div>
+                </div>
+
+                <div class="stats-card highlight">
+                  <div class="stats-label-row">
+                    <span>Bestes Training dieser Woche</span>
+                  </div>
+                  <div class="stats-best-title">Push – Montag</div>
+                  <div class="stats-best-sub">
+                    Höchstes Volumen & konstante Satzqualität.
+                  </div>
+                </div>
+
+                <div class="stats-card gradient">
+                  <div class="stats-chart-title">Volumen je Einheit (kg)</div>
+                  <div class="stats-chart-bars">
+                    <span style="height:30%"></span>
+                    <span style="height:55%"></span>
+                    <span style="height:80%"></span>
+                    <span style="height:50%"></span>
+                  </div>
+                  <div class="stats-chart-labels">
+                    <span>Push</span>
+                    <span>Pull</span>
+                    <span>Legs</span>
+                    <span>Full</span>
+                  </div>
+                </div>
+
+                <div class="stats-bottom-nav">
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Training</div>
+                  </div>
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Übungen</div>
+                  </div>
+                  <div class="item active">
+                    <div class="dot"></div>
+                    <div>Stats</div>
+                  </div>
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Verlauf</div>
+                  </div>
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Mehr</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Screen: History -->
             <div id="screen-history" class="dv-screen" style="display:none">
-              <!-- ... dein History-Screen unverändert ... -->
+              <div class="history-shell">
+                <div class="history-time">Verlauf</div>
+                <div class="history-title">Letzte Workouts</div>
+
+                <div class="history-month-title">Oktober</div>
+
+                <div class="history-list">
+                  <div class="history-card">
+                    <div class="history-icon-wrap">🏋️</div>
+                    <div>
+                      <div class="history-name">Push</div>
+                      <div class="history-date">26. Okt · 45 min</div>
+                      <div class="history-volume">Volumen: 11.800 kg</div>
+                    </div>
+                    <div class="history-delete">⋯</div>
+                  </div>
+
+                  <div class="history-card">
+                    <div class="history-icon-wrap">🏋️</div>
+                    <div>
+                      <div class="history-name">Pull</div>
+                      <div class="history-date">22. Okt · 50 min</div>
+                      <div class="history-volume">Volumen: 10.300 kg</div>
+                    </div>
+                    <div class="history-delete">⋯</div>
+                  </div>
+                </div>
+
+                <div class="history-bottom-nav">
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Home</div>
+                  </div>
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Übungen</div>
+                  </div>
+                  <div class="item active">
+                    <div class="dot"></div>
+                    <div>Verlauf</div>
+                  </div>
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Stats</div>
+                  </div>
+                  <div class="item">
+                    <div class="dot"></div>
+                    <div>Mehr</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </figure>
+
 
         <!-- Tabs unter dem Device -->
         <div class="tabs">
@@ -1896,7 +2233,6 @@
       </a>
     </div>
   </main>
-</div>
 
 
     <section id="highlights" class="section">
