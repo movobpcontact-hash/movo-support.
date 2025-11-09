@@ -36,63 +36,33 @@
       background:linear-gradient(180deg, #0b0f1ad0 60%, transparent);
       border-bottom:1px solid var(--border)}
     .navwrap{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:12px}
+
+
+
+  
     
-.brand{
+  .brand{
   display:flex;
   align-items:center;
-  justify-content:flex-start;
-  padding-left:0;
 }
 
-/* Neon-Block wie im Referenzbild */
-.logo{
-  position:relative;
+/* Klickbare Fläche */
+.brand-link{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
-  width:78px;
-  height:78px;
-  border-radius:24px;
-  overflow:visible;
-  background:rgba(0,0,0,0.4);
-  box-shadow:
-    0 0 40px rgba(56,189,248,1),
-    0 0 90px rgba(56,189,248,0.9),
-    0 18px 40px rgba(0,0,0,0.95);
+  justify-content:flex-start;
+  text-decoration:none;
 }
 
-/* weicher äußerer Glow */
-.logo::before{
-  content:"";
-  position:absolute;
-  inset:-26px;
-  border-radius:40px;
-  background:radial-gradient(circle, rgba(56,189,248,0.55), transparent 75%);
-  filter:blur(14px);
-  opacity:1;
-  pointer-events:none;
+/* Reines Bild-Logo, leicht skaliert & Glow aus dem Bild selbst */
+.brand-logo{
+  display:block;
+  height:64px;          /* bei Bedarf 56–72px testen */
+  width:auto;
+  object-fit:contain;
+  margin-left:4px;
 }
 
-/* Inhalt (Hantel + Text) */
-.logo-svg{
-  width:70%;
-  height:70%;
-  fill:#29b8ff;
-  filter:
-    drop-shadow(0 0 12px rgba(56,189,248,1))
-    drop-shadow(0 0 28px rgba(56,189,248,0.95));
-}
-
-/* Movo-Schrift im Block */
-.logo-svg-text{
-  fill:#29b8ff;
-  font-weight:800;
-  font-size:40px;
-  letter-spacing:2px;
-  filter:
-    drop-shadow(0 0 10px rgba(56,189,248,1))
-    drop-shadow(0 0 22px rgba(56,189,248,0.9));
-}
 
 
     .nav{display:flex; gap:2px; align-items:center; position:relative}
@@ -1390,23 +1360,10 @@
   <header>
     <div class="container navwrap">
 <div class="brand">
-  <span class="logo" aria-label="Movo">
-    <svg viewBox="0 0 200 200" class="logo-svg">
-      <!-- Hantel -->
-      <rect x="26" y="66" width="26" height="68" rx="10" />
-      <rect x="56" y="74" width="14" height="52" rx="7" />
-      <rect x="130" y="74" width="14" height="52" rx="7" />
-      <rect x="150" y="66" width="26" height="68" rx="10" />
-      <rect x="78" y="82" width="44" height="36" rx="18" />
-
-      <!-- Movo Schriftzug im Icon -->
-      <text x="50%" y="155" text-anchor="middle" class="logo-svg-text">
-        Movo
-      </text>
-    </svg>
-  </span>
+  <a href="#start" class="brand-link">
+    <img src="/img/movo-logo-glow.png" alt="Movo" class="brand-logo">
+  </a>
 </div>
-
 
 
       <nav class="nav" aria-label="Navigation">
