@@ -1007,6 +1007,204 @@
 }
 
 
+    /* --- Analytics Screen (helles Statistik-Layout) --- */
+
+#screen-analytics .stats-shell{
+  position:absolute;
+  inset:0;
+  padding:16px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-family:system-ui,-apple-system,'SF Pro Text',sans-serif;
+  background:linear-gradient(180deg,#f9fafb,#eef2ff);
+  color:#111827;
+}
+
+/* Header oben: Zeit – Titel – Avatar */
+#screen-analytics .stats-status-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+#screen-analytics .stats-time{
+  font-size:15px;
+  font-weight:600;
+}
+#screen-analytics .stats-title{
+  font-size:18px;
+  font-weight:700;
+}
+#screen-analytics .stats-avatar{
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  background:#e5e7eb;
+}
+
+/* Segmented Control */
+#screen-analytics .stats-segmented{
+  margin-top:4px;
+  padding:4px;
+  border-radius:999px;
+  background:#e5e7eb;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:4px;
+  font-size:10px;
+}
+#screen-analytics .stats-segmented .seg{
+  padding:5px 0;
+  border-radius:999px;
+  text-align:center;
+  color:#6b7280;
+}
+#screen-analytics .stats-segmented .seg.active{
+  background:#ffffff;
+  color:#111827;
+  font-weight:600;
+}
+
+/* Kleine Cards oben */
+#screen-analytics .stats-row-2cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:4px;
+}
+#screen-analytics .stats-card{
+  border-radius:22px;
+  padding:10px 10px 9px;
+  background:#ffffff;
+  box-shadow:0 10px 26px rgba(148,163,253,.25);
+}
+#screen-analytics .stats-card.small{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+#screen-analytics .stats-icon-circle{
+  width:22px;
+  height:22px;
+  border-radius:999px;
+  background:#eef2ff;
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  color:#4f46e5;
+}
+#screen-analytics .stats-label{
+  font-size:11px;
+  color:#6b7280;
+}
+#screen-analytics .stats-value{
+  font-size:17px;
+  font-weight:700;
+}
+
+/* Gesamtgewicht Card */
+#screen-analytics .stats-card.full{
+  margin-top:2px;
+  padding:11px 12px 10px;
+}
+#screen-analytics .stats-big-value{
+  margin-top:2px;
+  font-size:18px;
+  font-weight:700;
+  color:#4b5563;
+}
+
+/* Bestes Training (farbige Karte) */
+#screen-analytics .stats-card.highlight{
+  margin-top:2px;
+  background:linear-gradient(135deg,#fde68a,#fb923c);
+  color:#111827;
+  box-shadow:0 14px 30px rgba(248,181,92,.45);
+}
+#screen-analytics .stats-label-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:600;
+}
+#screen-analytics .stats-best-title{
+  margin-top:2px;
+  font-size:16px;
+  font-weight:700;
+}
+#screen-analytics .stats-best-sub{
+  margin-top:2px;
+  font-size:11px;
+}
+
+/* Chart Card */
+#screen-analytics .stats-card.gradient{
+  margin-top:2px;
+  padding:10px 10px 8px;
+  background:linear-gradient(135deg,#e0f2fe,#ede9fe);
+}
+#screen-analytics .stats-chart-title{
+  font-size:11px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+#screen-analytics .stats-chart-bars{
+  display:flex;
+  align-items:flex-end;
+  gap:6px;
+  height:54px;
+}
+#screen-analytics .stats-chart-bars span{
+  flex:1;
+  border-radius:6px 6px 3px 3px;
+  background:#2563eb;
+}
+#screen-analytics .stats-chart-labels{
+  margin-top:2px;
+  display:flex;
+  justify-content:space-between;
+  font-size:7px;
+  color:#6b7280;
+}
+
+/* Untere Nav (Statistik aktiv) */
+#screen-analytics .stats-bottom-nav{
+  margin-top:auto;
+  padding:6px 8px;
+  border-radius:26px;
+  background:#ffffff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:6px;
+  box-shadow:0 -4px 30px rgba(148,163,253,.38);
+}
+#screen-analytics .stats-bottom-nav .item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  font-size:8px;
+  color:#9ca3af;
+  flex:1;
+}
+#screen-analytics .stats-bottom-nav .item .dot{
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  background:#e5e7eb;
+}
+#screen-analytics .stats-bottom-nav .item.active{
+  color:#2563eb;
+  font-weight:600;
+}
+#screen-analytics .stats-bottom-nav .item.active .dot{
+  background:#2563eb;
+}
+
+
+
 /* Falls noch das alte .status im Markup steht: hier ausblenden im Logging-Screen */
 #screen-logging > .status{ display:none; }
 
@@ -1422,33 +1620,82 @@
 
 
               <!-- Screen: Analytics -->
-              <div id="screen-analytics" class="dv-screen" style="display:none">
-                <div class="titlecard">
-                  <div class="big">Focus on Growth</div>
-                  <div class="pills"><span class="pill">Workouts 5</span><span class="pill">Time 49m</span></div>
-                </div>
-                <div class="cards">
-                  <div class="card-ui">
-                    <svg viewBox="0 0 400 160" width="100%" height="160">
-                      <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/><stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/></linearGradient></defs>
-                      <polyline fill="none" stroke="#38bdf8" stroke-width="3" points="0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50"/>
-                      <polygon fill="url(#grad)" opacity=".35" points="0,160 0,130 40,120 80,110 120,90 160,95 200,80 240,70 280,82 320,60 360,72 400,50 400,160"/>
-                    </svg>
-                  </div>
-                  <div class="card-ui">
-                    <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; height:110px">
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:35%"></span>
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:60%"></span>
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:75%"></span>
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:45%"></span>
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:80%"></span>
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:55%"></span>
-                      <span style="background:#1e2f58; border:1px solid #243d6c; border-radius:8px; align-self:end; height:68%"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- Screen: Analytics -->
+<div id="screen-analytics" class="dv-screen" style="display:none">
+  <div class="stats-shell">
+    <!-- Header -->
+    <div class="stats-status-row">
+      <div class="stats-time">09:34</div>
+      <div class="stats-title">Statistik</div>
+      <div class="stats-avatar"></div>
+    </div>
+
+    <!-- Segmented Control -->
+    <div class="stats-segmented">
+      <div class="seg">Woche</div>
+      <div class="seg active">Monat</div>
+      <div class="seg">Jahr</div>
+      <div class="seg">Alle</div>
+    </div>
+
+    <!-- Trainings & Zeit -->
+    <div class="stats-row-2cards">
+      <div class="stats-card small">
+        <div class="stats-icon-circle">🏋️</div>
+        <div class="stats-label">Trainings</div>
+        <div class="stats-value">6</div>
+      </div>
+      <div class="stats-card small">
+        <div class="stats-icon-circle">⏱</div>
+        <div class="stats-label">Zeit</div>
+        <div class="stats-value">205 min</div>
+      </div>
+    </div>
+
+    <!-- Gesamtgewicht -->
+    <div class="stats-card full">
+      <div class="stats-label">Gesamtgewicht</div>
+      <div class="stats-big-value">15.526 kg</div>
+    </div>
+
+    <!-- Bestes Training -->
+    <div class="stats-card highlight">
+      <div class="stats-label-row">
+        <span class="stats-trophy">🏆</span>
+        <span>Bestes Training</span>
+      </div>
+      <div class="stats-best-title">Pull</div>
+      <div class="stats-best-sub">04.11.2025 · 570 kg · 43 min</div>
+    </div>
+
+    <!-- Chart: Trainingsdauer -->
+    <div class="stats-card gradient">
+      <div class="stats-chart-title">Trainingsdauer (Minuten)</div>
+      <div class="stats-chart-bars">
+        <span style="height:45%"></span>
+        <span style="height:55%"></span>
+        <span style="height:22%"></span>
+        <span style="height:40%"></span>
+        <span style="height:65%"></span>
+        <span style="height:48%"></span>
+      </div>
+      <div class="stats-chart-labels">
+        <span>21.</span><span>24.</span><span>27.</span>
+        <span>30.</span><span>2.</span><span>5.</span>
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="stats-bottom-nav">
+      <div class="item"><span class="dot"></span><span>Training</span></div>
+      <div class="item"><span class="dot"></span><span>Übungen</span></div>
+      <div class="item"><span class="dot"></span><span>Challenges</span></div>
+      <div class="item"><span class="dot"></span><span>Verlauf</span></div>
+      <div class="item active"><span class="dot"></span><span>Statistik</span></div>
+    </div>
+  </div>
+</div>
+
 
               <!-- Screen: History -->
               <div id="screen-history" class="dv-screen" style="display:none">
