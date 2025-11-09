@@ -37,11 +37,50 @@
       border-bottom:1px solid var(--border)}
     .navwrap{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:12px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
-    .logo{display:inline-grid; place-items:center; width:40px; height:40px; border-radius:14px;
-      background:conic-gradient(from 120deg,var(--accent),var(--accent2));
-      box-shadow:0 8px 22px #7c3aed55}
-    .logo svg{width:22px; height:22px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.45))}
-    .wordmark{font-weight:900; background:linear-gradient(90deg,#fff,#9ad6ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .logo{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border-radius:18px;
+  background:radial-gradient(circle, #38bdf8 0%, #38bdf8 32%, transparent 80%);
+  box-shadow:
+    0 0 26px rgba(56,189,248,0.95),
+    0 0 80px rgba(56,189,248,0.70);
+}
+
+.logo::before{
+  content:'';
+  position:absolute;
+  inset:-16px;
+  border-radius:inherit;
+  background:radial-gradient(circle, rgba(56,189,248,0.55), transparent 75%);
+  filter:blur(10px);
+  opacity:0.95;
+}
+
+.logo svg{
+  position:relative;
+  width:28px;
+  height:28px;
+  fill:#38bdf8;
+  filter:
+    drop-shadow(0 0 10px rgba(56,189,248,1))
+    drop-shadow(0 0 18px rgba(56,189,248,0.9));
+}
+
+/* Wortmarke im gleichen Neon-Look */
+.wordmark{
+  font-weight:800;
+  font-size:24px;
+  letter-spacing:.02em;
+  color:#38bdf8;
+  text-shadow:
+    0 0 12px rgba(56,189,248,0.9),
+    0 0 26px rgba(56,189,248,0.7);
+}
 
     .nav{display:flex; gap:2px; align-items:center; position:relative}
     .nav a{padding:10px 12px; border-radius:12px; color:#d7eaff; position:relative; display:inline-flex; align-items:center}
@@ -1338,10 +1377,20 @@
   <header>
     <div class="container navwrap">
       <div class="brand">
-        <span class="logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 18V6h3l6 6 6-6h3v12h-3V11l-6 6-6-6v7H3z" fill="white" opacity=".96"/></svg>
-        </span>
-        <span class="wordmark">Movo</span>
+      <span class="logo" aria-hidden="true">
+  <svg viewBox="0 0 24 24">
+    <!-- Linkes Gewicht -->
+    <rect x="1.5" y="7" width="2.2" height="10" rx="1.1"/>
+    <rect x="3.9" y="6" width="2.4" height="12" rx="1.2"/>
+    <!-- Rechte Seite gespiegelt -->
+    <rect x="20.3" y="7" width="2.2" height="10" rx="1.1"/>
+    <rect x="17.7" y="6" width="2.4" height="12" rx="1.2"/>
+    <!-- Stange -->
+    <rect x="6.3" y="10.1" width="11.4" height="3.8" rx="1.4"/>
+  </svg>
+</span>
+<span class="wordmark">Movo</span>
+
       </div>
 
       <nav class="nav" aria-label="Navigation">
