@@ -869,6 +869,143 @@
   color:#ffffff;
   font-weight:600;
 }
+    /* --- Routines Screen --- */
+#screen-routines .routine-shell{
+  position:absolute;
+  inset:0;
+  padding:16px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-family:system-ui,-apple-system,'SF Pro Text',sans-serif;
+  background:#020817;
+  color:#f9fafb;
+}
+
+/* Header oben: Title + Icon */
+#screen-routines .routine-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+#screen-routines .routine-header-text{
+  font-size:22px;
+  font-weight:800;
+  line-height:1.1;
+  max-width:180px;
+}
+#screen-routines .routine-header-icon{
+  width:48px;
+  height:48px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#4f46e5,#8b5cf6);
+  display:grid;
+  place-items:center;
+  font-size:22px;
+}
+
+/* Hauptkarte Week 1 */
+#screen-routines .routine-main-card{
+  margin-top:10px;
+  padding:14px 14px 10px;
+  border-radius:26px;
+  background:#050713;
+  border:1px solid rgba(148,163,253,0.16);
+  box-shadow:0 18px 40px rgba(0,0,0,0.9);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+/* Week 1 + Stats */
+#screen-routines .routine-week-label{
+  font-size:16px;
+  font-weight:700;
+}
+#screen-routines .routine-meta-row{
+  display:flex;
+  gap:14px;
+  margin-top:4px;
+  font-size:10px;
+  color:#9ca3af;
+}
+#screen-routines .routine-meta strong{
+  display:block;
+  font-size:12px;
+  color:#f9fafb;
+  font-weight:600;
+}
+
+/* Trenner */
+#screen-routines .routine-divider{
+  margin:8px 0 4px;
+  height:1px;
+  background:#111827;
+  border-radius:999px;
+}
+
+/* Section-Titles */
+#screen-routines .routine-section-title{
+  margin-top:6px;
+  font-size:11px;
+  font-weight:700;
+  color:#9ca3af;
+  text-transform:none;
+}
+
+/* Exercise-Zeilen */
+#screen-routines .routine-exercise{
+  margin-top:4px;
+  padding:8px 10px;
+  border-radius:18px;
+  background:#020817;
+  display:grid;
+  grid-template-columns:auto 1fr auto auto;
+  gap:8px;
+  align-items:center;
+}
+#screen-routines .routine-exercise-icon{
+  width:32px;
+  height:32px;
+  border-radius:12px;
+  background:#111827;
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  color:#60a5fa;
+}
+#screen-routines .routine-exercise-labels{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+#screen-routines .routine-exercise-name{
+  font-size:12px;
+  font-weight:600;
+}
+#screen-routines .routine-exercise-sub{
+  font-size:9px;
+  color:#6b7280;
+}
+#screen-routines .routine-set-pill{
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,253,0.6);
+  font-size:10px;
+  color:#e5e7ff;
+}
+#screen-routines .routine-info{
+  width:20px;
+  height:20px;
+  border-radius:999px;
+  border:1px solid #4b5563;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+  color:#9ca3af;
+}
+
 
 /* Falls noch das alte .status im Markup steht: hier ausblenden im Logging-Screen */
 #screen-logging > .status{ display:none; }
@@ -1195,19 +1332,94 @@
 </div>
 
 
-              <!-- Screen: Routines -->
-              <div id="screen-routines" class="dv-screen" style="display:none">
-                <div class="titlecard">
-                  <div class="big">Follow Structured Routines</div>
-                  <div class="pills"><span class="pill">Week 1</span><span class="pill">~20 min</span><span class="pill">Full Body</span></div>
-                </div>
-                <div class="cards">
-                  <div class="card-ui">
-                    <div class="set"><div><div class="l1" style="width:80%"></div><div class="l2" style="margin-top:6px"></div></div><span class="badge">35s×3</span></div>
-                    <div class="set"><div><div class="l1" style="width:60%"></div><div class="l2" style="margin-top:6px;width:40%"></div></div><span class="badge">35s×3</span></div>
-                  </div>
-                </div>
-              </div>
+          <!-- Screen: Routines -->
+<div id="screen-routines" class="dv-screen" style="display:none">
+  <div class="routine-shell">
+    <!-- Header -->
+    <div class="routine-header">
+      <div class="routine-header-text">
+        Follow Structured<br>Routines
+      </div>
+      <div class="routine-header-icon">🏋️‍♂️</div>
+    </div>
+
+    <!-- Week Card -->
+    <div class="routine-main-card">
+      <div class="routine-week-label">Week 1</div>
+      <div class="routine-meta-row">
+        <div class="routine-meta">
+          <strong>~20 min</strong>
+          <span>Duration</span>
+        </div>
+        <div class="routine-meta">
+          <strong>~158 kcal</strong>
+          <span>Calories</span>
+        </div>
+        <div class="routine-meta">
+          <strong>Full Body</strong>
+          <span>Focus</span>
+        </div>
+      </div>
+
+      <div class="routine-divider"></div>
+
+      <!-- Warm-up -->
+      <div class="routine-section-title">Warm-up</div>
+      <div class="routine-exercise">
+        <div class="routine-exercise-icon">🏋️‍♂️</div>
+        <div class="routine-exercise-labels">
+          <div class="routine-exercise-name">Dead Bug (aktivieren)</div>
+          <div class="routine-exercise-sub">Core &amp; Stabilität</div>
+        </div>
+        <div class="routine-set-pill">35s × 3 Rdn</div>
+        <div class="routine-info">i</div>
+      </div>
+      <div class="routine-exercise">
+        <div class="routine-exercise-icon">🏃‍♂️</div>
+        <div class="routine-exercise-labels">
+          <div class="routine-exercise-name">Hip Bridges</div>
+          <div class="routine-exercise-sub">Glutes aktivieren</div>
+        </div>
+        <div class="routine-set-pill">35s × 3 Rdn</div>
+        <div class="routine-info">i</div>
+      </div>
+
+      <!-- Exercises -->
+      <div class="routine-section-title">Exercises</div>
+      <div class="routine-exercise">
+        <div class="routine-exercise-icon">🏋️‍♂️</div>
+        <div class="routine-exercise-labels">
+          <div class="routine-exercise-name">Plank</div>
+          <div class="routine-exercise-sub">Full Core</div>
+        </div>
+        <div class="routine-set-pill">35s × 3 Rdn</div>
+        <div class="routine-info">i</div>
+      </div>
+      <div class="routine-exercise">
+        <div class="routine-exercise-icon">🚶</div>
+        <div class="routine-exercise-labels">
+          <div class="routine-exercise-name">Bicycle Crunches</div>
+          <div class="routine-exercise-sub">Obliques</div>
+        </div>
+        <div class="routine-set-pill">35s × 3 Rdn</div>
+        <div class="routine-info">i</div>
+      </div>
+
+      <!-- Cool-down -->
+      <div class="routine-section-title">Cool-down</div>
+      <div class="routine-exercise">
+        <div class="routine-exercise-icon">🧘</div>
+        <div class="routine-exercise-labels">
+          <div class="routine-exercise-name">Cobra Stretch</div>
+          <div class="routine-exercise-sub">Spine Extension</div>
+        </div>
+        <div class="routine-set-pill">25s × 2 Rdn</div>
+        <div class="routine-info">i</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
               <!-- Screen: Analytics -->
               <div id="screen-analytics" class="dv-screen" style="display:none">
