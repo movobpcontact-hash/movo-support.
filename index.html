@@ -602,6 +602,151 @@
 #screen-history .history-bottom-nav .item.active .dot{
   background:#2563eb;
 }
+/* =========================================
+   MOBILE OPTIMIERUNG
+   ========================================= */
+
+/* bis 900px: allgemein etwas kompakter */
+@media (max-width: 900px) {
+  .container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  header {
+    border-bottom: 1px solid #111827;
+    background: radial-gradient(600px 260px at 0 0, #38bdf822, transparent),
+                #020817ee;
+  }
+
+  .navwrap {
+    padding: 10px 0;
+  }
+
+  .logo-img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero {
+    padding: 76px 0 32px; /* Platz unter der Navbar */
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    align-items: flex-start;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 5px 9px;
+  }
+
+  .h1 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 8px 0 6px;
+  }
+
+  .h1 small {
+    display: block;
+    margin-top: 3px;
+    font-size: 16px;
+  }
+
+  .lead {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .hero-cta {
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  /* Device rechts: mittig & kleiner, damit nichts gequetscht wirkt */
+  .hero .reveal:last-child {
+    order: -1; /* App-Screen zuerst oder entfernen, wenn du Text zuerst willst */
+  }
+
+  .device {
+    margin: 0 auto 4px;
+    transform: scale(.9);
+    transform-origin: top center;
+  }
+
+  .tabs {
+    margin-top: 4px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tabs button {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .section {
+    padding: 32px 0;
+  }
+
+  .section h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .card,
+  .legal-card,
+  .review {
+    padding: 12px 12px 14px;
+    border-radius: 14px;
+  }
+
+  .list-check {
+    gap: 6px;
+  }
+
+  .list-check li {
+    font-size: 14px;
+  }
+}
+
+/* sehr kleine Screens (bis 480px) noch etwas lockerer */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 72px;
+  }
+
+  .h1 {
+    font-size: 24px;
+  }
+
+  .lead {
+    font-size: 13px;
+  }
+
+  .device {
+    width: 100%;
+    max-width: 360px;
+    transform: scale(1);
+  }
+
+  .sticky-cta .btn {
+    font-size: 14px;
+    padding: 11px 14px;
+  }
+
+  .reviews,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
