@@ -2320,7 +2320,7 @@
 
   <!-- „Unterseiten“ – standardmäßig versteckt -->
 
-  <section id="impressum" class="section">
+<section id="impressum" class="section page">
     <div class="container">
       <h2>Impressum</h2>
       <div class="card">
@@ -2355,7 +2355,7 @@
 
 
 
-<section id="datenschutz" class="section">
+<section id="datenschutz" class="section page">
     <div class="container">
       <h2>Datenschutzerklärung</h2>
       <div class="card">
@@ -2467,7 +2467,7 @@
 
 
   <!-- Full legal sections (from your original page) -->
-  <section id="agb" class="section">
+<section id="agb" class="section page">
     <div class="container">
       <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
       <div class="card">
@@ -2572,55 +2572,67 @@
 
 
 
-  <script>
-    // Mobile nav toggle
-    const burger = document.getElementById('hamburger');
-    const menu = document.getElementById('mobilemenu');
-    burger?.addEventListener('click', () => menu.classList.toggle('show'));
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('hamburger');
+  const menu = document.getElementById('mobilemenu');
+  burger?.addEventListener('click', () => menu.classList.toggle('show'));
 
-    // Reveal on scroll
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, {rootMargin:'-35% 0px -55% 0px', threshold:.01});
-    document.querySelectorAll('#home .reveal').forEach(el => io.observe(el));
+  // Reveal on scroll (nur Home)
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, {rootMargin:'-35% 0px -55% 0px', threshold:.01});
+  document.querySelectorAll('#home .reveal').forEach(el => io.observe(el));
 
-    // Device tabs
-    document.querySelectorAll('.tabs button').forEach(b=>{
-      b.addEventListener('click', ()=>{
-        document.querySelectorAll('.dv-screen').forEach(s=>s.style.display='none');
-        const id = 'screen-'+b.dataset.go;
-        const el = document.getElementById(id); if (el) el.style.display='block';
-        document.querySelectorAll('.tabs button').forEach(x=>x.removeAttribute('aria-current'));
-        b.setAttribute('aria-current','true');
-      });
+  // Device tabs
+  document.querySelectorAll('.tabs button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.dv-screen').forEach(s=>s.style.display='none');
+      const id = 'screen-'+b.dataset.go;
+      const el = document.getElementById(id); if (el) el.style.display='block';
+      document.querySelectorAll('.tabs button').forEach(x=>x.removeAttribute('aria-current'));
+      b.setAttribute('aria-current','true');
     });
+  });
 
-    // Hash-Routing: zeigt Home oder Rechts-"Seiten"
-    const PAGES = ['impressum','datenschutz','agb'];
-    function route(){
-      const hash = (location.hash || '#start').replace('#','');
-      const isLegal = PAGES.includes(hash);
+  // Hash-Routing für Impressum / Datenschutz / AGB
+  const PAGES = ['impressum','datenschutz','agb'];
 
-      // Sichtbarkeit umschalten
-      document.getElementById('home').style.display = isLegal ? 'none' : 'block';
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      if (isLegal) { document.getElementById(hash)?.classList.add('active'); }
+  function route(){
+    const hash = (location.hash || '#start').replace('#','');
+    const isLegal = PAGES.includes(hash);
 
-      // Active-State in der Navbar
-      const navLinks = document.querySelectorAll('header .nav a');
-      navLinks.forEach(a => a.removeAttribute('aria-current'));
+    // Home ein-/ausblenden
+    document.getElementById('home').style.display = isLegal ? 'none' : 'block';
+
+    // Legal-Seiten ein-/ausblenden
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    if (isLegal) {
+      const page = document.getElementById(hash);
+      if (page) page.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Active-State in der Navbar
+    const navLinks = document.querySelectorAll('header .nav a');
+    navLinks.forEach(a => a.removeAttribute('aria-current'));
+
+    if (isLegal) {
+      // Für alle Rechtsseiten den Link "Rechtliches" (#impressum) markieren
+      const legalLink = Array.from(navLinks).find(a => a.getAttribute('href') === '#impressum');
+      if (legalLink) legalLink.setAttribute('aria-current', 'true');
+    } else {
       const active = Array.from(navLinks).find(a => a.getAttribute('href') === '#'+hash);
       if (active) active.setAttribute('aria-current','true');
-
-      // Mobile-Menü schließen bei Navigation
-      menu?.classList.remove('show');
-
-      // Scrollen nach oben auf Rechtsseiten
-      if (isLegal) window.scrollTo({top:0, behavior:'instant'});
     }
-    window.addEventListener('hashchange', route);
-    route(); // initial
 
-  </script>
+    // Mobile-Menü schließen bei Navigation
+    menu?.classList.remove('show');
+  }
+
+  window.addEventListener('hashchange', route);
+  route(); // Initial
+</script>
+
 </body>
 </html>
