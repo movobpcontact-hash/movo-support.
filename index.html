@@ -1671,7 +1671,7 @@
   <a href="#routinen">Warum</a>
   <a href="#reviews">Reviews</a>
   <a href="#faq">FAQ</a>
- <a href="#impressum">Rechtliches</a>
+<a href="#rechtliches">Rechtliches</a>
   <a class="btn nav-cta" href="#kontakt">Kontakt</a>
 </nav>
 
@@ -1685,7 +1685,7 @@
   <a href="#routinen">Warum</a>
   <a href="#reviews">Reviews</a>
   <a href="#faq">FAQ</a>
-  <a href="#impressum">Rechtliches</a>
+<a href="#rechtliches">Rechtliches</a>
   <a href="#kontakt">Kontakt</a>
 
 </div>
@@ -2319,7 +2319,30 @@
   </div><!-- /#home -->
 
   <!-- „Unterseiten“ – standardmäßig versteckt -->
+<section id="rechtliches" class="section page">
+  <div class="container">
+    <div class="crumb">Home · Rechtliches</div>
+    <h2>Rechtliches</h2>
+    <p class="muted">Hier findest du alle Pflichtangaben rund um Movo.</p>
+    <div class="grid">
+      <a href="#impressum" class="card">
+        <h3>Impressum</h3>
+        <p>Angaben gemäß § 5 TMG und § 18 MStV.</p>
+      </a>
+      <a href="#datenschutz" class="card">
+        <h3>Datenschutz</h3>
+        <p>Wie wir mit deinen Daten umgehen.</p>
+      </a>
+      <a href="#agb" class="card">
+        <h3>AGB</h3>
+        <p>Nutzungsbedingungen für die Movo App.</p>
+      </a>
+    </div>
+    <a class="backlink" href="#start">← Zurück zur Startseite</a>
+  </div>
+</section>
 
+  
 <section id="impressum" class="section page">
     <div class="container">
       <h2>Impressum</h2>
@@ -2596,7 +2619,7 @@
   });
 
   // Hash-Routing für Impressum / Datenschutz / AGB
-  const PAGES = ['impressum','datenschutz','agb'];
+const PAGES = ['rechtliches','impressum','datenschutz','agb'];
 
   function route(){
     const hash = (location.hash || '#start').replace('#','');
